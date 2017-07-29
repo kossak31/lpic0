@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Obter Ajuda - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Obter Ajuda";
+    var mkdocs_page_input_path = "obter-ajuda/info.md";
+    var mkdocs_page_url = "/obter-ajuda/info/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Obter Ajuda</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#a-tecla-tab-finalizar-ou-completar-nomes-com-tab">A tecla TAB - finalizar ou completar nomes com TAB</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ajuda-online-de-comandos">Ajuda "online" de comandos</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#localizar-a-documentacao-no-linux">Localizar a documentacao no Linux</a></li>
+        
+            <li><a class="toctree-l4" href="#alguns-exemplos-de-ficheiro-que-servem-de-suporte-para-documentacao">Alguns exemplos de ficheiro que servem de suporte para documentacao</a></li>
+        
+            <li><a class="toctree-l4" href="#conhecer-os-tipos-de-documentacao">Conhecer os tipos de documentacao</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#man">MAN</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#seccoes-do-man">Seccoes do man</a></li>
+        
+            <li><a class="toctree-l4" href="#estrutura-de-uma-pagina-man">Estrutura de uma pagina man</a></li>
+        
+            <li><a class="toctree-l4" href="#como-ler-uma-pagina-man">como ler uma pagina man</a></li>
+        
+            <li><a class="toctree-l4" href="#manpath-ficheiros-man">MANPATH - ficheiros man</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#groff-pre-processador-de-texto">groff pré-processador de texto</a></li>
+    
+
+    <li class="toctree-l3"><a href="#info-outra-fonte-de-ajuda">info outra fonte de ajuda</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#consultar-paginas-de-manual-fora-da-linha-de-comando">Consultar paginas de manual fora da linha de comando</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#apropos">apropos</a></li>
+    
+
+    <li class="toctree-l3"><a href="#o-que-e-whatis">o que é ? - whatis</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#onde-fica-whereis">onde fica ? - whereis</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Obter Ajuda</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>A biblioteca gigantesca com a mais variada documentação sem duvida que contribuiu para o sucesso no GNU/Linux, esta é diferente dos sistemas proprietários com as seguintes características:</p>
+<ul>
+<li>comunidade participa:</li>
+</ul>
+<p>Além da documentação obrigatoria feita pelas equipes responsáveis pelos inúmeros programas GNU, existe uma enorme comunidade dedicada à criação de documentação. Foi criado o site tldp.org - Linux Documentation Project. Com o objectivo de ajuda a organizar equipas de voluntários que se dedicam a documentar e a traduzir documentos por exemplo.</p>
+<ul>
+<li>textos actualizados:</li>
+</ul>
+<p>geralmente os documentos ficam em sistemas de controle de versão (VCS), no qual permite que o autor possa receber traducoes adicionais e correções de outros colaboradores. Assim, o documento melhora gradualmente acompanhando as mudanças de versão.</p>
+<ul>
+<li>padrão na documentacao:</li>
+</ul>
+<p>apesar da variedade de programas e pessoas, os documentos são razoavelmente padronizados, utilizando geralmente formatos e ferramentas padrões.</p>
+<h1 id="a-tecla-tab-finalizar-ou-completar-nomes-com-tab">A tecla TAB - finalizar ou completar nomes com TAB</h1>
+<p>Para facilitar a escrita dos nomes de ficheiros na linha de comandos podemos finalizar com a tecla TAB para completar comandos</p>
+<h1 id="ajuda-online-de-comandos">Ajuda "online" de comandos</h1>
+<p>Apenas os comandos internos sao descritos com mais detalhe com o comando <code>help</code></p>
+<p>Alguns exemplos de comandos internos: cd, exit, echo, bg, fg, source, help</p>
+<p><code>help exit</code></p>
+<p>A chamada de ajuda online em programas pode variar de um comando para outro, depende apenas do seu autor, a forma mais comum de uso é: </p>
+<ul>
+<li>--help</li>
+<li>-h</li>
+<li>-?</li>
+</ul>
+<p><b>infelizmente nao existe convencao universal para a ajuda online</b></p>
+<p>Para ler texto demasiado extenso que termina cortado no ecra, use as teclas <b>shift+Pageup</b> (para subir) ou <b>shift+Pagedown</b> (para descer). É tambem possível utilizar um paginador como o <code>less</code> ou <code>more</code>, que permite uma leitura mais simples apenas com as setas para cima/baixo do teclado e carregado na tecla <code>q</code> para abanonar a vista.</p>
+<p><code>comando --help | less</code></p>
+<h2 id="localizar-a-documentacao-no-linux">Localizar a documentacao no Linux</h2>
+<p>Por padrão, o programa man é instalado e os ficheiros de páginas de manual são opcionalmente instalados, uma vez que ocupam espaço em disco. No sistema Linux, contamos com centenas de ficheiros documentados que servem para ajudar a explicar:</p>
+<ul>
+<li>documentação em ficheiro disponível: <code>/usr/doc</code> e <code>/usr/share/doc</code></li>
+<li>ajuda online, no próprio programa</li>
+<li>documentacao atraves do man ou info</li>
+</ul>
+<p>Por exemplo, como posso localizar a documentação fornecida pelo programa bash ?</p>
+<p><code>ls -lR /usr/share/doc/bash</code></p>
+<p>Por exemplo, consultar a pagina do comando ls no <code>man</code> para saber mais sobre o comando:</p>
+<p><code>man ls</code></p>
+<h2 id="alguns-exemplos-de-ficheiro-que-servem-de-suporte-para-documentacao">Alguns exemplos de ficheiro que servem de suporte para documentacao</h2>
+<table>
+<thead>
+<tr>
+<th>formato</th>
+<th>breve descriçao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.txt</td>
+<td>texto em caracteres ASCII. README, INSTALL, LEIAME ou TXT</td>
+</tr>
+<tr>
+<td>.html</td>
+<td>formato codificado em caracteres ASCII, compatível com os browsers e utilizado nas páginas da internet.</td>
+</tr>
+<tr>
+<td>.sgml</td>
+<td>é um formato codificado em ASCII, semelhante ao HTML. Não possui um visualizador padrão</td>
+</tr>
+<tr>
+<td>.xml</td>
+<td>formato também parecido com o HTML. É um sub-tipo de SGML, e permite também uma fácil conversão para outros formatos</td>
+</tr>
+<tr>
+<td>.pdf</td>
+<td>Portable Data Format criado pela Adobe, permite que documentos sejam exibidos em qualquer computador com as fontes e layouts correctos. suporta textos, imagens, tabelas e recursos de segurança.</td>
+</tr>
+<tr>
+<td>postscript</td>
+<td>criado pela Adobe, com a finalidade de reproduzir documentos em impressoras de alta qualidade gráfica. Assim como o PDF, esse formato não é utilizado para edição, mas sim para publicação de documentos, podendo ser visualizados com o utilitário ghostview</td>
+</tr>
+<tr>
+<td>man</td>
+<td>documentos escritos em formato troff</td>
+</tr>
+<tr>
+<td>info</td>
+<td>conhecido tambem por texinfo, semelhante ao man, possui navegação por tópicos</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conhecer-os-tipos-de-documentacao">Conhecer os tipos de documentacao</h2>
+<p>Geralmente o maior desafio não é a falta de recursos, mas filtrar e selecionar a informação realmente importante. Para realizar uma pesquisa eficiente, devemos conhecer as melhores fontes de informação.</p>
+<ul>
+<li>How to/Como fazer:</li>
+</ul>
+<p>Serve para instruir a fazer um determinado projeto ou tarefa. mais voltado para objetivos didáticos, geralmente uma lista de procedimentos passo-a-passo, podendo também ser chamado de tutorial/receita.</p>
+<table>
+<thead>
+<tr>
+<th>link</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://TLDP.ORG">tldp.org</a></td>
+<td>linux documentation project</td>
+</tr>
+<tr>
+<td><a href="http://yolinux.com">yolinux.com</a></td>
+<td>repositorio de links com variada informacao</td>
+</tr>
+<tr>
+<td><a href="http://linux.org">linux.org</a></td>
+<td>forum ingles com tutoriais</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>manual/wiki:</li>
+</ul>
+<p>mais específico que um how-to. objetivo principal ser uma fonte de referência sobre um tópico, sem muitos objetivos didáticos, fornecendo uma forma completa e fácil de encontrar toda a informação sobre determinado assunto.</p>
+<table>
+<thead>
+<tr>
+<th>wiki</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://wiki.archlinux.org/">wiki.arch.org</a></td>
+<td>wiki do arch</td>
+</tr>
+<tr>
+<td><a href="https://wiki.gentoo.org/wiki/Main_Page">wiki.gentoo.org</a></td>
+<td>wiki do gentoo</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>FAQ:</li>
+</ul>
+<p>Frequently Asked Questions - ou perguntas frequentes em portugues - é um documento baseado em perguntas e respostas mais comuns.</p>
+<table>
+<thead>
+<tr>
+<th>link</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.getgnulinux.org/pt-br/linux/linux_faq/">getgnulinux.org</a></td>
+<td>faq</td>
+</tr>
+<tr>
+<td><a href="https://www.debian.org/doc/manuals/debian-faq/">debian.org</a></td>
+<td>faq do debian</td>
+</tr>
+<tr>
+<td><a href="http://www.linfo.org/faq_linux.html">linfo.org</a></td>
+<td>The Linux Information Project</td>
+</tr>
+<tr>
+<td><a href="https://docs.kali.org/faq">kali.org</a></td>
+<td>faq do kali</td>
+</tr>
+<tr>
+<td><a href="http://www.linuxfromscratch.org/faq/">linuxfromscratch</a></td>
+<td>lfs</td>
+</tr>
+<tr>
+<td><a href="http://www.tldp.org/FAQ/Linux-FAQ/">tldp.org</a></td>
+<td>tldp</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>man pages - normalmente a shell vem fornecido com um utilitario chamado de man(manual). oferece um formato padrao na documentacao abordado a maioria dos utilitarios, bibliotecas e chamadas de sistema.</li>
+</ul>
+<h1 id="man">MAN</h1>
+<p>No Linux, o programa man é a interface usada para visualizar os manuais de referência do sistema.</p>
+<p>o man é o visualizador de manuais do sistema. Ele pode ser usado para mostrar páginas de manual. </p>
+<p>sintaxe: man [NUMERO DA SECCAO] [NOME DA PAGINA]</p>
+<p>indicar o numero da secçao do manual depois do comando <code>man</code>:</p>
+<pre><code class="bash">man 1 man
+</code></pre>
+
+<p>Cada argumento indicado no comando man normalmente é o nome de um programa. as paginas associadas a cada um desses argumentos sao encontradas e exibidas. um numero de seccao e fornecido, que indica ao man apenas a procurar nessa sesaso do manual. a accao padrao e procurar em todos as sessoes disponiveis, seguindo um padrao predefinido e mostrar apenas a primeira pagina encontrada mesmo que exista outras ocorrencias de paginas de outras sessoes.</p>
+<h2 id="seccoes-do-man">Seccoes do man</h2>
+<p>Enquanto ler documentação, vai ver um nome referente ao comando seguido de um número entre parênteses LS(1), o número faz de referência a uma dessas seções. </p>
+<p>exemplo de man ls (imagem do man com o numero 1)</p>
+<p>Alguns comandos podem ter a documentação espalhada por varias seçoes, então os números após o nome do comando podem ajudar a identificar a seção correta para encontrar um tema específico de informação.</p>
+<p>as paginas do <code>man</code> estão divididas varias seccões organizadas da seguinte maneira:</p>
+<table>
+<thead>
+<tr>
+<th>Número de referência</th>
+<th>Seccao aborda o seguinte tema</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>User commands</td>
+<td>seção para pesquisar as informações sobre comandos usados na linha de comando.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>System calls</td>
+<td>Esta seção explica os argumentos e o proposito das chamadas de sistema pelo sistema operativo</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C language library functions</td>
+<td>sessao bastante util para programadores C e outras linguagens derivadas como python. Explica argumentos, ficheiros header, comportamentos e chamadas de funçao biblioteca de C</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Device ﬁles and drivers</td>
+<td>ficheiros especiais normalmente ficheiros dentro da pasta /dev/. por exemplo man 14 tty man 4 pts</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Conﬁguration ﬁles and ﬁle formats</td>
+<td>ficheiros comuns, informacoes sobre o uso do sistema</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Games</td>
+<td>informacoes sobre jogos e screensavers</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Miscellaneous</td>
+<td>tudo o que nao foi documentado ate agora vai ser colocado aqui</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Administrator commands</td>
+<td>comandos administrativos e informacao sobre serviços do sistema</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Kernel functions n ”‘New”’ commands</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>para aceder a sessao desejada colocamos o valor numerico entre man e o comando que desejamos saber mais. vamos ver a sessao numero 3 de "funcoes da biblioteca C" para o comando printf.</p>
+<pre><code class="bash">[user@host]$ man 3 printf
+</code></pre>
+
+<h2 id="estrutura-de-uma-pagina-man">Estrutura de uma pagina man</h2>
+<p>as paginas <code>man</code> seguem a seguinte estrutura no formato texto ASCII:</p>
+<table>
+<thead>
+<tr>
+<th>capitulo</th>
+<th>conteudos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAME</td>
+<td>nome do comando e breve descricao</td>
+</tr>
+<tr>
+<td>SYNOPSIS</td>
+<td>descricao e sintaxe do comando</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>descricao breve dos efeitos do comando</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>opcoes disponiveis</td>
+</tr>
+<tr>
+<td>ARGUMENTS</td>
+<td>argumentos disponiveis</td>
+</tr>
+<tr>
+<td>FILES</td>
+<td>ficheiros auxiliares</td>
+</tr>
+<tr>
+<td>EXAMPLES</td>
+<td>exemplos praticos na linha de comando</td>
+</tr>
+<tr>
+<td>SEE ALSO</td>
+<td>topicos relacionados</td>
+</tr>
+<tr>
+<td>DIAGNOSTICS</td>
+<td>erros e mensagens de aviso</td>
+</tr>
+<tr>
+<td>COPYRIGHT</td>
+<td>origem e autores</td>
+</tr>
+<tr>
+<td>BUGS</td>
+<td>limitacoes e falhas</td>
+</tr>
+</tbody>
+</table>
+<h2 id="como-ler-uma-pagina-man">como ler uma pagina man</h2>
+<p><img alt="Screenshot" src="../../obter-ajuda/sintaxe_man.png" /></p>
+<p>Para continuar a ler texto extenso use as teclas seta para cima e para baixo para deslizar pelo ecra. </p>
+<table>
+<thead>
+<tr>
+<th>Simbolo</th>
+<th>Significado da legenda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- e --</td>
+<td>indicar uma opcao</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>opcao nao obrigatoria</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>agrupar uma opcao necessaria</td>
+</tr>
+<tr>
+<td>barra vertical</td>
+<td>opcoes excluentes entre si</td>
+</tr>
+<tr>
+<td>texto sublinhado</td>
+<td>indica argumento do comando</td>
+</tr>
+<tr>
+<td>...</td>
+<td>indica que o comando aceita varios objectos como argumento</td>
+</tr>
+</tbody>
+</table>
+<p>Como o man utiliza o comando less em segundo plano, para paginar (forma de visualizar o texto em etapas) e controlar a informação em tela, você pode navegar por uma página de manual da mesma forma que se navega com o comando less.</p>
+<table>
+<thead>
+<tr>
+<th>tecla de atalho</th>
+<th>descrisao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>mostra um texto de ajuda</td>
+</tr>
+<tr>
+<td>q</td>
+<td>sair</td>
+</tr>
+<tr>
+<td>/</td>
+<td>pesquisa no texto</td>
+</tr>
+<tr>
+<td>n</td>
+<td>repetir a pesquisa, onde o cursor se encontra</td>
+</tr>
+<tr>
+<td>N</td>
+<td>inverte a pesquisa no sentido do fim para o inicio do te</td>
+</tr>
+</tbody>
+</table>
+<h2 id="manpath-ficheiros-man">MANPATH - ficheiros man</h2>
+<p>os ficheiros do man são armazenados em pastas especificas, definidos pela variável de ambiente $MANPATH ou através do ficheiro <code>/etc/manpath.config</code>.</p>
+<p><code>echo $MANPATH</code></p>
+<p>existe um comando dedicado para alterar a variavel, nao e recomendavel editar manualmente</p>
+<pre><code class="bash">manpath
+</code></pre>
+
+<p>as pastas sao listadas separadas por dois-pontos <code>:</code>.</p>
+<pre><code class="bash">manpath 
+/usr/local/share/man:/usr/share/man
+</code></pre>
+
+<h1 id="groff-pre-processador-de-texto">groff pré-processador de texto</h1>
+<p>O groff (GNU troff) é um pré-processador de texto que gera uma apresentação apropriada de um texto para ser visualizado no ecra. paginas man são escritas em sintaxe especial e depois processadas pelo programa groff.</p>
+<h1 id="info-outra-fonte-de-ajuda">info outra fonte de ajuda</h1>
+<p>Outra forma de se obter ajuda para um programa e outro sistema de documentação denominado info ou texinfo conhecidas tambem como info pages. Originou-se com o projeto GNU era suposto ser apenas documentação de informação para o "sistema GNU". No entanto, uma vez que o GNU também aceita muitos softwares não criados sob os auspícios da FSF e as ferramentas GNU são muito usadas em sistemas que seguem uma abordagem mais conservadora, a FSF cedeu em muitos casos.</p>
+<p>O info é mais vantajoso para conteúdos de ajuda de maior tamanho, pois ele possui várias funcionalidades de navegação como: atalho para a página anterior ou seguinte, referências cruzadas e índice. Além disso, ele é também licenciado sob a GPL e é o sistema de documentação padrão do projeto Gnu.</p>
+<p>Os ficheiros do info estão dentro da pasta /usr/share/info. Assim como os ficheiros do man, seus ficheiros também são compactados, visando economia de espaço em disco.
+<img alt="Screenshot" src="../../obter-ajuda/info.png" /></p>
+<h2 id="consultar-paginas-de-manual-fora-da-linha-de-comando">Consultar paginas de manual fora da linha de comando</h2>
+<p>no menu iniciar do KDE e gnome:</p>
+<pre><code>#ls
+</code></pre>
+
+<p>escrever o seguinte comando na barra onde se indica o endereço www no firefox </p>
+<pre><code>man:ls
+</code></pre>
+
+<p><img alt="Screenshot" src="../../obter-ajuda/firefox_ls.png" /></p>
+<h1 id="apropos">apropos</h1>
+<p>uma boa prática é procurar com o comando apropos antes de ler se quer quais quer páginas de manual. whatis e apropos que procuram informacoes nas descricoes resumidas das paginas de manual marcadas com o titulo "nome".</p>
+<p>Para fazer a busca no banco de dados whatis, deve ser usado o comando whatis ou apropos.</p>
+<p>apropos cp
+<img alt="Screenshot" src="../../obter-ajuda/apropos.png" /></p>
+<h1 id="o-que-e-whatis">o que é ? - whatis</h1>
+<p>O comando whatis exige o saber o nome exato do comando. Bastante mais flexível e abrangente, que o comando <code>apropos</code>. Procura por ocorrência parcial no nome do objeto ou na descrição resumida.</p>
+<p>whatis cp
+<img alt="Screenshot" src="../../obter-ajuda/whatis.png" /></p>
+<h2 id="onde-fica-whereis">onde fica ? - whereis</h2>
+<p>Comando whereis localiza os ficheiros binários, seu codigo-fonte, ficheiros de configuracao e a página de manual para um comando. A pesquisa é feita usando os caminhos de páginas de manuais configuradas no sistema (normalmente o ficheiro /etc/manpath.config)</p>
+<pre><code>whereis ls
+ls: /usr/bin/ls /usr/share/man/man1/ls.1p.gz /usr/share/man/man1/ls.1.gz
+</code></pre>
+
+<p>o whereis é mais completo que o comando which. é aconselhável o uso deste comando para descobrir mais informacoes.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../bash/" class="btn btn-neutral float-right" title="Linha de Comando">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../linguagens/linguagens/" class="btn btn-neutral" title="Linguagens de Programação"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../linguagens/linguagens/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../bash/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

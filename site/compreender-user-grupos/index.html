@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Compreender Utilizadores e Grupos - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Compreender Utilizadores e Grupos";
+    var mkdocs_page_input_path = "compreender-user-grupos/index.md";
+    var mkdocs_page_url = "/compreender-user-grupos/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Compreender Utilizadores e Grupos</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#conhecer-utilizador-root">conhecer utilizador root</a></li>
+    
+
+    <li class="toctree-l3"><a href="#utilizadores-comuns">utilizadores comuns</a></li>
+    
+
+    <li class="toctree-l3"><a href="#utilizadores-de-sistema">Utilizadores de sistema</a></li>
+    
+
+    <li class="toctree-l3"><a href="#existem-tres-ficheiros-principais-para-administracao-de-utilizadores">Existem três ficheiros principais para administração de utilizadores</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ficheiro-etcpasswd">Ficheiro /etc/passwd</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ficheiro-etcshadow">Ficheiro /etc/shadow</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#comandos-para-criar-e-gerir-utilizadores-e-grupos">Comandos para criar e gerir utilizadores e grupos</a></li>
+        
+            <li><a class="toctree-l4" href="#comando-whoami">comando whoami</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#procedimento-para-alterar-a-senha-passwd">Procedimento para alterar a senha - passwd</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#comando-id">comando id</a></li>
+        
+            <li><a class="toctree-l4" href="#trocar-para-utilizador-root">trocar para utilizador root</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#multi-utilizadores">Multi-utilizadores</a></li>
+    
+
+    <li class="toctree-l3"><a href="#criar-um-utilizador-useradd">criar um utilizador - useradd</a></li>
+    
+
+    <li class="toctree-l3"><a href="#apagar-utilizadores-userdel">Apagar utilizadores - userdel</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#chage">chage</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#opcoes-do-usermod">opcoes do usermod</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#criar-um-grupos-de-utilizadores-groupadd">criar um grupos de utilizadores - groupadd</a></li>
+        
+            <li><a class="toctree-l4" href="#remover-um-grupo-groupdel">remover um grupo - groupdel</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#etcskel-definir-um-padrao-para-perfil-de-utilizadores">/etc/skel - Definir um padrao para perfil de utilizadores</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#inspecionar-utilizadores">inspecionar utilizadores</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Compreender Utilizadores e Grupos</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>existem 3 tipos de utilizadores e o UNIX suporta um conceito de grupo de utilizadores. agrupa logicamente diferentes utilizadores num grupo. é importante na gestao de permissoes e processos.</p>
+<p>A principal finalidade dos grupos é permitir que utilizadores executem accoes que nao sao permitidas fora do grupo em questao. Essas accoes estao relacionadas principalmente com leitura e escruta de ficheiros e pastas. É importante compreender como funciona o sistema de permissoes de ficheiros em sistemas unix.</p>
+<h3 id="conhecer-utilizador-root">conhecer utilizador root</h3>
+<p>Um utilizador principal é criado por padrão num sistema unix e chamado de root. Também conhecido como super-utilizador pode executar qualquer comando sem qualquer restricao. Serve para configurar o sistema operativo e corrigir problemas criticos. este utilizador deve ser visto como um administrador do sistema, atenção nao existe pasta pessoal padrao no <code>/home</code> mas na raiz do sistema de ficheiros, <code>/root</code></p>
+<h3 id="utilizadores-comuns">utilizadores comuns</h3>
+<p>Os utilizadores comuns fornecem acesso interativo ao sistema para utilizadores e grupos. geralmente tem acesso limitado ao sistema. todos os utilizadores pertem a um grupo. as contas sao guardas no ficheiro <code>/etc/passwd</code>. os grupos do sistema sao guardados no ficheiro <code>/etc/group</code>.</p>
+<h3 id="utilizadores-de-sistema">Utilizadores de sistema</h3>
+<p>Existem utilizadores especiais chamados utilizadores de sistema.
+Estes utilizadores nao correspondem a uma pessoa, mas a alguma tarefa do sistema operativo. Essa abordagem oferece uma camada adicional de seguranca, pois programas executados por um utilizador nao podem interferir com ficheiros e processos que nao lhe pertencem.</p>
+<h3 id="existem-tres-ficheiros-principais-para-administracao-de-utilizadores">Existem três ficheiros principais para administração de utilizadores</h3>
+<table>
+<thead>
+<tr>
+<th>ficheiros</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/passwd</td>
+<td>Mantém informações de conta de usuário e senha. este ficheiro contém a maioria das informações sobre contas no Unix sistema.</td>
+</tr>
+<tr>
+<td>/etc/shadow</td>
+<td>Contém a senha criptografada. Nem todos os sistemas suportam este ficheiro.</td>
+</tr>
+<tr>
+<td>/etc/group</td>
+<td>Contém informações de grupo para cada conta.</td>
+</tr>
+<tr>
+<td>/etc/gshadow</td>
+<td>Contém informações seguras da conta do grupo.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ficheiro-etcpasswd">Ficheiro /etc/passwd</h2>
+<p>As informacoes de conta dos utilizadores do sistema estao guardadas no ficheiro <code>/etc/passwd</code>.</p>
+<p>cada utilizador e definido em uma linha. os campos sao separados pelo caracter <code>:</code> segue a ordem dos varios campos por legenda:</p>
+<pre><code>root:x:0:0:root:/root:/bin/bash
+</code></pre>
+
+<ul>
+<li>nome de login</li>
+<li>senha com valor x significa que utiliza o ficheiro /etc/shadow</li>
+<li>numero de identificacao UID</li>
+<li>numero de grupo inicial/principal GID</li>
+<li>descricao do utilizador nao obrigatorio</li>
+<li>pasta da pessoal</li>
+<li>shell a iniciar o padrao é /bin/bash</li>
+</ul>
+<p>para editar o ficheiro /etc/passwd é recomendado o comando <code>vipw</code>. que bloqueia o ficheiro contra possiveis alteracoes simultanias como verifica a sintaxe do mesmo, evitando assim a corrupcao do ficheiro.</p>
+<h2 id="ficheiro-etcshadow">Ficheiro /etc/shadow</h2>
+<p>o ficheiro <code>/etc/passwd</code> pode ser lido por qualquer utilizador, o que permite as senhas criptografadas passiveis de descodificar. Para evitar tal possibilidade, é utilizado um segundo ficheiro apenas acessivel apenas para o utilizador root o ficheiro <code>/etc/shadow</code>.</p>
+<p>cada utilizador e definido em uma linha. os campos sao separados pelo caracter <code>:</code> segue a ordem dos varios campos por legenda:</p>
+<pre><code>$root:QZADFSDFSDFcXuohQ0ZUfxH7.JbsdfSDFywhTgdJq123U3ICPmcu0S5u0pR1:17344::::::
+</code></pre>
+
+<ul>
+<li>nome do utilizador correspondente ao /etc/passwd</li>
+<li>senha, em branco permite login sem senha. com * indica que a conta esta bloquiada</li>
+<li>numero de dias desde que a que senha foi alterada</li>
+<li>numero minio de dias ate que uma senhapossa ser alterada. 0 permite alterar a senha sem tmepo de espera</li>
+<li>numero de dias depois a senha pode ser alterada. valor padrao 99999 dias = 274 anos</li>
+<li>numero de dias para informar que a senha expira</li>
+<li>numero de dias depois de a senha expirar que a conta seja bloqueada</li>
+<li>numero de dias desde que a conta foi bloqueada</li>
+</ul>
+<h3 id="comandos-para-criar-e-gerir-utilizadores-e-grupos">Comandos para criar e gerir utilizadores e grupos</h3>
+<table>
+<thead>
+<tr>
+<th>comando</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>useradd</td>
+<td>adiciona utilizador</td>
+</tr>
+<tr>
+<td>usermod</td>
+<td>altera atributos nos utilizadores</td>
+</tr>
+<tr>
+<td>userdel</td>
+<td>elemina utilizador</td>
+</tr>
+<tr>
+<td>groupadd</td>
+<td>adiciona novo grupo</td>
+</tr>
+<tr>
+<td>groupmod</td>
+<td>altera grupo</td>
+</tr>
+<tr>
+<td>groupdel</td>
+<td>elemina grupo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comando-whoami">comando whoami</h3>
+<p>escrever <code>whoami</code>(quem sou eu) permite descobrir o nome de utilizador actual activo no sistema.</p>
+<pre><code>whoami
+</code></pre>
+
+<h2 id="procedimento-para-alterar-a-senha-passwd">Procedimento para alterar a senha - passwd</h2>
+<p>Para um utilizador comum aceder ao seu perfil, o administrador deve definir uma senha para ele. Alterar uma password é com o comando <code>passwd</code>. passwd sem argumentos altera a senha do utilizador actual. que pode ser realizado por um utilizador comum.</p>
+<pre><code>passwd [nomeUtilizador]
+</code></pre>
+
+<h3 id="comando-id">comando id</h3>
+<p>o comando id sem argumentos mostra o numero actual e grupos a que pertence o utilizador</p>
+<pre><code>id # comando sem argumentos
+uid=1000(username) gid=1000 groups=1000 # mostra uid, gid e grupos
+
+id root # comando id a identificar o utilizador root
+uid=0(root) gid=0(root) groups=0(root),1(bin),2(daemon),3(sys),4(adm),6(disk),10(wheel),19(log)
+
+</code></pre>
+
+<ul>
+<li>UID = user id</li>
+<li>GID = grupo principal</li>
+<li>groups = a que grupos pertence</li>
+<li>numero 1000 referencia a utilizadores comuns</li>
+</ul>
+<h3 id="trocar-para-utilizador-root">trocar para utilizador root</h3>
+<p>boa pratica nao utilizar o administrador de um sistema para uso comum de operacoes. para tal existem dois comandos para fazer a troca de um utilizador comum para super utilizador.</p>
+<p><code>su -</code></p>
+<p><code>sudo -i</code></p>
+<h2 id="multi-utilizadores">Multi-utilizadores</h2>
+<p>Em ambientes onde mais de uma pessoa usa o computador ou utiliza os recursos fornecidos por este via rede, e muito importante que cada uma delas possua restriçoes para que nao comprometa dados sensıveis, sejam eles pertinentes ao proprio sistema, sejam pertinentes a outros utilizadores. Para isso, para cada utilizador e criada uma conta com a qual ele possa aceder ao sistema. Cabe ao root administrar as contas e grupos de utilizador. Contudo, o proprio utilizador
+pode modificar alguns aspectos de sua propria conta no sistema.</p>
+<h2 id="criar-um-utilizador-useradd">criar um utilizador - useradd</h2>
+<p>useradd -d [nomeHomedir] -g [grupo] -m -s [tipoShell] -u [userid] [nomeUtilizador]</p>
+<p><b>especial atencao nao confundir, o comando <code>useradd</code> com o <code>adduser</code>, <code>adduser</code> é um script escrito em Perl.</b></p>
+<p>criar um novo utilizador com pasta inicial no caminho $HOME</p>
+<pre><code>useradd -m [nome]
+</code></pre>
+
+<p>o nome padrao usado para identificar a pasta é o nome do utilizador, e possivel alterar para outro nome</p>
+<pre><code>useradd -m -d [pastaDestino] [nomeUtilizador]
+</code></pre>
+
+<p>criar uma conta de utilizador temporaria, sem pasta inicial</p>
+<pre><code>useradd -d /home/temporario -e 2018-01-01 temporario
+</code></pre>
+
+<p>criar utilizador e adicionar a um grupo</p>
+<pre><code>useradd -m john -G accounts
+</code></pre>
+
+<p>criar utilizador com nome</p>
+<pre><code>useradd -m mmudo -c &quot;mister mudo&quot;
+
+useradd test5 -m -K PASS_MAX_DAYS=5 -K PASS_WARN_AGE=3 -K LOGIN_RETRIES=1
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>opcoes para useradd</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>comentario é o nome completo do utilizador</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>especificar caminho absoluto da pasta inicial do utilizador</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>GID grupo inicial, deve existir previamente no sistema</td>
+</tr>
+<tr>
+<td>-G</td>
+<td>adicionar grupos separados com virgula</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>defenir um numero para UID</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>escolher o tipo de shell</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>escrever a senha entre aspas</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>data de validade YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>copia o modelo encontrado em /etc/skel</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>cria pasta incial caso nao existir</td>
+</tr>
+<tr>
+<td>-M</td>
+<td>negar a criação da pasta pessoal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="apagar-utilizadores-userdel">Apagar utilizadores - userdel</h2>
+<p>A opcao <code>-r</code> permite apagar a pasta inicial do utilizador com ficheiros pessoais e ficheiros do mail.</p>
+<pre><code>userdel -r [nomeUtilizador]
+</code></pre>
+
+<p>Uma boa pratica para fins de backups é nao usar a opção -r. pois assim pode eleminar mais tarde.</p>
+<h3 id="chage">chage</h3>
+<p>alterar informações de expiração da senha de um utilizador. Essas informações ficam armazenadas no ficheiro /etc/shadow</p>
+<table>
+<thead>
+<tr>
+<th>opcao</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-m</td>
+<td>minimo de dias ate que o utilizador possa trocar senha</td>
+</tr>
+<tr>
+<td>-M</td>
+<td>numero maximo de dias que a senha permece valida</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>determina quando a senha foi alterada</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>numero de dias decorridos em relacao a partir dos quais a conta nao estara mais disponivel</td>
+</tr>
+<tr>
+<td>-I</td>
+<td>inatividade ou tolerancia de dias apos axpiracao da senha para que a conta seja bloqueada</td>
+</tr>
+<tr>
+<td>-W</td>
+<td>dias anteriores ao fim da validade da senha quando sera emitido um aviso sobre a expriacao da validade</td>
+</tr>
+</tbody>
+</table>
+<p>o utilizador comum deve usar a opcao <code>-l</code> que mostra as restricoes referentes ao utilizador em questao.</p>
+<pre><code>chage -l [nomeUtilizador]
+</code></pre>
+
+<pre><code>Password: 
+Last password change                    : jul 04, 2009
+Password expires                    : never
+Password inactive                   : never
+Account expires                     : never
+Minimum number of days between password change      : 0
+Maximum number of days between password change      : 99999
+Number of days of warning before password expires   : 7
+</code></pre>
+
+<h1 id="opcoes-do-usermod">opcoes do usermod</h1>
+<p>alterar um nome de utilizador para outro nome</p>
+<pre><code>usermod -d [nomeHomedir] -m  -l [antigoNome] [novoNome]
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>opcao</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>descricao do utilizador</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>altera a pasta do utilizador, com o -m move o conteudo</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>prazo validade da conta</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>numero de dias apos a senha ter expirado ate seja bloqueada. -1 cancela</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>definir grupo principal</td>
+</tr>
+<tr>
+<td>-G</td>
+<td>grupos adicionais</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>nome de login</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>senha</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>UID  numero de user id</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>shell</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>bloqueia a conta com. coloca um caracter ! na frente da senha criptografada</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>desbloqueia a conta do utilizador, retira o ! da frente da senha critografada</td>
+</tr>
+</tbody>
+</table>
+<h2 id="criar-um-grupos-de-utilizadores-groupadd">criar um grupos de utilizadores - groupadd</h2>
+<p>é obrigatorio criar grupo de utilizadores antes de criar qualquer utilizador. nao deve adicionar utilizadores a grupos de sistema. o GID pode ser especificado com a opcao -g. para excluir um grupo é usado o comando groupdel</p>
+<p>criar grupo de utilizadores
+<code>groupadd grupo_curso</code></p>
+<p>groupadd [antigoNome] [novoNome]</p>
+<table>
+<thead>
+<tr>
+<th>opcao groupadd</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-g [GID]</td>
+<td>valor numerico para o id do grupo</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>adicionar grupo sem GID</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>adiciona</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>força verificando o valor GID selecionado outro</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alterar-grupo-de-utilizadores-groupmod">alterar grupo de utilizadores - groupmod</h3>
+<p>groupmod -n [novoNome] [antigoNome]</p>
+<p>alterar GID</p>
+<p>groupmod -g 1000 grupoteste</p>
+<table>
+<thead>
+<tr>
+<th>opcoes para groupmod</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-g</td>
+<td>altera o GID do grupo</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>altera o nome do grupo</td>
+</tr>
+</tbody>
+</table>
+<h2 id="remover-um-grupo-groupdel">remover um grupo - groupdel</h2>
+<p>Se remover um grupo de utilizadores do sistema, os ficheiros que pertenciam ao grupo eleminado vao continuam acessiveis pela permissao de propriedade.</p>
+<p><code>groupdel grupo_curso</code></p>
+<h3 id="gpasswd-administracao-de-etcgroup-e-etcgshadow">gpasswd administracao de /etc/group e /etc/gshadow</h3>
+<table>
+<thead>
+<tr>
+<th>opcao</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gpasswd grupo</td>
+<td>cria senha para grupo</td>
+</tr>
+<tr>
+<td>gpasswd -r grupo</td>
+<td>apaga a senha do grupo</td>
+</tr>
+<tr>
+<td>gpasswd -a utilizador grupo</td>
+<td>adiciona utilizador a um grupo</td>
+</tr>
+<tr>
+<td>gpasswd -d utilizador grupo</td>
+<td>remove utilizador do grupo</td>
+</tr>
+<tr>
+<td>gpasswd -A utilizador grupo</td>
+<td>torna um utilizador administrador do grupo</td>
+</tr>
+</tbody>
+</table>
+<p>um utilizador pode pertencer a mais de um grupo, mas apenas um grupo pode ser o principal. para mostrar os grupos a quais um utilizador esta inserido, utilizamos o comando <code>groups</code></p>
+<h3 id="etcgroup">/etc/group</h3>
+<p>as informacoes sobre os grupos existentes no sistema estao guardados no ficheiro /etc/group. cada grupo e definido em uma linha e os campos separados pelo caracter <code>:</code></p>
+<ul>
+<li>nome do grupo</li>
+<li>senha do grupo x utiliza /etc/gshadow</li>
+<li>numero de identificao do grupo GID</li>
+<li>lista de membros do grupo separados por virgula</li>
+</ul>
+<p><code>vigr</code> para alterar o /etc/group</p>
+<h1 id="etcskel-definir-um-padrao-para-perfil-de-utilizadores">/etc/skel - Definir um padrao para perfil de utilizadores</h1>
+<p>A pasta <code>/etc/skel</code> contém os ficheiros <code>.bash_profile</code> e <code>.bashrc</code> que são copiados automaticamente para a pasta <code>$HOME</code> a cada novo utilizador no momento que for criado pelo comando <code>useradd</code>. Desta forma não necessita de configurar estes ficheiros separadamente para cada utilizador.</p>
+<p>Permite ao administrador do sistema criar uma pasta inicial padrão com ficheiros preconfigurados para todos os novos utilizadores, agilizando o processo da copia de ficheiros padrao. Assim todos começam com as mesmas configurações ou variaveis de ambiente por exemplo.</p>
+<p>os ficheiros podem ser analisados com o seguinte comando:
+<code>ls -a /etc/skel</code></p>
+<p>é possivel alterar o caminho <code>/etc/skel</code> para outro. basta editar o seguinte ficheiro <code>/etc/default/useradd</code></p>
+<p>Por padrão, a linha a alterar é a <code>SKEL = /etc/skel</code>.</p>
+<p>A boa prática é manter a pasta <code>/etc/skel</code> o mais simples possivel em questao de novos ficheiros na configuraçao de perfil do utilizador. Devemos usar o ficheiro <code>/etc/profile</code> para carregar novas configuraçoes de perfil.</p>
+<p>O uso do ficheiro <code>/etc/profile</code> torna muito mais fácil atualizar os ficheiros de utilizadores existentes porque as configurações produzem efeitos assim que o sistema está activo e se aplicam a novos utilizadores ou antigos.</p>
+<h2 id="inspecionar-utilizadores">inspecionar utilizadores</h2>
+<h3 id="who">who</h3>
+<p>permite ver quem esta a utilizar o sistema</p>
+<pre><code>pi       pts/0        2017-06-07 17:24 (hostname.dominio)
+</code></pre>
+
+<h3 id="w">w</h3>
+<p>w saber quem esta e o que executa?</p>
+<pre><code>17:50:47 up 26 min,  1 user,  load average: 0.03, 0.47, 0.51
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+pi       pts/0    bender.home      17:24    1.00s  1.56s  0.05s w
+
+
+17:57:53 up 2 days,  1:24,  1 user,  load average: 0,92, 0,80, 0,77
+USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+devilboy tty7      14:10    2days 12:06   0.01s /bin/sh /etc/xdg/xfce4/xinitrc
+
+</code></pre>
+
+<p>o campo da descricao pode ser defindo com o chfn e a shell com chsh</p>
+<h3 id="lastlog">lastlog</h3>
+<p>O comando lastlog exibe quando foi a  ́ultima vez que cada usu ́ario entrou no sistema</p>
+<pre><code>Username         Port     From             Latest
+root                                       **Never logged in**
+daemon                                     **Never logged in**
+bin                                        **Never logged in**
+sys                                        **Never logged in**
+sync                                       **Never logged in**
+games                                      **Never logged in**
+man                                        **Never logged in**
+lp                                         **Never logged in**
+mail                                       **Never logged in**
+news                                       **Never logged in**
+uucp                                       **Never logged in**
+proxy                                      **Never logged in**
+www-data                                   **Never logged in**
+backup                                     **Never logged in**
+list                                       **Never logged in**
+irc                                        **Never logged in**
+gnats                                      **Never logged in**
+nobody                                     **Never logged in**
+systemd-timesync                           **Never logged in**
+systemd-network                            **Never logged in**
+systemd-resolve                            **Never logged in**
+systemd-bus-proxy                           **Never logged in**
+pi               pts/0    bender.home      Wed Jun  7 17:24:52 +0100 2017
+messagebus                                 **Never logged in**
+avahi                                      **Never logged in**
+ntp                                        **Never logged in**
+sshd                                       **Never logged in**
+statd                                      **Never logged in**
+mysql                                      **Never logged in**
+</code></pre>
+
+<h3 id="last">last</h3>
+<p>Mostra os ultimos acessos dos utilizadores no sistema. Para verificar o ultimo acesso de um terminado utilizador indicar o nome dele como argumento</p>
+<p>last user</p>
+<pre><code>pi       pts/0        bender.home      Wed Jun  7 17:24   still logged in   
+pi       pts/0        bender.home      Wed Jun  7 17:15 - crash (-17324+-16:
+
+</code></pre>
+
+<h3 id="last-reboot">last reboot</h3>
+<p>mostra quando o sistema foi ligado pela  ́ultima vez, u seja, desde
+quando est ́a ligado</p>
+<p>last reboot</p>
+<pre><code>reboot   system boot  4.9.30+          Thu Jan  1 01:00 - 17:54 (17324+16:54
+reboot   system boot  4.9.30+          Thu Jan  1 01:00 - 17:54 (17324+16:54
+reboot   system boot  4.9.30+          Thu Jan  1 01:00 - 17:14 (17324+16:14
+</code></pre>
+
+<h3 id="lastb">lastb</h3>
+<p>root pode verificar tamb ́em se houveram tentativas mal sucedidas
+de ingresso no sistema com o comando
+lastb
+.
+Lastb is the same as last, except that by default it shows a log of the file /var/log/btmp, which contains all the bad login attempts.</p>
+<pre><code>pi       ssh:notty    bender.home      Sun Jun  4 09:27 - 09:27  (00:00)    
+pi       ssh:notty    zebinario.home   Sun Jun  4 07:08 - 07:08  (00:00)    
+pi       tty1                          Tue May 30 14:15 - 14:15  (00:00)    
+pi       tty1                          Tue May 30 14:15 - 14:15  (00:00)    
+pi       tty1                          Mon Apr 10 22:18 - 22:18  (00:00)    
+root     tty1                          Mon Apr 10 22:18 - 22:18  (00:00)    
+root     tty1                          Mon Apr 10 11:18 - 11:18  (00:00)    
+root     tty1                          Mon Apr 10 11:18 - 11:18  (00:00)    
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../propriedade-permissoes/" class="btn btn-neutral float-right" title="Propriedades e Permissões">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../arquivar-comprimir-extrair/tar/" class="btn btn-neutral" title="Arquivar, Comprimir e Extrair"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../arquivar-comprimir-extrair/tar/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../propriedade-permissoes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

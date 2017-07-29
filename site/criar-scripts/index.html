@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Criar Scripts - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Criar Scripts";
+    var mkdocs_page_input_path = "criar-scripts/index.md";
+    var mkdocs_page_url = "/criar-scripts/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Criar Scripts</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#aliases">aliases</a></li>
+    
+
+    <li class="toctree-l3"><a href="#shebang">shebang</a></li>
+    
+
+    <li class="toctree-l3"><a href="#permissoes-de-execucao-no-script">Permissoes de execucao no script</a></li>
+    
+
+    <li class="toctree-l3"><a href="#codigo-de-status-exit">Código de status exit</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#quebrar-linha-a-leitura-humana">Quebrar linha - a leitura humana</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#quoting">Quoting</a></li>
+    
+
+    <li class="toctree-l3"><a href="#definir-variavel-shell">Definir variavel shell</a></li>
+    
+
+    <li class="toctree-l3"><a href="#atribuir-saidas-de-comandos-a-variaveis">atribuir saidas de comandos a variaveis</a></li>
+    
+
+    <li class="toctree-l3"><a href="#capturar-a-entrada-de-dados">capturar a entrada de dados</a></li>
+    
+
+    <li class="toctree-l3"><a href="#variaveis-de-ambiente-env">Variaveis de ambiente ENV</a></li>
+    
+
+    <li class="toctree-l3"><a href="#argumentos-em-script">argumentos em script</a></li>
+    
+
+    <li class="toctree-l3"><a href="#operacoes-de-teste">Operações de teste</a></li>
+    
+
+    <li class="toctree-l3"><a href="#case">case</a></li>
+    
+
+    <li class="toctree-l3"><a href="#select">select</a></li>
+    
+
+    <li class="toctree-l3"><a href="#loops-ciclos-de-repeticao">Loops - ciclos de repeticao</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#for">for</a></li>
+        
+            <li><a class="toctree-l4" href="#while">while</a></li>
+        
+            <li><a class="toctree-l4" href="#until">until</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Criar Scripts</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Quem dominar os comandos na shell, pode escrever scripts de shell (também conhecidos como scripts de shell Bourne). Um script Shell é uma série de comandos escritos em um ficheiro. </p>
+<p>O shell lê os comandos do ficheiro, como se fosse alguem a digitar em um terminal</p>
+<p>no coraçao de qualquer linguagem de programação estão na iteração e execução condicional. a iteração e a repeticao de uma secao de codigo ate uma condicao for alterada. A execucao condicional e feita por escolhas entre duas ou mais acções(uma das quais pode ser nao fazer nada) baseadas em condiçao. O status de saída do comando controla o comportamento exepto para for e case.</p>
+<p>existem tres tipos de loop(ciclos)</p>
+<ul>
+<li>while</li>
+<li>until</li>
+<li>for</li>
+</ul>
+<p>existem tres tipos de execução de condicao</p>
+<ul>
+<li>if</li>
+<li>case</li>
+<li>operadores de condição, &amp;&amp;(AND) e ||(OR)</li>
+</ul>
+<h2 id="aliases">aliases</h2>
+<p>É uma maneira simples de atribuir sinônimos ou “apelidos” a uma determinada colecao de comandos. ou uma unica linha de comando. o ficheiro <code>.bashrc</code> é onde devemos colocar os novos aliases para ficar disponivel na sessão. </p>
+<p>Definir um alias na linha de comando da seguinte forma:
+alias alcunha='comando'</p>
+<p>não pode haver espaços em branco antes ou depois do “=”. Toda vez que escrever a alcunha, o bash o substituirá por um comando.</p>
+<h2 id="shebang">shebang</h2>
+<p>Os scripts iniciam sempre com uma linha chamada de shebang identificada pelos simbolos <code>#!</code> seguindo do caminho absoluto para um tipo de uma shell.</p>
+<p>Essa “linha mágica” que chama o interpretado bash deve ser escrita assim:
+<code>#!/bin/sh</code></p>
+<p>Para inserir coméntarios para explicar partes dos teus scripts que sao dificeis de entender escreve o caractere <code>#</code> no início de uma linha. a shell ignorar qualquer texto a seguir a linha após esse simbolo.</p>
+<h2 id="permissoes-de-execucao-no-script">Permissoes de execucao no script</h2>
+<p>Para executar o script. o nome do ficheiro deve terminar em .sh e definir permissoes de execução e de leitura. </p>
+<pre><code class="bash">chmod +rx script # permissao 700
+</code></pre>
+
+<p>Para executar o script na pasta actual usa o <code>./</code>:</p>
+<pre><code class="bash">./script.sh
+</code></pre>
+
+<p>O comando bash permite não ser necessário existir a “linha mágica” no início do script. Também não é preciso dar permissão de execução ao ficheiro.</p>
+<pre><code class="bash">bash +x script.sh
+sh script.sh
+</code></pre>
+
+<h2 id="codigo-de-status-exit">Código de status exit</h2>
+<p>Qualquer programa retorna um estado de saída. Conhecido tambem como "codigo do exit code" é fornecido como um argumento inteiro. Um valor de qualquer coisa diferente de 0 indica algum tipo de erro na execução do script.</p>
+<p>O exit code é armazenado no parâmetro especial <code>$?</code>.</p>
+<p>mostrar o codigo do status exit do ultimo comando digitado:</p>
+<pre><code>echo $?
+</code></pre>
+
+<h3 id="quebrar-linha-a-leitura-humana">Quebrar linha - a leitura humana</h3>
+<p>Se uma linha no script ficar demasiado extensa no editor de texto, pode dividir com o caracter da barra invertida (). Permite uma melhor leitura.</p>
+<pre><code>echo ola \
+mundo \
+vertical
+</code></pre>
+
+<h2 id="quoting">Quoting</h2>
+<p>aspas duplas <code>"</code> funcionam exatamente como aspas simples <code>'</code>, exceto que o shell expande as variáveis que aparecem dentro aspas duplas. neste exemplo a shell substitui o $PATH mas nao substitui o metacaracter <code>*</code>.</p>
+<p>basta colocar uma barra invertida '\' antes do $, assim, ela nega o caractere seguinte e normalmente é utilizada para caracteres de scape (ou seja, caracteres que já tem uma função específica, mas que você deseja somente utilizar em um nome ou valor, sem executá-los).</p>
+<p>objectivos do quotting
+<em> controlar/limitar substituicoes
+</em> agrupar palavras</p>
+<p>exemplo simples de quotting:</p>
+<p><code>var="this is some text"</code>
+<br>
+<code>var='this is some text'</code></p>
+<p>echo "There is no * in my path: $PATH"</p>
+<p>echo I don\'t like contractions inside shell scripts.
+echo "I don't like contractions inside shell scripts."
+echo 'this isn'\''t a forward slash: \'</p>
+<p>diferenças entre " e '</p>
+<pre><code>echo &quot;O nome da minha máquina é: $HOSTNAME.&quot;
+My host name is linuxbox.
+
+echo 'O nome da minha máquina é: $HOSTNAME.'
+My host name is $HOSTNAME.
+</code></pre>
+
+<p>exemplo dos $100 dolares</p>
+<pre><code>echo $100
+00 # a shell pensa que $1 é uma variavel
+</code></pre>
+
+<pre><code class="bash">echo &quot;$100&quot;
+echo 00 # aspas duplas expandem a variavel, $1 continua uma variavel
+
+echo '$100'
+$100
+
+echo &quot;\$100&quot;
+$100
+</code></pre>
+
+<p>o shell script combina os comandos do linux de forma a executar uma tarefa especifica. os diferentes tipos de shell fornecem muitas ferramentas de programacao para usar na criacao de programas shell. é possivel definir variaveis e atribuir valores interativamente. nesse sentido um programa shell e um novo e complexo comando de linux</p>
+<p>fornece estruturas de controle loop e condição que repetem os comandos do linux ou tomar decisoes sobre quais comandos deseja executar. existe operacoes aritmeticas ou de comparacao. as ferramentas de programacao operam de maneiras semlhantes as encontradas em outras linguagens de programacao. caso esteja familiraziado com a programacao, pode achar o shell script simples de aprender.</p>
+<p>podendo ter muitos ambientes shell executados ao mesmo tempo, dos tipos iguais ou diferentes. o comum é ter varios shells executados ao mesmo tempo que são do tipo BASH shell.</p>
+<h2 id="definir-variavel-shell">Definir variavel shell</h2>
+<p>Dentro de cada shell, pode inserir e executar comandos. Mas para extender as capacidades de uma shell devemos aprender a definir variaveis. O Bash, assim como muitas outras linguagens, possui o conceito de variável. Uma variável shell, pode armazenar os dados que bem entender.</p>
+<p>estas variaveis manuais da shell só existem desde na sessao atual da shell. Isto é caso execute um exit ou logout. tem de voltar a definir essas mesmas variaveis.</p>
+<p>Algumas regras para o nome de uma variavel:</p>
+<ul>
+<li>
+<p>O nome para variável é um conjunto de caracteres alfabéticos, incluindo o underscore(_).</p>
+</li>
+<li>
+<p>Pode incluir números, mas o número não pode ser o primeiro caractere no nome da variavel. </p>
+</li>
+<li>
+<p>variaveis de ambiente são escritas com letras MAISCULAS: $PATH, $HOME, $PWD, $HISTORY</p>
+</li>
+</ul>
+<p>Um nome para variavel não pode conter os seguintes caracteres:</p>
+<ul>
+<li>iniciar o nome com numeros</li>
+<li>ponto de exclamação (!)</li>
+<li>(&amp;)</li>
+<li>espaços em branco</li>
+</ul>
+<p>Atênção! um nome de variável não pode incluir mais do que uma palavra.</p>
+<p>O shell usa espaços na linha de comando para distinguir diferentes componentes
+De um comando, como opções, argumentos e o nome do comando. para definir uma variavel usamos o operador <code>=</code>. nao pode existir espaços em branco a volta do operador <code>=</code> deve ser escrito tudo junto.</p>
+<p>sintaxe: variavel=valor</p>
+<pre><code>sistema=linuxzone
+meu_numero=13
+_cidade=”Lisboa”
+
+</code></pre>
+
+<p>uma vez definido uma valor para a variavel. para mostar os valores guardados na respectiva variavel. iniciamos sempre o nome da variavel com o caracter <code>$</code>, para ver o resultado.</p>
+<p>comando echo usa a variavel como argurmento e mostra o resultado</p>
+<pre><code>echo $sistema
+</code></pre>
+
+<p>O conteúdo de uma variável é usado como argumentos de comandos.</p>
+<pre><code class="bash">LFS='/mnt/LFS/
+cp /tmp/source $LFS
+</code></pre>
+
+<p>pode obter uma lista de todas as variáveis definidas escreva <code>set</code> ou <code>env</code>.</p>
+<p>para limpar determinada variavel, que não quer mais, pode removê-la com o <code>unset</code>.</p>
+<h2 id="atribuir-saidas-de-comandos-a-variaveis">atribuir saidas de comandos a variaveis</h2>
+<p>É possivel guardar o resultado de um comando em uma variavel.</p>
+<p>existem duas sintaxes para realizar:
+variavel=$(comando)
+variavel=<code>comando</code></p>
+<h2 id="capturar-a-entrada-de-dados">capturar a entrada de dados</h2>
+<p>para interagir com o utilizador, e necessario que leia o que ele digitou isso e feito atravez do read.</p>
+<p>read variavel_a_ser_lido</p>
+<pre><code>echo “Qual o nome de uma de suas músicas favoritas?”
+read nome_musica;
+echo “Você gosta de ouvir $nome_musica!”
+</code></pre>
+
+<h2 id="variaveis-de-ambiente-env">Variaveis de ambiente ENV</h2>
+<p>Para definir uma variavel de ambiente. A variavel deve ser exportada. com o comando <code>export</code>.</p>
+<p>sintaxe: export VARIAVEL=valor</p>
+<p>exportar e atribuir valores a uma variavel numa unica linha de comando:
+export <variavel>=<valor></p>
+<p>Para verificar quais sao as variaveis de ambiente definidas e seus respectivos valores indicamos a opção <code>-p</code> no comando export:</p>
+<p><code>export -p</code></p>
+<p>Para mostrar todas as variaveis basta usar set ou env. Existem varias variaveis de ambiente</p>
+<h2 id="argumentos-em-script">argumentos em script</h2>
+<table>
+<thead>
+<tr>
+<th>Variáveis especiais</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>Nome do script que está sendo executado</td>
+</tr>
+<tr>
+<td>$1</td>
+<td>parâmetros passados à linha de comando</td>
+</tr>
+<tr>
+<td>$#</td>
+<td>Número de parâmetros passados</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>Número do PID (Proccess ID)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operacoes-de-teste">Operações de teste</h2>
+<p>Com o comando test, pode comparar números inteiros, comparar strings e até mesmo executar Operações lógicas. o comando consiste em comparar dois valores e imitir uma resposta exit status de 0 ou 1. a variavel shell $? armazena o ultimo exit status</p>
+<p>sintaxe do comando</p>
+<p>test [valor1] [operador] [valor2]</p>
+<pre><code class="bash">maneiras de escrever expressoes sem o test
+* deve existir espaços em branco
+* normalmente se utiliza os colchetes por ser mais compacto e para ficar mais semelhante ao formato em outras linguagens.
+
+test $file == &quot;test&quot;
+[ $file == &quot;test&quot; ]
+[[ $file == &quot;test&quot; ]]
+
+ficheiros | descricao
+-- | --
+-a | verifica se existe
+-d | verifica se existe e é pasta
+-f | verifica se existe e é ficheiro
+-r | verifica se o ficheiro tem permisao de escrita
+-w | verifica o ficheiro permisao de escrita
+-x | verifica o ficheiro permisao de execucao
+
+
+
+
+## if 
+
+Quando se quer testar determinado fluxo de execução duma série de condições, pode-se usar &quot;if&quot;, &quot;elif&quot; e &quot;else&quot;
+
+onde a condicao: testa se for verdadeiro passa o controle para o bloco then
+onde comandos sao executados caso a condicao for verdadeira.
+
+Em outras linguagens de programação o if testa uma condição, mas em shell script o if testa a saída de um comando.
+
+por cada &quot;if&quot; nao esquecer de fechar com &quot;fi&quot;.
+para escrever expressoes de maneira a ficar compacto deixar espaços em branco ao redor dos parêntese reto, []. Pois sao um atalho para o comando test.
+
+```bash
+if &lt;condition list&gt;
+then
+    &lt;list&gt;
+fi
+
+# else - se o primeiro teste falhar entao executar o segundo
+if condicao
+then
+    comando
+else
+    comando2
+fi
+
+# Ao invés de fechar o if para criar outro, usamos o elif para testar uma expressão no mesmo comando if.
+if condicao1
+then
+    comandos
+elif condicao2
+    comandos 
+else condicaoN
+    comandosN
+fi
+</code></pre>
+
+<p>O if, ao contrário do que ocorre em muitas outras linguagens, testa o retorno de um comando, não uma expressão.</p>
+<p>if test 5 -lt 7
+then
+    echo '5 é menor que 7'
+fi</p>
+<p>As estruturas condicionais deslocam o fluxo de execução, conforme determinadas condições.</p>
+<p>if [ 5 -lt 7 ]
+then
+    echo '5 é menor que 7'
+fi</p>
+<p>if com operadores
+criar uma pasta e entrar dentro dela
+if [ -d "$dir" ] &amp;&amp; cd "$dir"
+then
+    echo "$PWD"
+fi</p>
+<h2 id="case">case</h2>
+<p>Normalmente, os scripts de inicialização do sistema init.d necessitam de um parâmetro para seleção, um "start", "stop", "status", "restart" ou "reload". Mas enquanto if testa expressões não exatas, o case vai agir de acordo com resultados exatos. </p>
+<p>Cada ciclo case é uma expressao que corresponde a uma seleção padrão. o caracter ) é o terminador de identificação no padrão de procura e de corresponder. cada clause é terminada com ;;</p>
+<p>Sintaxe da estrutura case:</p>
+<pre><code>case  in
+    opcao1)
+        comandosX 
+        ;;
+    opcaoN)
+        comandosN 
+        ;;
+    *)
+        operação padrão
+esac
+</code></pre>
+
+<p>Exemplo de um case onde a prompt pergunta por um numero. ler a variavel $x e executar um ciclo case para ver onde clause correcto.</p>
+<pre><code>echo &quot;Digite um número&quot;
+read x
+
+case &quot;$x&quot; in 
+    1)
+        echo &quot;Você digitou o número 1&quot;
+        ;;
+    2)
+        echo &quot;Você digitou o número 2&quot;
+        ;;
+    *)
+        echo &quot;Você digitou outro número&quot;
+esac
+</code></pre>
+
+<h2 id="select">select</h2>
+<p>O ciclo case cria menus, mas para montar um menu é melhor o select. Mostra um menu com opcoes selecionadas por numeros.</p>
+<p>select i in lista_arquivos lista_arquivos_tree sair
+do
+    case "$i" in 
+        lista_arquivos)
+            ls
+            ;;
+        lista_arquivos_tree)
+            ls -R
+            ;;
+    esac
+done</p>
+<h1 id="loops-ciclos-de-repeticao">Loops - ciclos de repeticao</h1>
+<p>for, while e until</p>
+<h2 id="for">for</h2>
+<p>vai substituindo uma variável por um valor, e vai executando os comandos pedidos.</p>
+<p>sintaxe da estrutura do for</p>
+<pre><code>for variavel in lista
+do
+comandos
+done
+</code></pre>
+
+<p>mostrar sequencia de numeros, pessoas dentro de um cafe</p>
+<pre><code class="bash">for i in 1 2 3 4 5
+do
+    echo $i
+done
+
+
+for cafe in joao maria marta
+do
+    echo $cafe
+done
+</code></pre>
+
+<p>for file in *
+do
+ls -l $file
+done</p>
+<h2 id="while">while</h2>
+<p>o ciclo while é executado enquanto a condicao for TRUE. testa continuamente até que ela se torne falsa para terminar.</p>
+<p>sintaxe da estrutura do while</p>
+<pre><code>while [expressao] do
+[comandos]
+done
+
+
+while true
+do
+    echo 'bash'
+done
+
+MAX=100
+((cur=1 ))
+while (( cur &lt; MAX))
+do
+echo -n &quot;$cur &quot;
+((cur+=1))
+done
+</code></pre>
+
+<h2 id="until">until</h2>
+<p>until faz o contrario de while. Pára a repeticao quando a condicao é TRUE</p>
+<pre><code>until [expressao]
+do
+[comandos]
+done
+
+
+gameover=&quot;s&quot;
+until [[ $cmd == $gameover ]]
+do
+echo -n &quot;Qual e o comando ($gameover para Sair)? &quot;
+read cmd
+if [[ $cmd != $gameover ]]; then $cmd; fi
+done
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../file-system/fhs/" class="btn btn-neutral float-right" title="File System">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../bash/" class="btn btn-neutral" title="Linha de Comando"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../bash/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../file-system/fhs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

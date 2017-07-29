@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Software de Código Aberto - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Software de C\u00f3digo Aberto";
+    var mkdocs_page_input_path = "licensas/index.md";
+    var mkdocs_page_url = "/licensas/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Software de Código Aberto</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#analisar-modelo-de-negocios">Analisar modelo de negocios</a></li>
+    
+
+    <li class="toctree-l3"><a href="#software-livre-vs-codigo-aberto">Software Livre vs Codigo Aberto</a></li>
+    
+
+    <li class="toctree-l3"><a href="#modelos-de-negocio">Modelos de Negocio</a></li>
+    
+
+    <li class="toctree-l3"><a href="#licencas-gnu">Licenças GNU</a></li>
+    
+
+    <li class="toctree-l3"><a href="#free-software-foundation">Free Software Foundation</a></li>
+    
+
+    <li class="toctree-l3"><a href="#open-source-initiative">Open Source Initiative</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#outras-licencas-aprovadas">Outras licencas aprovadas</a></li>
+        
+            <li><a class="toctree-l4" href="#creative-commons">Creative commons</a></li>
+        
+            <li><a class="toctree-l4" href="#exemplos-de-licencas-de-codigo-aberta-aplicadas-numa-situacao-real">Exemplos de licenças de codigo aberta aplicadas numa situação real</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Software de Código Aberto</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="analisar-modelo-de-negocios">Analisar modelo de negocios</h2>
+<p>O modelo de negocios com programas de codigo aberto desperta duvidas por ser diferente do modelo de vendas convencional. Muitos consumidores de software de PC estao habituados com a ideia de comprar uma copia fisica ou chave para usar um programa na sua totalidade e com direitos legais sobre a cópia. Comprar uma licenca de uso de programas em codigo fechado (conhecido como codigo proprietario), o utilizador tem permissao de instalar uma copia do programa mas nao tem acesso ao seu codigo fonte. O fabricante toma a seguinte atitude para inserir mecanismos de proteção contra copias ilegais e esconder até o funcionamento interno do programa. Este procedimento pode nao fazer grande diferenca para o comum dos mortais. Mas para empresas de tecnologia, profissionais da computacao ou estudantes, pode trazer grandes prejuızos. Defensores do codigo aberto acreditam ser fundamental o acesso ao codigo fonte do programa que usa. Tal como no conhecimento cientıfico, acreditam que o avanco tecnologico é maior quando especialistas analisam e confrontam diferentes metodos e abordagens sobre um problema. Alem da disponibilidade do codigo fonte, tambem são criadas normas abertas com padroes para garantir que qualquer interessado com capacidade possa acompanhar, interferir e ate criar suas proprias solucoes.</p>
+<h2 id="software-livre-vs-codigo-aberto">Software Livre vs Codigo Aberto</h2>
+<p>Atenção que o codigo aberto é gratuito mas nem todo programa gratuito (FREEWARE) é de codigo aberto.</p>
+<p>Software Livre e Codigo Aberto sao termos para descrever programas onde o codigo fonte pode ser estudado, alterado e partilhado sem restricoes. Em ingles, a ambiguidade da palavra "Free" pode levar a intrepretar tanto como livre quanto gratuito – criando a ilusao de que trata-se simplesmente de programas que podem ser obtidos sem custo. Apesar de muitas vezes ser aplicavel, essa realidade esconde os aspectos principais do codigo aberto.  A expressao codigo aberto transmite a ideia do acesso ao funcionamento interno, mas nao muito sobre sua modifica accao e compartilhamento.</p>
+<p>Existem outros termos que se pretendem mais tecnicos. Da uniao do termo software livre &amp; codigo aberto surge:</p>
+<ul>
+<li>FOSS: Free Open Source Software (Programa Livre de Codigo Aberto). </li>
+</ul>
+<p>Para reduzir ainda mais a ambiguidade da palavra "free":</p>
+<ul>
+<li>FLOSS: Free/Libre Open Source Software.</li>
+</ul>
+<p>Este ultimo é mais utilizado quando se quer ressaltar a gratuidade e a liberdade de estudar, modificar e compartilhar. Ao longo de todo esse texto é utilizado o termo codigo aberto para designar FOSS e FLOSS.</p>
+<h2 id="modelos-de-negocio">Modelos de Negocio</h2>
+<p>No codigo aberto nao existe necessidade da venda de copias dos programas binários, a empresa ou o profissional sao remunerados de outras maneiras:</p>
+<ul>
+<li>
+<p>Financiamento externo: Grandes empresas financiam fundacoes destinadas a desenvolver e produzir projetos de codigo aberto empresas como Google e IBM dependem de programas de codigo aberto e por isso os patrocinam.</p>
+</li>
+<li>
+<p>Serviços: Profissionais e empresas costumam vender serviços associados ao codigo aberto, suporte tecnico, formação até consultorias. Pequenas empresas podem oferecer os mesmos servicos de grandes multinacionais, pois os programas são os mesmo.</p>
+</li>
+<li>
+<p>Assinaturas: Enquanto que o software é oferecido sem custo, é possıvel cobrar pela hospedagem e manutencao no servidor. Por vezes é mais conveniente do que contratar um servidor fisico formatado e instalar o programa por conta propria.</p>
+</li>
+</ul>
+<h2 id="licencas-gnu">Licenças GNU</h2>
+<p>GNU GPL(GNU General Public License): Esta licenca esta diretamente relacionada ao projeto GNU, mas pode ser aplicada por qualquer projeto de codigo aberto. </p>
+<p>A licença GPL foi criada a partir de quatro liberdades base:</p>
+<ul>
+<li>A liberdade de usar o programa para qualquer finalidade.</li>
+<li>A liberdade de modificar o programa para atender suas necessidades.</li>
+<li>A liberdade de compartilhar o programa com outros.</li>
+<li>A liberdade de compartilhar as modificacoes realizadas.</li>
+</ul>
+<p>A ultima liberdade esta mais proxima de um dever, o chamado copyleft(possui copyright inverso). No lugar de limitar o uso do codigo fonte, o programador esta obrigado a manter o codigo aberto. Um programador nao pode copiar um codigo fonte na licenca GPL, a menos que esse codigo modificado tambem seja licenciado sob a GPL.</p>
+<p>Para a Free Software Foundation, essa caracterıstica define se um programa de codigo aberto pode ser chamado de software livre.</p>
+<h2 id="free-software-foundation">Free Software Foundation</h2>
+<p><img alt="Screenshot" src="../licensas/fsf.png" /></p>
+<p>O projeto GNU e seus subprojetos são mantidos pela Free Software Foundation, ou simplesmente FSF. É uma entidade sem fins lucrativos que promove a liberdade dos utilizadores de computador e a defesa dos direitos no software livre.</p>
+<p>outros tipos de licencas livres:</p>
+<ul>
+<li>
+<p>GNU Lesser General Public License (LGPL): Uma versao menos rigorosa que a GPL no que diz respeito ao copyleft. E indicada para bibliotecas – componentes de programas – abertas que  pretendem  substituir versoes  proprietarias equivalentes.   Um  programa  proprietario pode utilizar uma biblioteca LGPL sem necessidade de tornar-se codigo aberto ou livre</p>
+</li>
+<li>
+<p>GNU Affero General Public License (AGPL): Não importa se o utilizador executa o programa por conta própria ou se usa um serviço de hospedagem oferecido por outra pessoa, se puderem efetivamente usar um programa, são consideradas usuários e, como tal, devem ter acesso ao código-fonte.</p>
+</li>
+<li>
+<p>GNU Free Documentation License (FDL): Destinada para conteudos de manuais e livros. Assim como no caso dos programas, essa licenca garante a copia, redistribuicao com ou sem modificacoes, comercialmente ou nao.</p>
+</li>
+</ul>
+<p>Enquanto a FSF é menos flexıvel quanto ao conceito de codigo livre e publica sua propria licenca, a Open Source Initiative procura difundir todas as modalidades de programas nao proprietarios.</p>
+<p><a href="https://www.gnu.org/licenses/licenses.pt-br.html">saber mais sobre os varios tipos de Licenças GNU</a></p>
+<h1 id="open-source-initiative">Open Source Initiative</h1>
+<p><img alt="Screenshot" src="../licensas/osi.png" /></p>
+<p>Open Source Initiative(OSI) têm a principal finalidade de publicar a definicao formal do que e codigo aberto. Resumidamente, codigo aberto é o codigo fonte que pode ser utilizado, modificado e partilhado sem restriçoes. </p>
+<p>A OSI nao publica licencas, mas avalia licencas disponıveis e as aprova ou desaprova como licencas de codigo aberto. Segundo a OSI, a propria GPL é uma licenca genuinamente de codigo aberto.</p>
+<p>Para uma licenca ser aprovada pela OSI, ela deve atender aos criterios especıficos da definicao de codigo aberto mantida pela OSI:</p>
+<ul>
+<li>
+<p>Distribuição Livre: A licenca nao podera restringir nenhuma das partes de vender ou dar o programa como um componente de uma seleçao de programas de diferentes fontes. A licenca nao pode exigir pagamento de royalty ou outra taxa pela venda.</p>
+</li>
+<li>
+<p>Codigo Fonte: O programa precisa incluir o codigo fonte e permitir a distribuiçao tanto em codigo fonte quanto em formato compilado. Quando o codigo fonte nao acompanhar o produto, sera necessario existirem meios suficientemente divulgados para obter o codigo fonte, preferivelmente a cobrar nao mais que seu custo de reproducao ou copiando via Internet sem custo adicional.</p>
+</li>
+<li>
+<p>trabalhos Derivados</p>
+</li>
+</ul>
+<p>A licenca deve permitir modificacoes e trabalhos derivados, e precisa permitir que estes sejam distribuıdos sob os mesmos termos da licenca original</p>
+<ul>
+<li>Integridade do Codigo Fonte do Autor</li>
+</ul>
+<p>A licenca pode impedir a distribuiçao do codigo fonte modificado apenas se permitir a distribuicao de emendas (patch files) com a finalidade de modificar o programa durante a compilacao. A licenca deve permitir explicitamente a distribuicao de programas compilados a partir do codigo fonte modificado. A licenca pode exigir que trabalhos derivados tenham um nome ou versao diferentes do original.</p>
+<ul>
+<li>Nenhuma Discriminaçao Contra Pessoas ou Grupos</li>
+</ul>
+<p>A licenca nao pode discriminar nenhuma pessoa ou grupo de pessoas</p>
+<ul>
+<li>Nenhuma  Discriminaçao Contra Campos de Atuaçao</li>
+</ul>
+<p>A licença nao pode impedir o uso do programa em determinados campos de atuaçao. Por exemplo, ela nao pode impedir que o programa seja utilizado em um negocio ou em pesquisas geneticas</p>
+<ul>
+<li>Distribuiçao da Licença</li>
+</ul>
+<p>As regras anexadas ao programa se aplicam a quem o programa for redistribuido, sem necessidade de utilizar uma licença adicional para essas partes.</p>
+<ul>
+<li>
+<p>Licença nao Pode Ser Especıfica a um Produto: As regras atribuıdas ao programa nao podem depender de seu vınculo a uma distribuiçao em particular. Se o programa ́e extraıdo da distribuiçao e utilizado ou distribuıdo dentro dos termos de sua licenca, todas as partes a quem o programa e redistribuıdo possuirao os mesmo direitos da licenca original do programa.</p>
+</li>
+<li>
+<p>A Licenca Nao Pode Restringir Outro Programa: A licenca nao pode impor restricoes a outros programas distribuídos com o programa licenciado. Por exemplo, a licenca nao pode exigir que todos os programas distribuıdos na mesma mıdia sejam de codigo aberto</p>
+</li>
+<li>
+<p>A Licenca Precisa Ser Tecnologicamente Neutra: Nenhuma disposicao da licenca pode estar associado a uma tecnologia em particular ou modalidade de interface</p>
+</li>
+</ul>
+<p><a href="https://opensource.org/osd-annotated">saber mais sobre o OSI</a></p>
+<h2 id="outras-licencas-aprovadas">Outras licencas aprovadas</h2>
+<ul>
+<li>Apache License 2.0</li>
+<li>BSD 3-Clause New ou Revised license</li>
+<li>BSD 2-Clause Simplified ou FreeBSD license</li>
+<li>MIT license</li>
+<li>Mozilla Public License 2.0</li>
+<li>Common Development and Distribution License</li>
+<li>Eclipse Public License</li>
+</ul>
+<p><a href="https://opensource.org/licenses">conhecer outras licenças</a></p>
+<h2 id="creative-commons">Creative commons</h2>
+<p>São várias licenças tipo copyright que garantem certos "direitos básicos", como o direito de distribuir obras com direitos autorais sem modificações, a custo zero.</p>
+<p>sites relacionados com CC:</p>
+<ul>
+<li><a href="https://creativecommons.org/choose/?lang=pt">creative commons em portugues</a></li>
+<li><a href="http://creativecommons.pt/">site creative commons portugal</a></li>
+</ul>
+<h2 id="exemplos-de-licencas-de-codigo-aberta-aplicadas-numa-situacao-real">Exemplos de licenças de codigo aberta aplicadas numa situação real</h2>
+<p>Sun Microsystems foi adquirida por outra empresa chamada ORACLE, todos os produtos da Sun passaram para a ORACLE. A Sun desenvolvia diversos projetos: linguagem Java, S.O. Solaris, S.O. OpenSolaris, OpenOffice.org, NetBeans, entre outras coisas. Infelizmente a ORACLE mostrou que não era muito amiga do software livre e aconteceu o seguinte depois da compra:</p>
+<ul>
+<li>
+<p>Queria descontinuar o projecto OpenSolaris. A comunidade criou como resposta o OpenIndiana, com a base já feita do OpenSolaris.</p>
+</li>
+<li>
+<p>Continuar com software de escritorio mas manter apenas uma versão actualizada a pagar o StarOffice. E que actualizacoes de codigo seriam muito poucas para com a versao open-source chamada de OpenOffice. Entao ex-funcionarios da sun microsystems com o código fonte do OpenOffice modificam e criam uma versao melhorada chamda LibreOffice  não querem que o OpenOffice.org tenha um fim. É uma garantia de que o projeto não morre e continua com licensa de codigo aberto.</p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TIC/" class="btn btn-neutral float-right" title="Tecnologias da Informação e Comunicação">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../gestor-pacotes/" class="btn btn-neutral" title="Gestor de Pacotes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../gestor-pacotes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../TIC/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Redes - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Redes";
+    var mkdocs_page_input_path = "rede/index.md";
+    var mkdocs_page_url = "/rede/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Redes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#tcpip">TCP/IP</a></li>
+    
+
+    <li class="toctree-l3"><a href="#endereco-ip">Endereço IP</a></li>
+    
+
+    <li class="toctree-l3"><a href="#mascara-de-rede-endereco-broadcast">mascara de rede, endereço broadcast</a></li>
+    
+
+    <li class="toctree-l3"><a href="#rota-padrao">Rota padrão</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ipv4-e-ipv6">IPv4 e IPv6</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ficheiros-de-configuracao">ficheiros de configuração</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#configurar-manualmente-interfaces-de-rede">Configurar manualmente interfaces de rede</a></li>
+        
+            <li><a class="toctree-l4" href="#definir-rotas">Definir rotas</a></li>
+        
+            <li><a class="toctree-l4" href="#testar-e-diagnostico-de-rede">testar e diagnostico de rede</a></li>
+        
+            <li><a class="toctree-l4" href="#traceroute">traceroute</a></li>
+        
+            <li><a class="toctree-l4" href="#dns">DNS</a></li>
+        
+            <li><a class="toctree-l4" href="#netstat">netstat</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Redes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="tcpip">TCP/IP</h2>
+<p>Desenvolvido na decada 60 pelo departamento de defesa dos EUA. para ser usado na arpanet, rede militar que foi o embriao da internet atual. a principal virtude deste protocolo é ser open-source e que outros PCs em rede continuem ligados caso um ou varios PCs caiam.</p>
+<p>pode ser modificiado e incorporado por qualquer SO. Situação diferente como que acontecia nos antigos protocolos de rede, IPX/SPX(novel) e NetBEUI(microsoft).</p>
+<h2 id="endereco-ip">Endereço IP</h2>
+<p>Endereços Internet Protocol sao escritos no seguinte formato a.b.c.d - conhecidos pelo termo ingles dotted-quad sao a expressao, em numeros decimais, de um endereco de rede binario. Cada um dos quatro campos separados por pontos corresponde a um byte, algumas vezes chamado octeto.</p>
+<p>Por exemplo, o numero IP <code>192.168.1.1</code> corresponde a forma binaria <code>11000000.10101000.00000001.00000001</code></p>
+<p>Cada interface de rede numa mesma rede devera ter um endereco IP unico, mas cada computador pode possuir mais de uma interface de rede. Nesse caso, o computador  pode estar conectado a diversas redes diferentes.</p>
+<p>o endereço de ip e composto por quatro octetos de 8bits cada. cada um tem a sua funcao dependendo da classe de rede.</p>
+<p>endereço de 32bits 4 * 8
+dividido em 4 octetos
+escrito em decimal</p>
+<p>os numeros octetos so pode ir somente a 0-255</p>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Mascara sub-rede</th>
+<th>Gama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Rede.0.0.0</td>
+<td>1-126</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Rede.Rede.0.0</td>
+<td>128-191</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Rede.Rede.Rede.0</td>
+<td>192-223</td>
+</tr>
+<tr>
+<td>D</td>
+<td>multicast</td>
+<td>224-239</td>
+</tr>
+<tr>
+<td>E</td>
+<td>testes</td>
+<td>240-255</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Numero de rede</th>
+<th>Numero de hosts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>126</td>
+<td>16.777.214</td>
+</tr>
+<tr>
+<td>B</td>
+<td>16.382</td>
+<td>65.534</td>
+</tr>
+<tr>
+<td>C</td>
+<td>2.097.150</td>
+<td>254</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mascara-de-rede-endereco-broadcast">mascara de rede, endereço broadcast</h2>
+<ul>
+<li>mascara de rede
+Uma máscara sub-rede é uma divisão de uma rede de computadores. A divisão de uma rede grande em menores resulta num tráfego de rede reduzido, administração simplificada e melhor performance de rede. É uma bitmask de 32 bits.</li>
+</ul>
+<p>Normalmente, as máscaras de sub-rede são representadas com quatro números entre 0 e 255, separados por pontos, ou, menos comum, como oito dígitos na representação hexadecimal.</p>
+<ul>
+<li>endereço broadcast
+O endereço broadcast de uma rede/sub-rede é definido como um endereço especial uma vez que permite que uma determinada informação seja enviada para todas as máquinas de uma rede/subrede. Este é sempre o último endereço possível de uma rede/sub-rede.</li>
+</ul>
+<h1 id="rota-padrao">Rota padrão</h1>
+<p>Conhecer o IP de destino e a qual rede ele pertence, o sistema ira encaminhar dados pela interface de rede correctamente.</p>
+<p>Contudo, principalmente em comunicaçao na Internet, dificilmente a Interface local estara diretamente conectada a rede do IP de destino. Nestes casos, e necessario estabelecer uma rota padrao, ou seja, um endereco IP dentro de uma rede conhecida para onde dados desse tipo serao encaminhados. </p>
+<p>Este processo ocorre sucessivamente, ate que encontre a rede a qual onde o IP de destino e conhecido.</p>
+<p><a href="#definir-rotas">como definir uma routa</a></p>
+<h1 id="ipv4-e-ipv6">IPv4 e IPv6</h1>
+<p>O IPv4 padrão tradicional de 32 bits (quatro octetos de bits) dos numeros IP. Normalmente é escrito na seguinte forma 192.168.1.1</p>
+<p>Existe outro padrao mais recente, conhecido como a versão 6. IPv6, que consiste de uma sequencia de 128 bits.</p>
+<p>A vantagem do IPv6 para o IPv4 é quantidade superior do numeros IP. Enquanto o IPv4 é capaz de gerar 4.94.967.296 enderecos, o IPv6 disponibiliza 2128 enderecos. </p>
+<p>Um endereço IPv6 normalmente é escrito na forma de oito grupos de quatro numeros hexa-decimais:</p>
+<p><code>2001:0db8:85a3:08d3:1319:8a2e:0370:7334</code></p>
+<p>O IPv4 é o mais difundido e permite uma intercomunicacao entre os dois padroes. Porem, a medida prevista é que cada vez mais dispositivos alterem para a nova versão do endereço IP, versão IPv6.</p>
+<h1 id="ficheiros-de-configuracao">ficheiros de configuração</h1>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/hostname</code></td>
+<td>Ficheiro com nome selecionado para máquina local</td>
+</tr>
+<tr>
+<td><code>/etc/hosts</code></td>
+<td>Ficheiro com numeros IP e nomes de maquinas. Possibilita indicar um nome mais simples para maquinas utilizadas frequentemente ou em pequenas redes, onde um serviço de resolucao de nomes nao é necessario.</td>
+</tr>
+<tr>
+<td><code>/etc/resolv.conf</code></td>
+<td>Indicar os endereços IP dos servidores de resolucao de nomes DNS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configurar-manualmente-interfaces-de-rede">Configurar manualmente interfaces de rede</h2>
+<h3 id="utilizar-o-ifconfig">Utilizar o ifconfig</h3>
+<p>O ifconfig utilizado para inspecionar as configuracoes de uma interface de rede.
+Sem argumentos, ele mostra as configuracoes de todas as interfaces ativas do sistema.</p>
+<h3 id="dispositivo-lo">Dispositivo lo</h3>
+<p>No Linux, a unica interface de rede que se encontra sempre presente é o <code>lo</code>, que representa uma interface de comunicacao local, nao correspondente a nenhum dispositivo de hardware. </p>
+<pre><code class="bash">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1  (Local Loopback)
+        RX packets 120343  bytes 724593487 (691.0 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 120343  bytes 724593487 (691.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+
+<h3 id="vizualisar-as-configuracoes-de-uma-interface-especifica">vizualisar as configuracoes de uma interface especifica</h3>
+<pre><code class="bash">ifconfig eth0
+</code></pre>
+
+<p>ver configuracoes de todas as interface de rede ate mesmo as desactivadas opçao <code>-a</code></p>
+<pre><code class="bash">ifconfig -a
+</code></pre>
+
+<h3 id="atribuir-ip-estatico-a-uma-placa-de-rede">Atribuir IP estatico a uma placa de rede</h3>
+<p>para atribuir um ip 192.168.1.2 a placa ethernet 0</p>
+<pre><code class="bash">    ifconfig ethO 192.168.1.2 up
+</code></pre>
+
+<h3 id="desactivar-placa-de-rede">Desactivar placa de rede</h3>
+<p>para desactivar utilizamos o <code>down</code></p>
+<pre><code class="bash">    ifconfig ethO down
+</code></pre>
+
+<h3 id="definir-uma-mascara-de-rede">Definir uma mascara de rede</h3>
+<p>para definir utilizamos <code>netmask</code></p>
+<pre><code class="bash">ifconfig ethO 192.168.1.2 netmask 255.255.255.0 up
+</code></pre>
+
+<h2 id="definir-rotas">Definir rotas</h2>
+<p>O  comando <code>route</code> mostra e cria rotas de rede. Exemplo de tabela de rotas, exibida com o comando <code>route -n</code>.</p>
+<p>Na  maior  parte  dos  casos,  tanto  a  configuracao  da  interface  quanto  das  rotas  de  rede   é  realizada automaticamente com recurso chamado DHCP. </p>
+<p>O programa DHCP cliente envia um pedido para a rede por meio da interface especificada e o servidor responde com informacoes de endereço IP, mascara de rede, broadcast, que são usadas para configurar a interface local.</p>
+<p><b>E raro criar rotas manualmente em computadores domesticos, mas pode ser necessario.</b></p>
+<h3 id="criar-uma-rota-padrao">Criar uma rota padrao</h3>
+<pre><code class="bash">[user@host]$ route add default gw 200.228.60.1
+</code></pre>
+
+<p>criar a rota padrao e criar uma rota para a rede 0.0.0.0, qualquer rede que nao tenha uma rota definida:</p>
+<pre><code class="bash">[user@host]$ route add -net 0.0.0.0 dev ethO
+</code></pre>
+
+<h3 id="remover-rota-padrao-para-19216811">Remover rota padrão para 192.168.1.1</h3>
+<p>sintaxe
+<code>route del default gw [IP]</code> </p>
+<pre><code class="bash">$ route del default gw 192.168.1.1
+</code></pre>
+
+<h2 id="testar-e-diagnostico-de-rede">testar e diagnostico de rede</h2>
+<h3 id="ping">ping</h3>
+<p>O comando ping pode ser usado para verificar o funcionamento da rede.  utiliza o protocolo ICMP, ele simplesmente envia uma pequena quantidade de dados para uma maquina especificada e aguarda um resposta. Se a maquina remota responder, significa que a configuracao da rede esta a funcionar.</p>
+<p>Por  exemplo,  depois de identificar uma rota padrao (comanto route), enviamos 3 requisicoes de resposta com o comando ping</p>
+<pre><code class="bash">[user@host]$ ping -c2 sapo.pt
+
+PING sapo.pt (213.13.146.142) 56(84) bytes of data.
+64 bytes from sapo.pt (213.13.146.142): icmp_seq=1 ttl=247 time=16.4 ms
+64 bytes from sapo.pt (213.13.146.142): icmp_seq=2 ttl=247 time=11.2 ms
+
+--- sapo.pt ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 11.294/13.888/16.445/2.105 ms
+</code></pre>
+
+<h2 id="traceroute">traceroute</h2>
+<p>Caso o trafego de dados mostre que algumas ligacoes nao respondem, o problema pode ser um ponto remoto, ou seja, outro computador na rede. Para identificar o ponto em que ligacoes seguem adiante, existe o comando traceroute</p>
+<p>mostra as rotas percorridas por um pacote ate chegar ao destino 8.8.8.8</p>
+<pre><code class="bash">[user@host]$ traceroute 8.8.8.8
+traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+ 1  alguem.home (122.128.1.1)  1.571 ms  2.970 ms  2.946 ms
+ 2  * * *
+ 3  10.117.198.57 (10.127.198.57)  12.205 ms  13.400 ms  15.714 ms
+ 4  10.235.48.86 (12.255.48.86)  15.662 ms  15.653 ms 10.255.48.82 (10.255.48.82)  15.613 ms
+ 5  72.14.202.210 (72.14.202.210)  15.226 ms  15.522 ms 72.14.202.214 (72.14.202.214)  15.512 ms
+ 6  216.239.56.185 (216.222.56.185)  26.869 ms 216.239.49.242 (216.239.49.242)  18.346 ms 216.239.49.248 (216.239.49.248)  19.324 ms
+ 7  216.239.43.111 (216.239.43.111)  37.269 ms 216.239.41.237 (216.239.41.237)  34.422 ms 216.239.41.19 (216.239.41.19)  34.801 ms
+ 8  216.232.51.118 (216.239.51.118)  46.783 ms 216.239.48.37 (216.239.48.37)  46.477 ms 216.239.48.75 (216.239.48.75)  44.616 ms
+ 9  216.239.58.183 (216.239.58.183)  46.392 ms 108.170.234.147 (108.170.234.147)  43.354 ms 108.170.234.45 (108.170.234.45)  46.005 ms
+10  google-public-dns-a.google.com (8.8.8.8)  42.267 ms  39.806 ms  40.241 ms
+</code></pre>
+
+<h3 id="corrigir-rotas">Corrigir rotas</h3>
+<p>Se as configurações da interface estiverem corretas e ainda assim o comando ping não receber resposta da rede, é possivel que a tabela de rotas esteja incorreta. Para verificar a tabela de rotas, executamos o comando route</p>
+<pre><code class="bash">route del -net 0.0.0.0
+</code></pre>
+
+<h2 id="dns">DNS</h2>
+<p>DNS é o “coração” de uma rede. Em traços gerais, o serviço DNS é responsável por traduzir nomes em IP’s e vice-versa, isto é, quando escrevemos www.site.com, há uma consulta ao DNS para saber qual o IP correspondente.</p>
+<h3 id="resolver-nomes">Resolver nomes</h3>
+<p>Um dos principais problemas na conectividade de uma rede é a falha no servico de resolucao de nomes o DNS.</p>
+<p>O DNS traduz nomes de sites - como sapo.pt - para um endereço IP, tornando possıvel a comunicacao pela rede por nomes.</p>
+<p>Para testes simples de resolucao de nomes, o comando host pode ser utilizado.</p>
+<h3 id="consultar-endereco-ip-do-tugaflixcom-a-partir-do-etcresolvconf">consultar endereço IP do tugaflix.com a partir do <code>/etc/resolv.conf</code></h3>
+<p>o endereço IP do tugaflix.com esta "banido" na rede nacional portuguesa.</p>
+<pre><code class="bash">[user@host]$ host tugaflix.com
+
+#output do comando
+tugaflix.com has address 195.23.113.202
+</code></pre>
+
+<h3 id="indicar-outro-servidor-dns-para-realizar-consulta">Indicar outro servidor DNS para realizar consulta</h3>
+<p>quando alteramos o endereço IP do servidor de DNS neste caso para o da Google é possivel consultar o conteudo do site tugaflix.com</p>
+<pre><code class="bash">[user@host]$ host tugaflix 8.8.8.8
+</code></pre>
+
+<pre><code class="bash">#ouput do comando
+Using domain server:
+Name: 8.8.8.8
+Address: 8.8.8.8#53
+Aliases: 
+
+tugaflix.com has address 104.27.167.182
+tugaflix.com has address 104.27.166.182
+tugaflix.com has IPv6 address 2400:cb00:2048:1::681b:a7b6
+tugaflix.com has IPv6 address 2400:cb00:2048:1::681b:a6b6
+</code></pre>
+
+<p>É necessario indicar um servidor DNS no comando host para obter um endereço IP equivalente ao nome, boa prática é incluir servidores DNS no ficheiro <code>/etc/resolv.conf</code>.</p>
+<h3 id="exemplos-de-servidores-publicos-de-dns">Exemplos de Servidores Públicos de DNS</h3>
+<p>Alguns exemplos de servidores com o serviço DNS que podem ser incluidos no ficheiro <code>/etc/resolv.conf</code></p>
+<p>Opendns</p>
+<pre><code>#Opendns
+nameserver 208.67.222.222 
+nameserver 208.67.220.220
+</code></pre>
+<p>Google</p>
+<pre><code>#Google
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+</code></pre>
+<p>Sapo</p>
+<pre><code>nameserver 194.65.100.117
+nameserver 194.65.5.2
+</code></pre>
+<p>Cabovisão</p>
+<pre><code>nameserver 213.228.128.5
+nameserver 213.228.128.6
+</code></pre>
+<p>Meo</p>
+<pre><code>nameserver 194.65.3.21
+nameserver 194.65.14.27
+</code></pre>
+<h3 id="configurar-cliente-dns">configurar cliente dns</h3>
+<p>Uma configuracao incorreta do DNS resulta numa rede praticamente inoperante, pois a maioria dos destinos remotos sao utilizados por nome e nao numeradas pelo endereço IP. </p>
+<p>primeiro ficheiro a ser consultado é o <code>/etc/hosts</code></p>
+<p>Em seguida, caso o nome consultado nao seja encontrado no arquivo, sera consultado um servidor DNS especificado no arquivo <code>/etc/resolv.conf</code></p>
+<p>O ficheiro <code>/etc/hosts</code> é organizado da seguinte maneira, os numeros IP sao colocados ao lado dos respectivos nomes separados por espaço em branco.</p>
+<pre><code>cat /etc/hosts
+
+
+    127.0.0.1   localhost
+    127.0.0.1   teste.lan
+</code></pre>
+
+<p>é possivel atribuir mais nomes ao mesmo endereço IP</p>
+<pre><code>    127.0.0.1   localhost teste.lan
+</code></pre>
+
+<p>a entrada no ficheiro e o nameserver, que indica o servidor. é possivel indicar mais entradas caso o primeiro servidor DNS estar em baixo ou nao listar o caminho</p>
+<pre><code># cat /etc/resolv.conf
+domain rede.local
+nameserver 8.8.4.4
+nameserver 8.8.8.8
+nameserver 209.244.0.3
+</code></pre>
+
+<p>A linha domain indica um domınio padrao.</p>
+<p>Assim, quando for consultado um nome sem domınio, automaticamente sera incluıdo o domınio definido na entrada domain.</p>
+<p>Esse recurso é especialmente util para o domınio numa rede local, eliminando a necessidade de especificar o nome de domınio completo de uma maquina toda vez que seu nome for consultado manualmente</p>
+<h3 id="dig-domain-information-groper">dig (Domain  Information  Groper)</h3>
+<p>O comando dig retorna informacoes bastante técnincas para o diagnostico de problemas com servidores de DNS.</p>
+<p>Se nenhum argumento for adicionado ao comando, mais uma vez os endereços encontrados no ficheiro <code>/etc/resolv.conf</code> vão ser usados no teste.</p>
+<p>Para utilizar um servidor especifico de DNS, indicamos com o seguinte caracter <code>@</code> seguindo do endereço IP</p>
+<pre><code class="bash">$ dig sapo.pt @8.8.8.8
+
+; &lt;&lt;&gt;&gt; DiG 9.11.1 &lt;&lt;&gt;&gt; sapo.pt @8.8.8.8
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 47426
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;sapo.pt.           IN  A
+
+;; ANSWER SECTION:
+sapo.pt.        4   IN  A   213.13.146.142
+
+;; Query time: 38 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: qua jun 07 15:33:14 WEST 2017
+;; MSG SIZE  rcvd: 52
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUESTION</td>
+<td>mostra qual foi o nome pesquisado</td>
+</tr>
+<tr>
+<td>ANSWER</td>
+<td>mostra a resposta do servidor consultado</td>
+</tr>
+</tbody>
+</table>
+<h2 id="netstat">netstat</h2>
+<p>Um comando importante para analisar o trafego de rede e as portas das maquinas. </p>
+<p>Inspecionar todas as conexoes do protocolo TCP ativas indicamos as opcoes <code>-tn</code></p>
+<pre><code class="bash">netstat -tn
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>opcao</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-n</td>
+<td>Não resolver nomes, mostrar apenas endereços IPs</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>Apenas protocolo TCP.</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>Actualizar continuamente e listar novas ligações</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>ver todas as interfaces de rede ativas e estatısticas relacionadas</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>ver tabela de rotas do sistema:</td>
+</tr>
+</tbody>
+</table>
+<h5 id="netstat-i">netstat -i</h5>
+<p>exibe todas as interfaces de rede ativas e estatısticas relacionadas</p>
+<pre><code class="bash">netstat -i
+Kernel Interface table
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+docker0   1500        0      0      0 0             0      0      0      0 BMU
+enp2s0f2  1500  1143949      0      0 0       2859018      1      0      0 BMU
+lo       65536   130062      0      0 0        130062      0      0      0 LRU
+wlp3s0    1500 18123196      0      0 0       8712077      0      0      0 BMRU
+</code></pre>
+
+<h5 id="netstat-r">netstat -r</h5>
+<p>exibe a tabela de rotas do sistema:</p>
+<pre><code class="bash">Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+default         router.local     0.0.0.0         UG        0 0          0 wlp3s0
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
+192.168.1.0     0.0.0.0         255.255.255.0   U         0 0          0 wlp3s0
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../comandos/" class="btn btn-neutral float-right" title="Conceitos Basicos">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../programas-processos/entrada-saida/" class="btn btn-neutral" title="Programas e Processos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../programas-processos/entrada-saida/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../comandos/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

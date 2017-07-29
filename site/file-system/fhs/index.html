@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>File System - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "File System";
+    var mkdocs_page_input_path = "file-system/fhs.md";
+    var mkdocs_page_url = "/file-system/fhs/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">File System</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#definicao-de-ficheiro">Definição de ficheiro</a></li>
+    
+
+    <li class="toctree-l3"><a href="#extencao-no-ficheiro">Extenção no ficheiro</a></li>
+    
+
+    <li class="toctree-l3"><a href="#sistema-de-ficheirosfile-system">Sistema de ficheiros/File System</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#journaling">Journaling</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#diferentes-tipos-de-sistema-de-ficheiros">Diferentes tipos de sistema de ficheiros</a></li>
+    
+
+    <li class="toctree-l3"><a href="#tipos-de-ficheiro-no-linux">tipos de ficheiro no linux</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#filesystem-hierarchy-standard">Filesystem Hierarchy Standard</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#estrutura-de-pastas-do-fhs">Estrutura de pastas do FHS</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#pseudo-devices">pseudo-devices</a></li>
+        
+            <li><a class="toctree-l4" href="#ficheiros-de-configuracao-etc">ficheiros de configuração - /etc</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#caminho-absoluto-e-relativo">caminho absoluto e relativo</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ficheiro-etcfstab">ficheiro /etc/fstab</a></li>
+    
+
+    <li class="toctree-l3"><a href="#mountumount">mount/umount</a></li>
+    
+
+    <li class="toctree-l3"><a href="#listar-ficheiros">listar ficheiros</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>File System</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="definicao-de-ficheiro">Definição de ficheiro</h1>
+<p>De um modo geral, um ficheiro é uma coleção auto-contida de dados. Não há restrição quanto ao tipo de dados dentro de um ficheiro. Ficheiros não precisam conter só texto, imagem, som, programas e muitas outras coisas podem ser colocados em um meio de armazenamento no formato de ficheiros. </p>
+<p>Para adivinhar o tipo de dados contidos num ficheiro utilizamos o comando <code>file</code></p>
+<pre><code class="bash">    file /etc/passwd
+    /etc/passwd: ASCII text
+</code></pre>
+
+<p>Quanto ao formato, um ficheiro pode ser de texto ou binário:</p>
+<ul>
+<li>texto:</li>
+</ul>
+<p>O conteúdo é compreendido pelas pessoas. Um ficheiro de texto pode ser uma bloco de texto, um script, um programa de computador escrito pelo programador, ficheiro de configuração.</p>
+<ul>
+<li>binário:</li>
+</ul>
+<p>Este formato de ficheiro so pode ser entendido por computadores. Contém caracteres incompreensíveis para pessoas normais. Um ficheiro binário é gerado através de um ficheiro de texto (digitado pela pessoa que o criou, o programador) através de um processo chamado de compilação. Compilação é basicamente a conversão de um programa em linguagem humana para a linguagem de máquina.</p>
+<p>um nome de ficheiro deve ser composto por qualquer caracter disponivel a partir do teclado. desde que o numero total de caracteres contidos no nome nao seja superior a 255. Caso seja ultrapassado o limite de 255 o sistema simplesmente ignora os caracteres extra.</p>
+<h1 id="extencao-no-ficheiro">Extenção no ficheiro</h1>
+<p>Cada ficheiro é identificado por um nome para facilitar a pesquisa e tambem pode ser definida uma extensao convencional que identifica o tipo de ficheiro. a extensao sao as letras apos o <code>.</code> no nome de um ficheiro. As extencoes sao mantidas pelos utilizadores e assumidas pelos programas que manipulam o ficheiro.</p>
+<table>
+<thead>
+<tr>
+<th>extensao</th>
+<th>descrisao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.txt</td>
+<td>ficheiro de texto</td>
+</tr>
+<tr>
+<td>.sh</td>
+<td>ficheiro de script</td>
+</tr>
+<tr>
+<td>.log</td>
+<td>eventos registados de programas</td>
+</tr>
+<tr>
+<td>.gz</td>
+<td>ficheiro compactado pelo gzip</td>
+</tr>
+<tr>
+<td>.html</td>
+<td>pagina de internet</td>
+</tr>
+</tbody>
+</table>
+<h1 id="sistema-de-ficheirosfile-system">Sistema de ficheiros/File System</h1>
+<p>Para funcionar corretamente, um sistema Linux requer vários milhares de ficheiros diferentes. Somar mais ficheiros criados e detidos pelos diversos utilizadores do sistema. O sistema de ficheiros determina o método de organizar e gerir dados em um meio de armazenamento. Um disco rígido armazena bytes que o sistema deve ser capaz de encontrar novamente de alguma forma. deve ser tão eficiente e flexível quanto possível, mesmo para ficheiros grandes.</p>
+<p>um sistema de ficheiros e a forma que o sistema operativo usa para representar determinada informacao num espaço de armazemanto</p>
+<h2 id="journaling">Journaling</h2>
+<p>O sistema de journaling grava qualquer operação feita no disco, numa area especial chamada de "journal". Quando acontece algum problema durante alteracoes no disco, ele volta ao estado anterior do ficheiro.</p>
+<h1 id="diferentes-tipos-de-sistema-de-ficheiros">Diferentes tipos de sistema de ficheiros</h1>
+<table>
+<thead>
+<tr>
+<th>extended filesystem</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXT</td>
+<td>uma versao antiga do ext2 na qual nao e mais compativel com as versoes de hoje. os sistemas mais antigos tem sido convertidos para ext2.</td>
+</tr>
+<tr>
+<td>EXT2</td>
+<td>poderoso e popular sistema de ficheiros nativo do linux. criado para ser facilmente compativel com futuras actualizacoes, sem ser necessario refazer o sistema de ficheiros ja existente. suporta até 8TB</td>
+</tr>
+<tr>
+<td>EXT3</td>
+<td>Inclui um registo para ajudar a recuperar a partição no caso de um desligar abrupto. É o sistema de ficheiros a usar de preferencia. suporta ficheiros até 16GB e 16TB de disco.</td>
+</tr>
+<tr>
+<td>EXT4</td>
+<td>É a versão mais recente da família de sistemas de ficheiros EXT. melhorias de velocidade.</td>
+</tr>
+<tr>
+<td>SWAP</td>
+<td>é uma particao de disco especialmente formatada. pode ser uma particao ou um ficheiro caso disponivel e usado pelo linux para paginacao de memoria para o disco. muito utilizada na opcao de hibenacao do sistema.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Outros FS</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ReiserFS</td>
+<td>primeiro sistema de ficheiros com suporte a “journaling” (mantém o controle das modificações feitas no sistema de arquivos em um ficheiro de log (journal) antes de escrever no disco.) incluído no kernel Linux 2.4+</td>
+</tr>
+<tr>
+<td>XFS</td>
+<td>é um sistema de ficheiros de 64 bits, altamente escalável e robusto. Ele é baseado inteiramente em extensão, portanto ele suporta tamanhos bem grandes de ficheiros e sistemas de ficheiros.</td>
+</tr>
+<tr>
+<td>JFS</td>
+<td>Criado pela IBM, posteriormente disponibilizaram o acesso ao seu código fonte. Usado para servidores corporativos. Sendo um sistema com estrutura inode, que armazena a localização dos blocos de cada ficheiro nas estruturas do disco.</td>
+</tr>
+<tr>
+<td>btrfs</td>
+<td>Faz parte da nova geração de sistemas de ficheiros do Linux, projectado para tirar o máximo dos novos dispositivos e métodos de armazenamento, como os discos SSD. Ao usar LVM e RAID para gerir os dados, o Btrfs está pronto para substituí-los.</td>
+</tr>
+<tr>
+<td>iso9660</td>
+<td>sistema de ficheiros padrao do CD-ROM. a extensao rock ridge permite a utilizacao de nomes longos, sendo suportanda de forma automatica</td>
+</tr>
+<tr>
+<td>NFS</td>
+<td>sistema de ficheiros de redes que permitem compartilhar o acesso facil aos ficheiros entre os diversos computadores da rede</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>FS do Windows</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VFAT</td>
+<td>sistema de ficheiros dos sistemas Windows®9x e Windows NT®. Permitia escrever nomes de ficheiro com mais de 8 caracteres e ao mesmo tempo manter compatibilidade com o MS-DOS</td>
+</tr>
+<tr>
+<td>FAT16</td>
+<td>suporte até discos de 2GB. sem suporte a permissoes e journaling</td>
+</tr>
+<tr>
+<td>FAT32</td>
+<td>suporte até discos de 2TB. sem suporte a permissoes e journaling</td>
+</tr>
+<tr>
+<td>msdos</td>
+<td>compatibilidade com ms-dos, OS/2 e WinNT atraves do FAT.</td>
+</tr>
+<tr>
+<td>umsdos</td>
+<td>sistema de ficheiros tipo msdos mas com suporte a nomes longos, permissoes, ligacoes e ficheiros de dispositivos de linux</td>
+</tr>
+<tr>
+<td>NTFS</td>
+<td>Formato nativo de sistemas operativos Windows 2000®, Windows XP® e NT®</td>
+</tr>
+</tbody>
+</table>
+<h1 id="tipos-de-ficheiro-no-linux">tipos de ficheiro no linux</h1>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>ficheiro regular</td>
+</tr>
+<tr>
+<td>d</td>
+<td>pasta</td>
+</tr>
+<tr>
+<td>l</td>
+<td>Link</td>
+</tr>
+<tr>
+<td>c</td>
+<td>Dispositivo de caractere</td>
+</tr>
+<tr>
+<td>u</td>
+<td>Dispositivo de caractere sem buffer</td>
+</tr>
+<tr>
+<td>s</td>
+<td>ficheiro Socket</td>
+</tr>
+<tr>
+<td>p</td>
+<td>FIFO, Named Pipe</td>
+</tr>
+<tr>
+<td>b</td>
+<td>Dispositivo de bloco</td>
+</tr>
+</tbody>
+</table>
+<p>FIFO - Sigla para First In, First Out, que em inglês significa primeiro a entrar, primeiro a sair. São amplamente utilizados para implementar filas de espera. Os elementos vão sendo colocados no final da fila e retirados por ordem de chegada. Pipes (|) são um exemplo de implementação de FIFO.</p>
+<p>Buffer - É uma região de memória temporária, usada para escrita e leitura de dados. Normalmente, os buffers são utilizados quando existe uma diferença entre a taxa em que os dados são recebidos e a taxa em que eles podem ser processados.</p>
+<p>Socket - É um meio de comunicação por software entre um computador e outro. É uma combinação de um endereço IP, um protocolo e um número de porta do protocolo. </p>
+<h2 id="filesystem-hierarchy-standard">Filesystem Hierarchy Standard</h2>
+<p>O Filesystem Hierarchy Standard, ou FHS, define as principais pastas, e o seu conteúdo, em um sistema operativo Linux ou Unix. A versão atual é a 2.3, anunciada em 29 de janeiro de 2004.</p>
+<p>mais detalhes sobre a estrutura de um FHS: </p>
+<ul>
+<li><a href="http://pathname.com/fhs">site pathname.com/fhs</a></li>
+<li><a href="http://www.pathname.com/fhs/pub/fhs-2.3.pdf">pdf em ingles</a></li>
+<li><a href="http://www.tldp.org/LDP/Linux-Filesystem-Hierarchy/html/c23.html">site tldp sobre tema fhs em ingles</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">tabela wikipedia bastante completa</a></li>
+</ul>
+<h1 id="estrutura-de-pastas-do-fhs">Estrutura de pastas do FHS</h1>
+<table>
+<thead>
+<tr>
+<th>Estrutura basica de pastas</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/boot</td>
+<td>kernel do sistema operativo &gt; boot loader &gt; lilo ou grub</td>
+</tr>
+<tr>
+<td>/bin</td>
+<td>os programas executaveis mount mkdir programas no sistema que usamos durante a execucao e inicio ls e grep programas adicionais que nao sao necessarios para boot e reparacao /usr/bin</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>como /bin contem programas que sao necessario para o arranque e reparacao de sistema. mas aqui so o root consegue trabalhar o user pode recolher alguns dados mas nao alterar /usr/sbin mais programas</td>
+</tr>
+<tr>
+<td>/lib e /lib64</td>
+<td>As bibliotecas de compartilhamento são pedaços de código que são usados por vários programas. A técnicar de compartilhar ficheiros economiza muitos recursos, uma vez que muitos processos reutilizam os mesmo ficheiros.</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>pontos de montagem</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>Contém ficheiros usados para aceder aos periféricos existentes no computador. Os ficheiros de periféricos formam a interface entre a shell e as drivers de periféricos dentro do kernel.</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>Sistema de ficheiros do kernel. Esta pasta não existe no disco rígido, ela é colocado lá pelo kernel e usado por diversos programas que fazem sua leitura, verificam configurações do sistema ou modificar o funcionamento de dispositivos do sistema através da alteração em seus ficheiros.</td>
+</tr>
+<tr>
+<td>/sys</td>
+<td>Versão mais actualizada do /proc. Muitas das informações do sistema e pontos de montagem ainda estão acessíveis no /proc como um legacy.</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>Pasta inicial com ficheiros dos utilizadores comuns do sistema.</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>Pasta inicial do utilizador root.</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>Contém maior parte dos programas. Normalmente acessível somente como leitura.</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>ficheiros temporários criados por programas. quando o sistema reinicia a pasta e esvaziada.</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>Contém maior parte dos ficheiros que são gravados com freqüência pelos programas do sistema, e-mails, spool de impressora, cache</td>
+</tr>
+<tr>
+<td>/lost+found</td>
+<td>Cada sistema de ficheiros de Linux contém uma directoria destas. No caso de uma verificação do sistema durante o arranque (por um crash ou a pedido) encontrar ficheiros corrompidos, são colocados nesta directoria para que mais tarde se possa tentar recuperar alguns dados.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pseudo-devices">pseudo-devices</h2>
+<p>Em sistemas do tipo UNIX, ficheiros de dispositivo especiais podem não possuir um dispositivo físico correspondente, estes são chamados de "pseudo-dispositivos".</p>
+<table>
+<thead>
+<tr>
+<th>pseudo devices</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/null</td>
+<td>conhecido como Buraco Negro funciona como uma reciclagem retorna sempre sucesso na escrita.</td>
+</tr>
+<tr>
+<td>/dev/random /dev/urandom</td>
+<td>serve como um gerador de números pseudo-aleatórios oriundos do ruído do ambiente e obtidos através de drivers de dispositivo e de outras origens</td>
+</tr>
+<tr>
+<td>/dev/zero</td>
+<td>sobreescrever informações ou para gerar um arquivo limpo de certo tamanho</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ficheiros-de-configuracao-etc">ficheiros de configuração - /etc</h2>
+<table>
+<thead>
+<tr>
+<th>ficheiros de configuração</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/fstab</td>
+<td>contém informações de todas as partições e/ou dispositivos de armazenamento do computador que serão montados na inicialização do Sistema Operativo</td>
+</tr>
+<tr>
+<td>/etc/hosts</td>
+<td>utilizado pelo sistema operacional destinado a relacionar hostnames a endereços de ip</td>
+</tr>
+<tr>
+<td>/etc/inittab</td>
+<td>responsável por definir o nível de execução (runlevel) que o Linux vai iniciar e a sequência de scripts que serão executados para inicializar os serviços utilizado o programa <code>init</code>.</td>
+</tr>
+<tr>
+<td>/etc/init.d/*</td>
+<td>Os scripts executados quando o sistema entra no runlevel X estão no /etc/rcX.d, onde X pode ter valor de 0 a 6 ou o valor S. Na realidade, estas pastas apenas contém links simbólicos para os scrips localizados em /etc/init.d.</td>
+</tr>
+<tr>
+<td>/etc/issue</td>
+<td>mensagem exibida antes do utilizador efetuar login</td>
+</tr>
+<tr>
+<td>/etc/motd</td>
+<td>é utilizado para gerar mensagens automáticas para utilizadores após o login</td>
+</tr>
+<tr>
+<td>/etc/mtab</td>
+<td>Lista os sistemas de ficheiros montados atualmente no sistema. Sua função é idêntica ao /proc/mounts</td>
+</tr>
+<tr>
+<td>/etc/passwd</td>
+<td>contém as informações sobre cada um dos usuários que pode entrar no sistema. Hoje em dia, em muitos sistemas operacionais este arquivo é apenas um dos muitos back-ends para um serviço de nomes e senhas mais geral.</td>
+</tr>
+<tr>
+<td>/etc/shadow</td>
+<td>ficheiro armazena as senhas criptografadas caso estiver usando o recurso de senhas ocultas. Este arquivo somente pode ser lido pelo usuário root.</td>
+</tr>
+<tr>
+<td>/etc/printcap</td>
+<td>base de dados para configuracao da impressora</td>
+</tr>
+<tr>
+<td>/etc/services</td>
+<td>base de dados para configuracao de nomes de serviços e portas</td>
+</tr>
+<tr>
+<td>/etc/timezone</td>
+<td>indica a localização para cálculo correto do seu fuso-horário local. Europe/Lisbon</td>
+</tr>
+<tr>
+<td>/etc/syslog.conf</td>
+<td>Contém configurações para definir o que será registrado nos arquivos de log em /var/log syslogd klog</td>
+</tr>
+<tr>
+<td>/etc/shells</td>
+<td>contem uma lista de interpretadores de comando (shells) válidos no sistema.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="caminho-absoluto-e-relativo">caminho absoluto e relativo</h1>
+<ul>
+<li>caminho absoluto</li>
+</ul>
+<p><img alt="Screenshot" src="../../file-system/tree.png" /></p>
+<p>Começa com uma 'barra' (shift+tecla 7), por exemplo: <code>/tmp/ficheiro</code>, <code>/home/teste/ficheiro2</code>, essa 'barra' faz referencia a raiz (/), a partir da qual, todos caminhos absolutos derivam, formando uma árvore de pastas. A vantagem dos caminhos absolutos é poder indicar ficheiros - executáveis ou não.</p>
+<pre><code class="bash"># exemplo de um caminho absoluto
+/boot/grub/grub.cfg
+</code></pre>
+
+<ul>
+<li>caminho relativo</li>
+</ul>
+<p>Não contém uma 'barra' no início. A referência é geralmente o pasta atual (pwd) do processo sendo executado. Por exemplo, se a pasta atual for a raiz (/), pode simplesmente executar: <code>ls tmp</code> em vez de <code>ls /tmp</code>. A vantagem dos caminhos relativos é poder executar comandos mais curtos.</p>
+<table>
+<thead>
+<tr>
+<th>caminhos relativos</th>
+<th>significado do caracter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>significa a pasta atual</td>
+</tr>
+<tr>
+<td>..</td>
+<td>significa a pasta parente(nivel a cima da pasta atual).</td>
+</tr>
+<tr>
+<td>~</td>
+<td>til, significa a pasta inicial onde estao os ficheiros do utilizador</td>
+</tr>
+</tbody>
+</table>
+<pre><code># exemplo de caminho relativo
+~/Downloads
+./script.sh
+</code></pre>
+
+<h1 id="ficheiro-etcfstab">ficheiro /etc/fstab</h1>
+<p>/etc/fstab
+permite que as particoes do sistema sejam montadas automaticamente durante o arranque do sistema.</p>
+<p>contem configuracoes sobre as particoes que sao lidos pelo comando mount</p>
+<p>cada linha desde ficheiro contem a partiçao que indicamos montar. o ponto de montagem</p>
+<table>
+<thead>
+<tr>
+<th>particao que deseja montar</th>
+<th>ponto de montagem</th>
+<th>tipo</th>
+<th>opcoes</th>
+<th>dump</th>
+<th>ordem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sda1</td>
+<td>/boot</td>
+<td>ext2</td>
+<td>defaults</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>/dev/sda2</td>
+<td>/</td>
+<td>ext4</td>
+<td>defaults</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>opcoes</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaults</td>
+<td>padrao</td>
+</tr>
+<tr>
+<td>noauto</td>
+<td>nao monta os sistema de ficheiros durante o arranque</td>
+</tr>
+<tr>
+<td>ro</td>
+<td>monta somente leitura readonly</td>
+</tr>
+<tr>
+<td>user</td>
+<td>permite que user montem o sistema de ficheiros</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>util para gravar imediatamente os dados</td>
+</tr>
+<tr>
+<td>dump</td>
+<td>frequencia de backup feita, 0 desactivado</td>
+</tr>
+<tr>
+<td>ordem</td>
+<td>ordem dos sistema de ficheiros que sao verificados durante o arranque</td>
+</tr>
+</tbody>
+</table>
+<h1 id="mountumount">mount/umount</h1>
+<p>para desmontar um sistema de ficheiros escreve o comando umount para desmontar um sistema de ficheiros que foi montado com o mount. deve ter permissao de root para desmontar uma particao</p>
+<p>sintaxe: umount [dispositivo/ponto_de_montagem]</p>
+<p>montar ficheiro de imagem ISO</p>
+<p>sintaxe: mount [ficheiro.iso] -t iso9660 -o loop [destino]</p>
+<h1 id="listar-ficheiros">listar ficheiros</h1>
+<ul>
+<li>para listar ficheiros ocultos utiliza a opcao <code>-a</code>.</li>
+<li>para listar os atributos e permissoes dos ficheiros usa a opcao <code>-l</code> de lista longa.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tipo e as permissões do arquivo</th>
+<th>Numero de hardlinks</th>
+<th>Proprietario e grupo</th>
+<th>Tamanho em bytes</th>
+<th>Data e hora de modificação</th>
+<th>Nome do ficheiro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drwxr-xr-x</td>
+<td>2</td>
+<td>root root</td>
+<td>4096</td>
+<td>Dez 30  2004</td>
+<td>bin</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../mkdir-rmdir/" class="btn btn-neutral float-right" title="Navegar e Manipular ficheiros">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../criar-scripts/" class="btn btn-neutral" title="Criar Scripts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../criar-scripts/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../mkdir-rmdir/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

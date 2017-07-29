@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Linha de Comando - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Linha de Comando";
+    var mkdocs_page_input_path = "bash/index.md";
+    var mkdocs_page_url = "/bash/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Linha de Comando</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#nocoes-basicas-sobre-a-linha-de-comando-prompt">Noções Básicas sobre a linha de comando - prompt # $</a></li>
+    
+
+    <li class="toctree-l3"><a href="#root-o-super-utilizador">Root - O Super Utilizador</a></li>
+    
+
+    <li class="toctree-l3"><a href="#shell-bash">Shell Bash</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#comando-type">comando type</a></li>
+        
+            <li><a class="toctree-l4" href="#leitura-humana-de-comandos-com">Leitura humana de comandos com \</a></li>
+        
+            <li><a class="toctree-l4" href="#capacidades-de-edicao-shell-bash">capacidades de edicao shell bash</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#definicao-dos-comandos-internos-e-externos">Definição dos Comandos Internos e Externos</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#definir-variavel">Definir Variavel</a></li>
+        
+            <li><a class="toctree-l4" href="#variaveis-globais-env">Variaveis Globais - env</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#historico-de-comandos-na-shell">Historico de comandos na shell</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#eventos-no-historico">Eventos no historico</a></li>
+        
+            <li><a class="toctree-l4" href="#configurar-historico-histfile-e-histsize">Configurar Historico: HISTFILE e HISTSIZE</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#carregar-e-exportar-variavel">Carregar e Exportar variavel</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#sequencias-de-comandos">Sequencias de comandos</a></li>
+        
+            <li><a class="toctree-l4" href="#wildcards-da-shell">Wildcards da shell</a></li>
+        
+            <li><a class="toctree-l4" href="#globbingenglobamento">globbing/englobamento</a></li>
+        
+            <li><a class="toctree-l4" href="#alterar-a-shell-padrao">Alterar a shell padrao</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Linha de Comando</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>A shell é um intérprete de comandos que fornece uma linha de comando(prompt) que faz de interface interativa e não interativa entre o utilizador e o sistema operativo. </p>
+<p>Nessa linha de comando é onde inserimos os comandos. Eles são interpretados pela shell e então enviados como instruções para o sistema operativo (existe recurso grafico a interface da linha de comando via GNOME ou KDE).</p>
+<p>É possivel colocar variados comandos criando um ficheiro shell script para ser executado consecutivamente, como um programa.</p>
+<p>A capacidade interpretativa do shell oferece muitos recursos técnicos:
+Por exemplo, o shell possui um conjunto de metacaracteres de correspondência para ficheiros que podem gerar nomes de ficheiros.</p>
+<p>A shell consegue redirecionar informações de entrada e saída, executar operações em segundo plano, libertanto assim a linha de comando para executar outras tarefas.</p>
+<p>varios tipos de shells foram desenvolvidos para o sistema linux. mas apenas é necessario selecionar um tipo shell para realizar suas operacoes básicas de trabalho.</p>
+<ul>
+<li>bash, Bourne Again</li>
+<li>ksh korn shell</li>
+<li>tcsh, versao melhorada do shell C utilizado muito no sistema BSD. csh é um link para tcsh</li>
+<li>zsh z shell</li>
+</ul>
+<p>A interface da linha de comando do Linux consiste em uma única linha na qual o utilizador insere os comandos com algumas opções e argumentos.</p>
+<table>
+<thead>
+<tr>
+<th>url link</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gnu.org/software/bash</td>
+<td>FAQ site oficial</td>
+</tr>
+<tr>
+<td>https://www.gnu.org/software/bash/manual/bash.html</td>
+<td>bash manual online</td>
+</tr>
+<tr>
+<td>zsh.org</td>
+<td>website</td>
+</tr>
+<tr>
+<td>https://linux.die.net/man/1/tcsh</td>
+<td>manual online</td>
+</tr>
+<tr>
+<td>kornshell.com</td>
+<td>website</td>
+</tr>
+</tbody>
+</table>
+<p>por padrao a shell BASH tem um simbolo do dolar ($) representado um utilizador comum na prompt. O utilizador root vai ter outro simbolo o cardinal (#).</p>
+<p>Alguns comandos podem ser complexos e levar algum tempo para executar. para interromper esses comandos deve usar a combinação de teclas, ctrl+c. por vezes é necessario repetir varias vezes a operacao ate libertar a prompt para inserir novamente comandos.</p>
+<h1 id="nocoes-basicas-sobre-a-linha-de-comando-prompt">Noções Básicas sobre a linha de comando - prompt # $</h1>
+<p>A maneira tradicional de operar com um computador Linux – especialmente em ambientes servidor –  é na linha de comando. A linha de comando apresenta o prompt do shell indicando que o sistema esta pronto para receber instrucoes. Normalmente, o prompt termina com o caractere <code>$</code> indica que o utilizador comum esta activo no sistema. Enquanto termina com o caractere <code>#</code>, indica ser o super utilizador, o root. o formato comum da prompt informa o nome do utilizador seguido do hostname: [user@hostname].</p>
+<h1 id="root-o-super-utilizador">Root - O Super Utilizador</h1>
+<p>É o unico utilizador capaz de realizar todo tipo de operacoes no sistema. Por questoes de seguranca e privacidade, todas as actividades e ficheiros têm um utilizador responsavel representando por um “dono”. Cada "dono" pode interferir apenas nas tarefas e ficheiros que lhe pertencem. O utilizador root têm a caracteristica de interferir em qualquer tarefa ou ficheiro sem ser dono do mesmo.</p>
+<h1 id="shell-bash">Shell Bash</h1>
+<p>Uma interpretacao simples do funcionamento da shell:
+comando -&gt; shell -&gt; kernel -&gt; hardware</p>
+<p>No ambiente de linha de comando, o shell vai ser o programa que faz a intermediaçao entre o utilizador e os recursos do computador, oferece um ambiente de programaçao em tempo real para executar tarefas. </p>
+<p>O shell padrao usado na maioria das distribuiçoes Linux e o BASH (Bourne Again Shell). Este shell oferece diversos comandos, internos e externos mas só os internos são embutidos na shell.</p>
+<p>Um dos comandos embutidos mais simples e o <code>echo</code>, que simplesmente "ecoa" um conteudo no ecra:</p>
+<pre><code class="bash">[user@hostname] echo Linux Essentials
+Linux Essentials
+[user@hostname]
+</code></pre>
+
+<p>Apos escrever o comando <code>echo Linux Essentials</code>, o comando deve ser executado pressionando a tecla Enter.</p>
+<p>A resposta do echo sera apresentada logo abaixo do comando. Para evitar que o comando echo inicie espaçamento de nova linha no final da saıda, utiliza-se a opcao <code>-n</code>.</p>
+<pre><code class="bash">[user@hostname] echo -n Linux Essentials
+Linux Essentials[user@hostname]
+</code></pre>
+
+<p>Para dar uso a caracteres especiais, devemos colocar a opcao <code>-e</code>.
+Por exemplo, para criar um novo espaçamento de linha entre as duas palavras:</p>
+<pre><code class="bash">[user@hostname] echo -e &quot;Linux\nEssentials&quot;
+Linux
+Essentials
+</code></pre>
+
+<p>se necessario para vizualisar sem caracteres especiais colocamos <code>-E</code></p>
+<pre><code class="bash">[user@hostname] echo -e &quot;Linux\nEssentials&quot;
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>opcoes -e</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>caracter \</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>backspace</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>escape</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>tecla enter</td>
+</tr>
+<tr>
+<td>\c</td>
+<td>ctrl+c</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>espaçamento nova linha</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comando-type">comando type</h2>
+<p>Por exemplo se escrevemos e inserimos ls para listar ficheiros é razoavel pensar que estamos a executar um comando e nao um alias(alcunha). Alias existem na memória como um atalho para comandos ou comandos com opções. O comando type mostra o tipo de comando para uma determinada palavra inserida na linha de comando. Os tipos de comando são listado da seguinte forma:</p>
+<ul>
+<li>alias</li>
+<li>funcao</li>
+<li>shell</li>
+<li>palavra</li>
+<li>ficheiro</li>
+</ul>
+<p>Esta lista também representa a ordem em que são pesquisados.</p>
+<p>type ls</p>
+<p>para mais detalhes
+type -a ls</p>
+<h2 id="leitura-humana-de-comandos-com">Leitura humana de comandos com \</h2>
+<p>os comandos costumam ser utilizados com bastantes opcoes e argumentos. podem por vezes ocupar mais que uma linha, entao o uso do caracter <code>\</code> é a maneira mais humana de tornar uma longa linha de texto tranformando em forma de lista.</p>
+<h2 id="capacidades-de-edicao-shell-bash">capacidades de edicao shell bash</h2>
+<p>Shell BASH que é a shell padrao no linux oferece uma capacidade de edicao para texto rapida por combinacao de teclas originando atalhos para operacoes comuns. bastante util para comandos extensos. mover o cursor para a direita ctrl+f ou seta da direta. mover o cursor para a esquerda, ctrl+b ou seta da esquerda. para limpar um caracter antes do cursor, backspace ou ctrl+h. </p>
+<p>cortar e colar com ctrl+w ou alt+d e para colar ctrl+y</p>
+<p>existe a regra de que o CTRL serve para operar em caracteres e ALT para palavras.</p>
+<p>transpor palavras alt+t
+transpor caracteres ctrl+t</p>
+<p>o ficheiro /etc/inputrc é onde esta a configuracao de atalhos e possivel adicionar novos key bindings(combinacao de teclas)</p>
+<p>completar automaticamente
+a linha de comando bash possui um recurso interno que completa o nome do comando e o nome do ficheiro. Estas finalizações automaticas podem ser efectuadas com a tecla TAB. Quando inserir um pedaço de texto incompleto como argumento de comando ou nome de ficheiro pode pressionar a tecla TAB para activar este recurso de conclusao do nome padrao. a tecla ESC tambem vai funcionar. é comum usar este recurso para completar nomes de variaveis, hostnames e nomes de utilizadores</p>
+<p>referencia
+<em> nomes de ficheiros começam com qualquer texto ou .
+</em> $variaveis
+<em> @hostname
+</em> ~utilizadores
+* aliases, comandos</p>
+<p>echo $HOM <tab></p>
+<p>echo $H <tab> <tab></p>
+<p>A shell bash possui um conjunto de atalhos de linha de comando para agilizar a inserção e manipulação de texto.</p>
+<table>
+<thead>
+<tr>
+<th>Combinaçao de teclas</th>
+<th>Descrição do atalho</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CTRL+U</td>
+<td>elemina o texto depois do cursor</td>
+</tr>
+<tr>
+<td>CTRL+W</td>
+<td>elemina o texto antes do cursor</td>
+</tr>
+<tr>
+<td>CTRL+Y</td>
+<td>restaura o texto que foi eleminado</td>
+</tr>
+<tr>
+<td>ALT+B</td>
+<td>coloca o cursor uma palavra atras</td>
+</tr>
+<tr>
+<td>ALT+F</td>
+<td>coloca o cursor uma palavra para a frente</td>
+</tr>
+<tr>
+<td>CTRL+R</td>
+<td>realiza uma busca no historico dos comandos ja digitados</td>
+</tr>
+<tr>
+<td>ESC e_</td>
+<td>ultimo comando digitado</td>
+</tr>
+<tr>
+<td>CTRL+A</td>
+<td>inicio da linha</td>
+</tr>
+<tr>
+<td>CTRL+E</td>
+<td>fim da linha</td>
+</tr>
+<tr>
+<td>ALT+T</td>
+<td>troca as duas ultimas palavras</td>
+</tr>
+<tr>
+<td>CTRL+Y</td>
+<td>cola o texto</td>
+</tr>
+<tr>
+<td>CTRL+L</td>
+<td>limpa a tela</td>
+</tr>
+</tbody>
+</table>
+<h1 id="definicao-dos-comandos-internos-e-externos">Definição dos Comandos Internos e Externos</h1>
+<ul>
+<li>Comandos Internos
+São comandos que estão localizados dentro do interpretador de comandos (normalmente uma shell) e não no disco. Eles são carregados na memória RAM do computador junto com o interpretador de comandos.</li>
+</ul>
+<p><code>cd, exit, echo, bg, fg, source, help</code></p>
+<p>Quando executa um comando, o interpretador de comandos verifica primeiro se ele é um Comando Interno caso não seja é verificado se é um Comando Externo.</p>
+<ul>
+<li>Comandos Externos
+São comandos que estão localizados no disco. Os comandos são localizados no disco usando a ordem encontrada na variavel $PATH e executados assim que encontrados. </li>
+</ul>
+<p>Pathname é o caminho usado para localizar ficheiros/comandos executáveis.</p>
+<h2 id="definir-variavel">Definir Variavel</h2>
+<p>As variaveis usadas na shell sao parecidas às de outras linguagens de programacao. Uma variavel e um nome que guarda um valor, que pode ser letras ou numeros. Nomes de variaveis sao limitados a caracteres alfanumericos, ou seja, pode conter letras e numeros, mas deve sempre comecar com uma letra. </p>
+<p>Variaveis podem ser criadas por utilizadores comuns ou pre-definidas pelo sistema.</p>
+<p>Para criar ou modificar uma variavel, nao devem ser usados espacos:</p>
+<pre><code class="bash">lpi=&quot;Linux Professional Institute&quot;
+</code></pre>
+
+<p>acabamos de definir que a variavel $lpi tem a seguinte frase, Linux Professional Institute.</p>
+<p>Se existir espaços em branco no conteudo da variavel, é importante usar as entreaspas duplas ou simples para nao confundir a interpretacao da shell. O valor de uma variavel pode ser apresentado colocando o sinal $ a frente do nome da variavel:</p>
+<pre><code class="bash">$ echo $lpi
+Linux Professional Institute
+</code></pre>
+
+<h2 id="variaveis-globais-env">Variaveis Globais - env</h2>
+<p>Todas as variaveis globais sao escritas em letras maiusculas. Em ambientes Unix existe a regra do case-senstive, diferença entre letras maiúsculas e minúsculas.</p>
+<p><b>Portanto, escrever <code>PATH</code> é diferente de <code>path</code>.</b></p>
+<p>As variaveis pre-definidas – tambem conhecidas de globais ou variaveis de ambiente – sao usadas por programas para obter configuraçoes importantes do sistema. O proprio shell utiliza as variaveis globais para definir diversas configuraçoes do sistema.</p>
+<p>O shell interpreta a primeira palavra fornecida como um comando. A localizaçao para o comando precisa ser fornecida, a menos que este esteja localizado em um das pastas indentificadas na variavel global <code>PATH</code>. </p>
+<p>Se o programa estiver na pasta atual e fora das pastas indentificadas em PATH, seu nome deve ser precedido por <code>./</code>, por exemplo <code>./script.sh</code>.</p>
+<p>O conteudo da variavel PATH pode ser exibido com o comando echo:</p>
+<pre><code class="bash">    echo $PATH
+    /usr/local/sbin:/usr/local/bin:/usr/bin
+</code></pre>
+
+<p>A localizacao especıfica de um comando pode ser determinado com outro comando, which</p>
+<pre><code class="bash">$ which man
+/usr/bin/man
+</code></pre>
+
+<p>A partir da saıda do comando <code>which man</code> é possıvel determinar que o comando <code>man</code> está localizado no <code>/usr/bin/man</code>.</p>
+<h1 id="historico-de-comandos-na-shell">Historico de comandos na shell</h1>
+<p>Shell BASH mantem uma lista dos comandos, chamada de lista do historico dos comandos previamente inseridos. para exibir cada comando inserido, por ordem decrescente pressionando a tecla seta para cima. ja a tecla seta para baixo move pela ordem inicial. Pode recuperar qualquer comando previamente digitado movendo as setas. A capacidade de exibir novamente um comando anterir é pratico desta forma nao necessita de escrever o comando inteiro novamente.</p>
+<h2 id="eventos-no-historico">Eventos no historico</h2>
+<p>o utilitario do historico mantem um registro dos comandos mais recentes que foram inseridos. os comandos sao numerados começando em 1, existe um limite para o numero de comandos lembrados - o padrao é 500. todo historico de comandos e exibido com o comando <code>history</code>.</p>
+<p>cada comando fica enumerado na lista. trata como um evento que descreve uma accao tomada. um comando foi executado. o evento mais recente tem o numero mais alto.</p>
+<table>
+<thead>
+<tr>
+<th>atalhos</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CTRL+p</td>
+<td>move para o anterior evento na lista de historico</td>
+</tr>
+<tr>
+<td>CTRL+n</td>
+<td>move para o proximo evento na lista de historico</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configurar-historico-histfile-e-histsize">Configurar Historico: HISTFILE e HISTSIZE</h2>
+<p>O numero total de eventos guardados pelo sistema é mantido numa variavel especial chamada <code>HISTSIZE</code>, o valor padrao é 500 eventos. podemos alterar o valor alterado o numero da variavel.</p>
+<pre><code class="bash">echo $HISTSIZE # mostra o valor 500
+export HISTSIZE=10
+</code></pre>
+
+<p>Os eventos do historico sao armezanos num ficheiro na pasta inicial do utilizador cujo o nome e mantido numa variavel de sistema chamada <code>HISTFILE</code>. por padrao é um ficheiro oculto chamado <code>.bash_history</code></p>
+<pre><code class="bash">echo $HISTFILE # localiza o ficheiro .bash_history
+/home/utilizador/.bash_history
+</code></pre>
+
+<p>para limpar o registo do historico é usada a opcao <code>-c</code>: <code>history -c</code></p>
+<h1 id="carregar-e-exportar-variavel">Carregar e Exportar variavel</h1>
+<p>variaveis globais sao criadas no carregamento do sistema e exportadas para que esteja disponiveis em todas as sessoes futuras da shell.</p>
+<p><code>export</code></p>
+<p>/etc/profile | editado pelo root
+~/.bash_profile | segundo ficheiro lido pelo sistema</p>
+<p>o ficheiro .bashrc normalmente tem o path</p>
+<h2 id="sequencias-de-comandos">Sequencias de comandos</h2>
+<p>A maioria das tarefas dependem da execucao de varios comandos. Para executar tres comandos em sequencia. indenpente do resultado de cada um:</p>
+<pre><code class="bash">comando1 ; comando2 ; comando3
+</code></pre>
+
+<p>executar o comando seguinte se o anterior foi bem sucedido (retornou 0)</p>
+<pre><code class="bash">apt-get update &amp;&amp; apt-get upgrade
+</code></pre>
+
+<p>executar o comando seguinte apenas se o anterior nao for bem sucedido (retornar diferente de 0)</p>
+<pre><code class="bash">comando1 || comando2 || comando3
+</code></pre>
+
+<p>todos os comandos obedecem a estas sintaxes. no entanto cada comando possui uma finalidade e opcoes diferentes. É necessario consultar a sua documentacao.</p>
+<h2 id="wildcards-da-shell">Wildcards da shell</h2>
+<table>
+<thead>
+<tr>
+<th>Wildcard</th>
+<th>significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>corresponde a qualquer correspondodencia</td>
+</tr>
+<tr>
+<td>?</td>
+<td>corresponde apenas um caracter</td>
+</tr>
+<tr>
+<td>!</td>
+<td>negar cancelar</td>
+</tr>
+</tbody>
+</table>
+<h2 id="globbingenglobamento">globbing/englobamento</h2>
+<p>É uma operação que combina metacaracteres como * e ? com partes de nomes de ficheiros para a formação de todas as combinações possíveis desses nomes de ficheiros.</p>
+<p>Esses nomes expandidos em combinações possíveis são passados como parâmetros para comandos do Shell que não poderiam lidar com expressões regulares em seu modo nativo.</p>
+<p>Fazer globbing é muito parecido com expressões regulares, mas NÃO é expressões regulares.</p>
+<pre><code>ls -l [ab]*
+ls -l [a-c]*
+ls -l [^ab]*
+ls -l {b*,c*,*est*}
+</code></pre>
+
+<pre><code>combinar varios caracteres
+o asterico (*) faz referencia a nenhum ou a mais caracteres
+
+
+combinar exactamente um caracter
+?
+
+
+alcance de 1 a 10 por exemplo
+[]
+
+
+combinar simbolos shell
+raros casos o nome do ficheiro tem um metacaracter. para transcrever usa o \ ou aspas duplas
+ls perguntas\?
+
+ls &quot;perguntas?&quot;
+
+ficheiros ou pastas que possuem nomes com caracteres com espaço em branco. Devem ser escritos com \ ou entre aspas
+
+ls Meus\ Documentos
+ls &quot;Meus Documentos&quot;
+
+
+
+gerar padroes
+embora nao seja uma operacao de expansao de ficheiros o {} muitas vezes e util para gerar nomes de ficheiros ou pastas. Nao existe verificacao de correspondecia dos nomes ja criados. cada palavra e separada por virgula SEM espaços em branco
+
+echo se{rafim,simbra,ca}
+</code></pre>
+
+<h2 id="alterar-a-shell-padrao">Alterar a shell padrao</h2>
+<p>a partir do ficheiro <code>/etc/shells</code> podemos saber quais as shells disponiveis no sistema</p>
+<p>podemos listar as shells disponiveis no sistema com o comando <code>chsh</code></p>
+<pre><code class="bash">[host@user]chsh -l
+
+/bin/sh
+/bin/bash
+/bin/zsh
+/usr/bin/zsh
+</code></pre>
+
+<p>saber qual a shell actual a partir do ficheiro /etc/passwd</p>
+<pre><code class="bash">grep root /etc/passwd
+
+root:x:0:0:root:/root:/bin/bash
+</code></pre>
+
+<p>é possivel alterar uma shell por nome de utilizador
+<code>chsh -s /sbin/nologin username</code></p>
+<h3 id="variavel-global-shell">variavel global $SHELL</h3>
+<p>existe uma variavel reservada
+<code>echo $SHELL</code></p>
+<p>alterar a shell a partir do usermod</p>
+<pre><code>usermod -s /sbin/sh root
+grep -w root /etc/passwd
+</code></pre>
+
+<p>```</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../criar-scripts/" class="btn btn-neutral float-right" title="Criar Scripts">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../obter-ajuda/info/" class="btn btn-neutral" title="Obter Ajuda"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../obter-ajuda/info/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../criar-scripts/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

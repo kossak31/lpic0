@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Conceitos Basicos - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Conceitos Basicos";
+    var mkdocs_page_input_path = "comandos.md";
+    var mkdocs_page_url = "/comandos/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Conceitos Basicos</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#fhs-do-linux">FHS do Linux</a></li>
+    
+
+    <li class="toctree-l3"><a href="#lista-de-comandos">Lista de comandos</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#ficheiro">Ficheiro</a></li>
+        
+            <li><a class="toctree-l4" href="#count-sort">Count / Sort</a></li>
+        
+            <li><a class="toctree-l4" href="#procurar-e-localizar-ficheiros">Procurar e localizar ficheiros</a></li>
+        
+            <li><a class="toctree-l4" href="#compressao-zip">Compressao Zip</a></li>
+        
+            <li><a class="toctree-l4" href="#hard-link-symbolic-link">Hard link / Symbolic link</a></li>
+        
+            <li><a class="toctree-l4" href="#redirect">Redirect</a></li>
+        
+            <li><a class="toctree-l4" href="#pipe">Pipe</a></li>
+        
+            <li><a class="toctree-l4" href="#user">User</a></li>
+        
+            <li><a class="toctree-l4" href="#permission">Permission</a></li>
+        
+            <li><a class="toctree-l4" href="#shell">Shell</a></li>
+        
+            <li><a class="toctree-l4" href="#shell-script">Shell Script</a></li>
+        
+            <li><a class="toctree-l4" href="#file-systemdevice-files">File System/Device Files</a></li>
+        
+            <li><a class="toctree-l4" href="#cron">Cron</a></li>
+        
+            <li><a class="toctree-l4" href="#rede">Rede</a></li>
+        
+            <li><a class="toctree-l4" href="#outros">Outros</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Pratica &raquo;</li>
+        
+      
+    
+    <li>Conceitos Basicos</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="fhs-do-linux">FHS do Linux</h2>
+<ul>
+<li>boot  : ficheiros necessários para inicialização do kernel do Linux</li>
+<li>bin   : comandos gerais para utilizadores</li>
+<li>dev   : ficheiros de dispositivos</li>
+<li>etc   : ficheiros de configuração do sistema</li>
+<li>home  : pasta inicial para ficheiros pessoais de utilizadores comuns</li>
+<li>lib   : ficheiros de bibliotecas</li>
+<li>media : Ponto de montagem para dispositivo externo</li>
+<li>proc  : informações do sistema, processos</li>
+<li>root  : pasta inicial para root</li>
+<li>sbin  : comandos para administradores</li>
+<li>tmp   : ficheiros temporarios</li>
+<li>usr   : programas, codigo fonte, bibliotecas, documentos, etc.</li>
+<li>var   : ficheiros alterados com frequência, ficheiros de log</li>
+</ul>
+<h1 id="lista-de-comandos">Lista de comandos</h1>
+<h2 id="ficheiro">Ficheiro</h2>
+<pre><code class="bash"># cd
+$ cd        # segue para a pasta home
+$ cd ~      # segue para a pasta home
+$ cd -      # voltar a ultima pasta
+$ cd ..     # segue para a pasta parente
+
+# mostrar com less
+$ less test.md
+# f/b : mostrar a página seguinte / anterior
+# q   : sair
+# =   : mostrar o nome do ficheiro e o número da linha atual
+# /   : procurar pela proxima referencia
+# ?   : retroceder na ordem de procura
+# v   : executar editor vi
+
+#head/tail
+$ head -5 test.md # mostra as primeiras 5 linhas do ficheiro test.md
+$ tail -3 test.md # mostra as ultimas 3 linhas do ficheiro test.md
+
+#copy
+$ cp -i test.md tmp # rescreve ficheiro confirmado antes
+$ cp -r tmp tmp2        # copiar pasta
+
+# move/rename
+$ mv -i data.txt tmp    # confirmar antes de renomear nome
+$ mv -f data.txt tmp    # renomear nome sem confirmar
+$ mv tmpdir mydir       # renomear ficheiros ou pastas
+
+# remover ficheiros
+$ rm -i data.txt    # confirmar antes de remover
+$ rm -f data.txt    # força remoçao
+$ rm -r tmp             # remover pasta mesmo que nao esteja vazia
+$ rm -R tmp # o mesmo que a opcao -r
+$ rmdir tmp # permite remover pastas vazias
+
+# criar pasta
+$ mkdir -p tmp/tmp2     # cria pastas por sequencia
+$ mkdir -m 705 mydir    # cria pasta com determinadas permissoes
+
+
+</code></pre>
+
+<h2 id="count-sort">Count / Sort</h2>
+<pre><code class="bash">
+# count
+$ ls -l | wc        # mostra contagem de bytes/linhas/palavras
+$ wc -c count.txt   # contar bytes
+$ wc -l count.txt   # contar linhas
+$ wc -w count.txt   # contar palavras
+
+# sort
+$ ls -l | sort      # ordenar por ordem alfabetica
+$ ls -l | sort -b   # ordenar sem espaços em branco
+$ ls -l | sort -f   # ordenar por minusculas seguido de maisculas
+$ ls -l | sort -r   # inverter
+$ ls -l | sort -n   # ordenar numericamente
+</code></pre>
+
+<h2 id="procurar-e-localizar-ficheiros">Procurar e localizar ficheiros</h2>
+<h3 id="locate">Locate</h3>
+<pre><code class="bash">
+# `locate` localiza ficheiros numa base de dados
+# portanto é mais rápido que o comando find
+$ locate [ficheiro]
+
+# para actualizar a base de dados
+$ updatedb
+
+</code></pre>
+
+<h3 id="find">Find</h3>
+<pre><code class="bash">
+# definir nivel de profundidade na pesquisa
+$ find . -name &quot;README.md&quot; -maxdepth 1
+
+</code></pre>
+
+<pre><code class="bash">
+# Pesquisa basica
+# find [localização] [opcao]
+
+# Por nome
+$ find . -name &quot;README.md&quot;
+
+# Por tamanho
+$ find . -size 1k       # = 1k byte
+$ find . -size +100c    # &gt; 100 byte
+$ find . -size +1k      # &gt; 1k byte
+$ find . -size -100c    # &lt; 100 byte
+$ find . -size -1k      # &lt; 1k byte
+
+# Por tipo
+$ find . -type f # ficheiros
+$ find . -type d # pastas
+$ find . -type l # links simbolicos
+
+# Por data modificacao
+$ find . -mtime -1 # ficheiros alterados no espaço de 1 dia
+$ find . -mmin -60 # ficheiros alterados no espaço de 60min
+$ find . -mtime 7  # ficheiros que nao foram alterados num espaço de 1 semana
+$ find . -mmin 60  # ficheiro que nao foram alterados num espaço de 60min
+
+# Por Tempo acessido
+$ find . -atime -1 # files accessed in a day
+$ find . -amin -60 # files accessed in last 60 minutes
+$ find . -atime 7  # files which have not accessed over a week
+$ find . -amin 60  # files which have not accessed over an hour
+
+# Por permissao
+$ find . -perm a+r  # É permitida permissão de leitura
+$ find . -perm 644  # codigo permissao de 644
+$ find . -perm -444 # Permissão de leitura é permitida para todos os utilizadores
+$ find . -perm +444 # Permissão de leitura é permitida para proprietário, grupos de proprietários e outros
+
+# Por utilizador
+$ find . -user david # ficheiros que pertencem ao david
+$ find . -uid XXXXXX # ficheiro que pertencem por uid
+
+# Regular Expressions
+$ find . regex &quot;.*git*&quot;
+
+</code></pre>
+
+<h3 id="example">Example</h3>
+<pre><code class="bash">
+# Encontra ficheiros alterados no espaço de um dia
+$ find . -type f -mtime -1
+
+# Encontre ficheiros alterados nos últimos 30 minutos
+$ find . -type f -mmin -60
+
+# Localizar e excluir ficheiros que não foram acessados em 200 dias
+$ find . -atime +200 -exec rm {} ¥;
+
+</code></pre>
+
+<h2 id="compressao-zip">Compressao Zip</h2>
+<pre><code class="bash">
+#############
+# gzip
+#############
+# ficheiro szip
+$ cal &gt; cal.txt
+$ gzip cal.txt  # cria o ficheiro cal.txt.gz mas o ficheiro cal.txt é eleminado
+$ gzip -c cal.txt &gt; cal.txt.gz  # Não elemina os ficheiros originais
+
+# comprimir uma pasta
+$ mkdir tmp
+$ cp cal.txt tmp
+$ gzip -r tmp           # compactar pasta
+
+# unzip
+$ gzip -d cal.txt.gp # unzip
+$ gzip -dr tmp           # unzip na pasta tmp
+$ gunzip cal.txt.gp  # o mesmo que `gzip -d`
+
+#############
+# bzip2
+#############
+$ bzip2 sample.dat          # cria sample.dat.bz2
+$ bzip2 -d sample.dat.bz2 # unzip
+
+
+#############
+# tar (com gzip)
+#############
+# tar [options] arquivo.tar [nomeFicheiro]
+#
+# options
+# -c : cria
+# -x : unzip
+# -t : ver ficheiros de um arquivo
+# -f : selecionar arquivo por nome
+# -r : adicionar ficheiros ao arquivo
+# -v : ver detalhes em modo verbose
+# -z : gzip
+# -j : bzip2
+
+# exemplos
+$ mkdir tmp
+$ ls -l &gt; tmp/ls.txt
+$ cal &gt; tmp/cal.txt
+# criar arquivos tar e comprimir
+$ tar cvf tmp.tar tmp           # apenas arquivar
+$ tar cvfz tmp.tar.gz tmp   # arquivado e comprimido com gzip
+$ tar cvfj tmp.tar.bz2 tmp  # arquivado e comprimido com bzip2
+# ver detalhes nos ficheiros
+$ ls -l
+
+</code></pre>
+
+<h3 id="gzip-vs-bzip2-vs-tar">gzip vs bzip2 vs tar?</h3>
+<h4 id="gzipbzip2-vs-tar">gzip/bzip2 vs tar?</h4>
+<blockquote>
+<p>Tar não é um formato de compressão - é uma maneira de combinar vários ficheiros em um único arquivo.</p>
+<p>Bz2 e gz são formatos de compressão. as taxas de compressão são semelhantes</p>
+</blockquote>
+<h4 id="gzip-vs-bzip2">gzip vs bzip2?</h4>
+<blockquote>
+<p>Bz2 geralmente comprime melhor que o gz, mas é mais lento. Gz é o padrão mais comum porque é mais antigo e normalmente o bz2 não está disponível.</p>
+</blockquote>
+<h2 id="hard-link-symbolic-link">Hard link / Symbolic link</h2>
+<pre><code class="bash">
+# ver hardlinks
+$ ls -i # `ls` mostra o index de node(inode)
+
+# criar hard links
+$ touch test.txt                # criar ficheiro test.txt
+$ ln test.txt test.hard # criar ligacao hard link
+$ ls -i             # verificar numeros de inode
+
+# criar symbol links
+$ touch symbol.txt
+$ ln -s symbol.txt symbol.sym
+$ ls -l
+
+# ver as diferenças de uma ligação hard e symbol
+$ touch {hard,symbol}.txt           # cria hard.txt e symbol.txt
+$ echo &quot;ligacao hard&quot; &gt; hard.txt &amp;&amp; echo &quot;ligacao symbol&quot; symbol.txt
+$ ln hard.txt hard.hard                 # cria hard link
+$ ln -s symbol.txt symbol.sym   # cria symbol link
+$ rm {hard,symbol}.txt                  # eleminar ficheiros .txt
+$ cat hard.hard                                 # existe?
+$ cat symbol.sym                                # existe?
+</code></pre>
+
+<h3 id="hardlink-vs-symlink">Hardlink vs Symlink?</h3>
+<blockquote>
+<p>Um Hardlink não é um atalho para um ficheiro, é uma entrada de ficheiro direcionado para o mesmo inode. Pode alterar o nome do outro ficheiro, Hardlink continua apontar para o mesmo inode ...</p>
+<p>Por outro lado, um Symlink está realmente apontando para outro caminho (um nome de arquivo); Ele resolve o nome do arquivo toda vez que você acessá-lo através do link simbólico.</p>
+</blockquote>
+<h2 id="redirect">Redirect</h2>
+<pre><code class="bash"># resultado redirecionado
+$ ls &gt; redirect.txt     # the result of `ls` command would be written to redirect2.txt
+$ cat redirect.txt
+$ ls -i1 &gt;&gt; redirect.txt    # adds the result to the existing file
+
+# redirect error
+$ ls -222 2&gt; error.txt  # 2&gt; writes error log
+$ ls -333 2&gt;&gt; error.txt # 2&gt;&gt; adds error log to the existing file
+
+# redirect both result and error
+# .   = current file
+# aaa = not-existring file
+$ ls . aaa &gt; ls.log 2&gt;&amp;1 # wrtites both the result and error log
+
+# tips
+# by combining `cat` and redirect, you can join the result of
+# multiple files contents
+$ cat apple.txt banana.txt &gt; banapple.txt
+
+# input redirect
+# `tr a-z A-Z` replaces all small caps to Capital caps, but
+# this command cannot have file as an argument.
+# By usring input `&lt;`, a content of file can be sent to commands.
+$ tr a-z A-Z  &lt; error.txt
+
+</code></pre>
+
+<h2 id="pipe">Pipe</h2>
+<pre><code class="bash">
+$ ls -l &gt; ls.txt
+$ tr a-z A-Z &lt; ls.txt
+
+# By using pipe, above process can be written in one line
+$ ls -l | tr a-z A-Z
+
+# If you want to send the result both to a file and other command
+# then use `tee`
+$ ls -l | tee result.log | less
+
+</code></pre>
+
+<h2 id="user">User</h2>
+<pre><code class="bash">
+#############
+# basic
+#############
+
+# shows all users
+$ id
+
+# shows all groups
+$ groups
+
+# see User Database
+$ less /etc/passwd
+
+# see Group Database
+$ less /etc/group
+
+# adds user
+$ useradd david
+$ useradd -u 1000 david # with udi
+$ useradd -d /home/dev  # with custome home directory path
+
+# changes password
+$ passwd david
+
+# deletes user
+$ userdel david
+$ userdel -r david # deletes with home directory
+
+# adds group
+$ groupadd designer
+
+# deletes group
+$ groupdel designer
+
+#############
+# usermod
+#############
+
+# locks user
+# (when users would not be used for a long time)
+$ usermod -L david
+
+# unlocks user
+$ usermod -U david
+
+# changes primary group
+$ usermod -g develop david
+
+# changes sub group
+$ usermod -G develop david
+
+# changes uid
+$ usermod -u 1000 david
+
+# changes home directory path
+$ usermod -d /home/dev/ david
+
+</code></pre>
+
+<h2 id="permission">Permission</h2>
+<h3 id="owner-usergroup">Owner (user/group)</h3>
+<pre><code class="bash">
+# changes owner
+$ chown alice sample
+$ chown -R alice sample # changes all files in the directory
+
+# changes group
+$ chgrp develp tmp
+$ chgrop -R develop tmp
+
+# changes owner and group at the same time
+$ chown alice:develop tmp
+
+</code></pre>
+
+<h3 id="accessible-types">Accessible Types</h3>
+<ul>
+<li>Permission<ul>
+<li>r: read(4)</li>
+<li>w: write(2)</li>
+<li>x: execute(1)</li>
+</ul>
+</li>
+<li>Target Segment<ul>
+<li>owner</li>
+<li>group to which the owner belongs</li>
+<li>other users</li>
+</ul>
+</li>
+<li>Permission Counters<ul>
+<li>7 : 4 + 2 + 1 = r + w + x</li>
+<li>5 : 4 + 0 + 1 = r + x</li>
+<li>4 : 4 + 0 + 0 + r</li>
+</ul>
+</li>
+</ul>
+<pre><code class="bash">
+$ touch sample.txt
+$ ls -l sample.txt
+-rw-r--r--  1 username  group  0  1 10 10:11 sample.txt
+# user   = can read and write
+# group  = can read only
+# others = can read only
+
+# changes permission of sample.txt
+$ chmod 755 sample.txt
+$ ls -l sample.txt
+-rwxr-xr-x  1 username  group  0  1 10 10:11 sample.txt
+
+# other options
+# - target  : u, g, o
+# - control : +, -, =
+# - type        : r, w, x
+#
+$ chmod ug+rx sample.txt
+$ ls -l sample.txt
+-rwxr--r--  1 username  group  0  1 10 10:11 sample.txt
+
+</code></pre>
+
+<h3 id="root">root</h3>
+<pre><code class="bash">
+# changes user to root user
+$ su - # you need `-` option to use some restricted commands
+$ exit
+
+</code></pre>
+
+<h2 id="shell">Shell</h2>
+<p>Here, we mainly use <code>bash</code> as an example.</p>
+<h3 id="basic-usage">Basic Usage</h3>
+<pre><code class="bash">
+# shows all shells list which you can use
+$ cat /etc/shells
+/bin/bash
+/bin/csh
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+
+# shows PATH
+$ echo $PATH
+
+# `;`
+# commands would be continually executed
+$ git init; git add -A; git commit -m &quot;first commit&quot;
+
+# `&amp;&amp;`
+# representa &quot;E&quot;
+$ touch README.md &amp;&amp; git add README.md
+
+# `||`
+# representa &quot;OU&quot;
+$ cd /tmp || echo &quot;there is no such directory&quot;
+
+# shows executed commands history
+$ history
+$ history -c            # deletes history
+$ history 5             # shows the 5 latest history
+$ echo $HISTSIZE    # shows the size of saved history
+$ !cat                      # executes the latest command begin with `cat`
+$ !732                      # executes the history with the number
+$ !!                            # executes the last command in history
+$ !-3                       # executes the 3 before command in history
+$ ^cat^ls         # executes the latest command, after replacing `ls` command with `cat`
+
+</code></pre>
+
+<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
+<ul>
+<li><code>tab</code>      : complement commands or paths</li>
+<li><code>ctrl + a</code> : move cursor to the head of the line</li>
+<li><code>ctrl + e</code> : move cursor to the end of the line</li>
+<li><code>crll + l</code> : clear display</li>
+<li><code>ctrl + c</code> : stop currently executing process</li>
+<li><code>ctrl + s</code> : stop showing result onto the display</li>
+<li><code>ctrl + q</code> : restart showing result onto the display</li>
+<li><code>ctrl + z</code> : stop currently executing process temporarily</li>
+<li><code>ctrl + d</code> : log out</li>
+<li><code>ctrl + r</code> : starts incremental search (commands history)</li>
+</ul>
+<h3 id="variaveis-da-shell">Variaveis da Shell</h3>
+<pre><code class="bash">
+# historico
+$ echo $HISTFILE
+$ echo $HISTFILESIZE
+$ echo $HISTSIZE
+
+# pathname para pasta inicial de utilizador
+$ echo $HOME
+
+# nome da maquina
+$ echo $HOSTNAME
+
+# formato da lingua
+$ echo $LANG
+
+# mostar caminhos do PATH
+$ echo $PATH
+
+# variaveis da prompt
+$ echo $PS1
+$ echo $PS2 # prompt subshell padrao &quot;&gt;&quot;
+
+# pathname actual
+$ echo $PWD
+
+# mostar shell
+$ echo $SHELL
+
+# mostar terminal
+$ echo $TERM
+
+# mostar utilizador
+$ echo $UID
+$ echo $USER
+
+</code></pre>
+
+<h3 id="define-shell-variables">Define Shell Variables</h3>
+<pre><code class="bash">
+# defines variables
+$ name=&quot;David Brown&quot;
+
+# use defined variables
+$ echo $name
+
+# unset defined variables
+$ unset name
+
+</code></pre>
+
+<h3 id="environment-variables">Environment Variables</h3>
+<pre><code class="bash">
+# listar todas as variaveis de ambiente
+$ printenv
+
+# listar todas as variaveis de shell e de ambiente
+$ set
+
+# definir variavel de ambiente
+$ export VAR=Ubuntu
+
+</code></pre>
+
+<h2 id="shell-script">Shell Script</h2>
+<h3 id="basic-usageks">Basic Usageks</h3>
+<pre><code class="bash">
+# executes shell script
+$ source sampleshell.sh
+$ . sampleshell.sh      # this is the same with the above command
+
+
+</code></pre>
+
+<h3 id="basic-syntax">Basic Syntax</h3>
+<h4 id="parameters">Parameters</h4>
+<ul>
+<li>$# : the number of parameters</li>
+<li>$@ : todos os parametros</li>
+<li>$1 : primeiro parametro</li>
+<li>$2 : segundo parametro</li>
+<li>$3 : terceiro parametro...</li>
+</ul>
+<h4 id="condition-expression">Condition Expression</h4>
+<ul>
+<li>Tipo de ficheiro ( retorna true quando... )<ul>
+<li><code>-e</code> : ficheiro existe</li>
+<li><code>-f</code> : tipo <code>file</code></li>
+<li><code>-d</code> : pasta</li>
+<li><code>-r</code> : ficheiro existe e permite ler</li>
+<li><code>-w</code> : ficheiro existe e permite escrever</li>
+<li><code>-x</code> : ficheiro existe e permite executar</li>
+<li><code>-L</code> : é link simbolico</li>
+</ul>
+</li>
+<li>Numbero ( retorna true quando... )<ul>
+<li><code>A -eq B</code> : A é igual ao B</li>
+<li><code>A -ge B</code> : A é igual/maior que B</li>
+<li><code>A -gt B</code> : A é maior que B</li>
+<li><code>A -le B</code> : A é igual ou menor que que B</li>
+<li><code>A -lt B</code> : A é menor que B</li>
+<li><code>A -ne B</code> : A não é igual B</li>
+</ul>
+</li>
+<li>String ( returna true quando... )<ul>
+<li><code>-z A</code>   : o tamanho de A é 0</li>
+<li><code>A = B</code>  : A igual a B</li>
+<li><code>A != B</code> : A não é igual a B</li>
+</ul>
+</li>
+<li>Boleano (retorna true quando... )<ul>
+<li><code>! A</code>    : A fica false</li>
+<li><code>A -a B</code> : A e B são true</li>
+<li><code>A -o B</code> : A ou B é true</li>
+</ul>
+</li>
+</ul>
+<h4 id="if-statement">if statement</h4>
+<pre><code class="bash">
+# primeiro parametro é o nome de uma pasta,
+# retorna `ls -l`
+
+if [ -d $1 ]
+    then
+        ls -l $1
+    else
+        echo 'a pasta nao existe !'
+fi
+
+</code></pre>
+
+<h4 id="case-statement">case statement</h4>
+<pre><code class="bash">
+case $1 in
+    [ -d $1 ] )
+        echo &quot;o ficheiro é uma pasta&quot;
+        ;;
+    [ -f $1 ] )
+        echo &quot;o ficheiro e um file&quot;
+        ;;
+    *)
+        echo &quot;o tipo de ficheiro nao esta listado&quot;
+        ;;
+esac
+
+</code></pre>
+
+<h4 id="while-statement">while statement</h4>
+<p>teste a cabeça</p>
+<pre><code class="bash">
+i=1
+while [ $i -le $1 ]
+do
+    echo $i
+    let i=i+1
+done
+
+</code></pre>
+
+<h4 id="for-statement">for statement</h4>
+<p>enquanto, repetir...</p>
+<pre><code class="bash">
+i=1
+for uid in Will Smith David
+    echo $i
+done
+
+</code></pre>
+
+<h3 id="alias">alias</h3>
+<pre><code class="bash">
+# lista todas as alias activas
+$ alias
+
+# definir nova alias
+$ alias la='ln -la'
+
+# exemplo da nova alias definida
+$ la
+
+# remover um alias
+$ unalias la
+
+</code></pre>
+
+<h3 id="function">function</h3>
+<pre><code class="bash">
+# Você precisa de espaço antes e depois `{}` blanckets
+# $N means arguments
+$ function dlist() { ls -l $1 | grep '^d'; }
+
+# uses defines function like below
+$ dlist /
+
+# above is the same with below command
+$ ls -l / | grep '^d'
+
+# unset defined function
+$ unset dlist
+
+</code></pre>
+
+<h2 id="file-systemdevice-files">File System/Device Files</h2>
+<pre><code class="bash">
+# Mostra informações detalhadas sobre Linux file system
+$ dumpe2fs /dev/sda1
+
+# mostrar todos os dispositivos
+$ ls /dev
+
+# adiciona `&amp;` no fim de um comando para ser executando no background
+$ find / -name &quot;*node*&quot; -type f &gt; nodelog.log 2&gt;&amp;1 &amp;
+
+# mostrar todos jobs
+$ jobs
+
+# terminar jobs
+$ kill %1
+
+</code></pre>
+
+<h3 id="device-files">Device files</h3>
+<p>sobre ficheiros de dispositivos, observe a tabela abaixo para obter mais referencias.</p>
+<ul>
+<li>sda    : 1º disco</li>
+<li>sdb    : 2º disco</li>
+<li>sda*   : identifica a particao X</li>
+<li>scd*   : CD/DVD</li>
+<li>tty*   : terminal</li>
+<li>pts    : terminal virtual</li>
+<li>ttysS* : porta serial</li>
+<li>lp     : impressora</li>
+</ul>
+<h3 id="log-files">Log files</h3>
+<ul>
+<li><code>var/log/messages</code> : registo do sistema em geral</li>
+<li><code>var/log/secure</code>   : registo autenticação</li>
+<li><code>var/log/cron</code>     : registo tarefas cron</li>
+<li><code>var/log/maillog</code>  : registo mensagens do servidor email</li>
+<li><code>var/log/boot.log</code> : registo inicio de sistema</li>
+<li><code>var/log/wtmp</code>     : registo sobre o inicio de sessao do utilizador</li>
+<li><code>var/log/lastlog</code>  : registo sobre o ultimo login do utilizador</li>
+<li><code>var/run/utmp</code>     : registo utilizadores atualmente logados</li>
+</ul>
+<h2 id="cron">Cron</h2>
+<pre><code class="bash">
+$ crontab -e # editar crontab
+$ crontab -l # listar crontab
+$ crontab -r # remover crontab
+
+</code></pre>
+
+<p>Quando executado o comando <code>$ crontab -e</code>, surge um editor onde e possivel editar o ficheiro cron. alguns exemplos da sintaxe para agendar tarefas.</p>
+<pre><code class="bash">
+# *regra geral*
+# minuto hora dia mes DOW comando
+
+# run `/usr/bin/updatedb`
+# todos os dias, as 4 da manha
+0 4 * * * /usr/bin/updatedb
+
+# run `/usr/bin/updatedb`
+# cada dia 15 de cada mes, 1 da manha
+0 1 15 * * /usr/bin/updatedb
+
+# run `/user/bin/updatedb`
+# a cada 5 minutos
+*/5 * * * * /usr/bin/updatedb
+
+</code></pre>
+
+<h3 id="at"><code>at</code></h3>
+<p>Quando desejamos executar apenas 1 vez utilizamos o comando <code>at</code></p>
+<pre><code class="bash">
+# Lista todos os trabalhos agendados
+$ at -l
+# outra maneira
+$ atq
+
+# Elimina trabalhos agendados com o número do trabalho
+$ at -d &lt;numero do job&gt;
+
+# Notificar o utilizador enviando e-mail quando um trabalho for concluído
+$ at -m
+
+</code></pre>
+
+<h2 id="rede">Rede</h2>
+<h3 id="principais-protocolos">Principais Protocolos</h3>
+<p>Aqui estão o protocolo principal e básico pelo menos você deve se lembrar.</p>
+<ul>
+<li>TCP  : Transimission Control Protocol</li>
+<li>UDP  : User Datagram Protocol</li>
+<li>ICMP : Internet Control Message Protocol</li>
+<li>IP   : Internet Protocol</li>
+<li>HTTP : HyperText Transfer Protocol</li>
+<li>SSL  : Secure Socket Layer</li>
+<li>SMTP : Simple Message Transfer Protocol</li>
+<li>POP3 : Post Office Protocol</li>
+<li>FTP  : File Transfer Protocol</li>
+<li>DNS  : Domain Name Service</li>
+<li>DHCP : Dynamic Host Configuration Protocol</li>
+</ul>
+<h3 id="numero-da-porta-dos-protocolos">Numero da porta dos protocolos</h3>
+<ul>
+<li>20, 21 : FTP</li>
+<li>22     : SSH</li>
+<li>23     : TELNET</li>
+<li>25     : SMTP</li>
+<li>53     : DNS</li>
+<li>67     : DHCP</li>
+<li>80     : HTTP</li>
+<li>110    : POP3</li>
+<li>143    : IMAP4</li>
+<li>443    : HTTPS</li>
+</ul>
+<h3 id="comandos-basicos-de-redes">Comandos Básicos de Redes</h3>
+<pre><code class="bash">
+# Verifica se há ligação ou não
+$ ping -c 3 www.google.com
+
+# Obtém informações de DNS e endereços IP
+$ host www.google.com
+
+# Mostra ligações
+$ netstat
+$ netstat -a # mostra estado do socket
+$ netstat -n # mostar sem resolver nomes
+$ netstat -u # mostrar protocolo UDP
+$ netstat -p # mostrar processo
+$ netstat -s # mostrar estatistica
+
+# Mostra caminho percorrido pelos pacotes numa rede ate outro destino host
+$ traceroute www.google.com
+
+# Mostra a informação do servidor DNS
+$ cat /etc/resolv.conf
+
+# Mostra endereços IP e relação de nome de host
+$ cat /etc/hosts
+
+</code></pre>
+
+<h2 id="outros">Outros</h2>
+<h3 id="localelocalidade">Locale/Localidade</h3>
+<pre><code class="bash">
+# Mostra variáveis de ambiente local
+$ locale
+
+# Mostra o fuso horário
+$ ls /usr/share/zoneinfo/
+
+# Definir fuso horário
+$ export TZ='Europe/Lisbon'
+
+# Definir fuso horário numa shell
+$ tzselect
+
+</code></pre>
+
+<p>Sobre variáveis de ambiente locais</p>
+<ul>
+<li>LANG        : O valor padrão, que é usado quando LC_ALL não está definido</li>
+<li>LC_MESSAGES : mensagens informativas e de diagnóstico, e de respostas interativas</li>
+<li>LC_TIME     : Formato de data / hora</li>
+<li>LC_MONETARY : Formato de moeda</li>
+<li>LC_NUMERIC  : Formato do número</li>
+<li>LC_ALL      : Substitui todas as variáveis começando com LC_ e LANG, deve ser deixanda em branco</li>
+</ul>
+<h3 id="dicas-uteis">Dicas úteis</h3>
+<pre><code class="bash"># {}
+# O primeiro comando é igual ao segundo
+$ touch test{1,2,3}.md
+$ touch test1.md test2.md test3.md
+
+# Formato de Data
+$ date +&quot;%Y%m%d %H:%M %a(%b)&quot;
+
+# NTP(Network Time Protocol)
+$ ntpdate 0.pt.pool.ntp.org
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../info/" class="btn btn-neutral float-right" title="Exame LPI 0">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../rede/" class="btn btn-neutral" title="Redes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../rede/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../info/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

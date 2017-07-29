@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Distruições Linux - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Distrui\u00e7\u00f5es Linux";
+    var mkdocs_page_input_path = "distros/distros.md";
+    var mkdocs_page_url = "/distros/distros/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Distruições Linux</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#o-que-e-uma-distribuicao-de-gnulinux">O que é uma Distribuição de GNU/Linux?</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ciclo-de-vida-de-uma-distribuicao-linux">Ciclo de vida de uma distribuição Linux</a></li>
+    
+
+    <li class="toctree-l3"><a href="#selecionar-uma-distribuicao-linux">Selecionar uma distribuição linux:</a></li>
+    
+
+    <li class="toctree-l3"><a href="#implementacoes-do-linux">Implementações do linux</a></li>
+    
+
+    <li class="toctree-l3"><a href="#android">Android</a></li>
+    
+
+    <li class="toctree-l3"><a href="#onde-conhecer-novas-distros">Onde conhecer novas distros</a></li>
+    
+
+    <li class="toctree-l3"><a href="#distribuicoes-mais-comuns-do-linux">distribuições mais comuns do Linux</a></li>
+    
+
+    <li class="toctree-l3"><a href="#principais-distros-do-linux">Principais distros do Linux</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#debian">debian</a></li>
+        
+            <li><a class="toctree-l4" href="#ubuntu">ubuntu</a></li>
+        
+            <li><a class="toctree-l4" href="#centos">centos</a></li>
+        
+            <li><a class="toctree-l4" href="#fedora">fedora</a></li>
+        
+            <li><a class="toctree-l4" href="#redhat">redhat</a></li>
+        
+            <li><a class="toctree-l4" href="#scientific-linux">Scientific Linux</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Distruições Linux</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="o-que-e-uma-distribuicao-de-gnulinux">O que é uma Distribuição de GNU/Linux?</h2>
+<p>Cada distribuição possui um kernel Linux, um sistema gestor de pacotes e um repositório mais algumas utilidades e ficheiros de configuração. Existe algumas caracteristicas nas distribuições que podem variar muito uma da outra. Sempre que possivel realizar uma leitura na documentacao de cada distribuicao para analisar a sua finalidade.</p>
+<p>Composiçao de uma distro:</p>
+<ul>
+<li>Kernel: Linux, o coração do SO</li>
+<li>Bibliotecas: elementos de código pré-escritos que são compartilhados com todos os programas</li>
+<li>Utilitários: Manutenção do sistema de ficheiros, edição de ficheiros de texto, gestão de processos em execução, instalação de novos pacotes</li>
+<li>interface de utilizador: interface de linha de comando (CLI) ou interface gráfica de utilizador(GUI), a segunda é opcional.</li>
+</ul>
+<h2 id="ciclo-de-vida-de-uma-distribuicao-linux">Ciclo de vida de uma distribuição Linux</h2>
+<p>Basicamente o mesmo ciclo de vida que qualquer outro software. O termo "Suporte de longo prazo"(LTS - Long-term support) foi projetado para designar algo que terá suporte por um longo período de tempo.</p>
+<ul>
+<li>Definição dos objetivos: objetivo da distribuição é identificado</li>
+<li>Análise das necessidades e viabilidade: a distribuição é desenvolvida de acordo com os planos elaborados na fase de projeto</li>
+<li>Partilhar: a distribuição completa é lançada</li>
+<li>Aposentar: após o fim do ciclo de vida do suporte, a distribuição é considerada obsoleta e fica aposentada</li>
+</ul>
+<h2 id="selecionar-uma-distribuicao-linux">Selecionar uma distribuição linux:</h2>
+<ul>
+<li>o modelo do PC é um desktop ou servidor ?</li>
+<li>verificar arquitectura do CPU. as mais comuns: 32bit, 64bit ou ARM</li>
+<li>verificar especificações no hardware disponivel na máquina</li>
+<li>a distro oferece suporte técnico ? é 100% licença GPL ?</li>
+<li>os programas e drives que necessita vao funcionar ?</li>
+<li>verificar HCL(hardware compatibility list)</li>
+</ul>
+<h2 id="implementacoes-do-linux">Implementações do linux</h2>
+<ul>
+<li>PC desktop/server</li>
+<li>firmwares de sistema embutido</li>
+<li>virtualizacao </li>
+<li>cloud</li>
+</ul>
+<h2 id="android">Android</h2>
+<p><img alt="Screenshot" src="../../distros/android.jpeg" /></p>
+<p>Android é um S.O. baseado no kernel Linux. Adequirido pela empresa Google. A interface de utilizador é baseada na manipulação direta, o Android é projetado principalmente para dispositivos móveis com ecra sensível ao toque como smartphones e tablets.</p>
+<h2 id="onde-conhecer-novas-distros">Onde conhecer novas distros</h2>
+<p>Trata-se de um site das distribuições linux e BSD. O site informa sobre novas distribuições, actualizações e lançamentos.</p>
+<ul>
+<li><a href="https://distrowatch.com/?language=PT">distrowatch.com</a></li>
+</ul>
+<h1 id="distribuicoes-mais-comuns-do-linux">distribuições mais comuns do Linux</h1>
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Licensa</th>
+<th>Gestor de Pacotes</th>
+<th>Ciclo de vida</th>
+<th>skill técnico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arch</td>
+<td>Free</td>
+<td>pacman</td>
+<td>Rolling</td>
+<td>Experiente</td>
+</tr>
+<tr>
+<td>CentOS</td>
+<td>Free</td>
+<td>RPM</td>
+<td>aproximadamente 2 anos</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>Debian</td>
+<td>Free</td>
+<td>Debian</td>
+<td>aproximadamente 2 anos</td>
+<td>Intermédio to Expert</td>
+</tr>
+<tr>
+<td>Fedora</td>
+<td>Free</td>
+<td>RPM</td>
+<td>aproximadamente 6 meses</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>Gentoo</td>
+<td>Free</td>
+<td>build</td>
+<td>Rolling</td>
+<td>Experiente</td>
+</tr>
+<tr>
+<td>Mandriva</td>
+<td>Free</td>
+<td>RPM</td>
+<td>aproximadamente 1 ano</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>openSUSE</td>
+<td>Free</td>
+<td>RPM</td>
+<td>aproximadamente 8 meses</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>Red Hat Enterprise</td>
+<td>Comercial</td>
+<td>RPM</td>
+<td>aproximadamente 2 anos</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>Scientific Linux</td>
+<td>Free</td>
+<td>RPM</td>
+<td>aproximadamente 2 anos</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>Slackware</td>
+<td>Free</td>
+<td>tarballs</td>
+<td>Irregular</td>
+<td>Experiente</td>
+</tr>
+<tr>
+<td>SUSE Enterprise</td>
+<td>Comercial</td>
+<td>RPM</td>
+<td>2–3 ano</td>
+<td>Intermédio</td>
+</tr>
+<tr>
+<td>Ubuntu</td>
+<td>Free</td>
+<td>Debian</td>
+<td>aproximadamente 6 meses</td>
+<td>novato e Intermédio</td>
+</tr>
+</tbody>
+</table>
+<h1 id="principais-distros-do-linux">Principais distros do Linux</h1>
+<h2 id="debian">debian</h2>
+<p><img alt="Screenshot" src="../../distros/debian.png" /></p>
+<p>Debian GNU/Linux é um sistema operacional e também o nome do projeto que o mantém. O grupo distribui ainda núcleos Unix-like, como o Debian GNU/kFreeBSD e o Debian GNU/Hurd. O Debian é especialmente conhecido pelo seu sistema de gestão de pacotes, chamado APT, que permite: atualização relativamente fácil a partir de versões relativamente antigas; instalação quase sem esforço para novos pacotes e remoção limpa de pacotes antigos. O nome Debian vem dos nomes dos seus fundadores, Ian Murdock e de sua esposa, Debra. O projeto Debian é mantido por meio de doações à organização sem fins lucrativos Software in the Public Interest (SPI). <a href="https://www.debian.org/">website</a>, <a href="https://www.debian.org/doc/ddp">documentacao</a></p>
+<h2 id="ubuntu">ubuntu</h2>
+<p><img alt="Screenshot" src="../../distros/ubuntu.png" /></p>
+<p>Completamente baseado no Debian, o Ubuntu é mantido pela Canonical e utiliza diversos softwares e interface que tendem a deixar o sistema mais amigável, sendo ideal para uma ambientação ao mundo open source. Caso você deseja começar agora a usar Linux, o Ubuntu apresenta uma das interfaces mais amigáveis e o maior apoio da comunidade para um iniciante. <a href="https://www.ubuntu.com/">website</a>, <a href="https://help.ubuntu.com/">documentacao</a></p>
+<h2 id="centos">centos</h2>
+<p><img alt="Screenshot" src="../../distros/centos.png" /></p>
+<p>O CentOS, abreviação de Community ENTerprise Operating System, é uma distribuição Linux de classe corporativa derivada de códigos fonte gratuitamente distribuídos pela Red Hat Enterprise Linux e mantida pelo CentOS Project.</p>
+<p>A numeração das versões é baseada na numeração do Red Hat Enterprise Linux. Por exemplo, o CentOS 4 é baseado no Red Hat Enterprise Linux 4. A diferença básica entre um e outro é o fornecimento de suporte pago na aquisição de um Red Hat Enterprise Linux. Em termos de funcionalidade, podem ser considerados sistemas clones.</p>
+<p>Embora o CentOS seja bem visado para seu uso em servidores devido a sua estabilidade e robustez, o CentOS não é um sistema exclusivo de servidores. Tem essa fama devido seu foco em recursos estáveis (semelhante ao que o Debian GNU/Linux faz) e as aplicações focados em estações de trabalho e redes por padrão. Ele pode ser usado como uso comum, porém, é necessário a adição de repositórios adicionais que não vem ativos por padrão. Os mais comuns são: NUX e o EPEL <a href="https://www.centos.org/">website</a>, <a href="https://www.centos.org/docs/5/">documentacao</a></p>
+<h2 id="fedora">fedora</h2>
+<p><img alt="Screenshot" src="../../distros/fedora.png" /></p>
+<p>Fedora é patrocinada pela Red Hat, empresa muito conhecida no meio corporativo. Por isso, se você está interessado em experimentar as tecnologias líderes do mercado, a distro escolhida pode ser a Fedora. Como o ciclo de lançamento é muito curto, a Fedora tende a incluir as mais recentes tecnologias  em sua distribuição. <a href="https://getfedora.org/">link para o website</a>, <a href="https://docs.fedoraproject.org/en-US/index.html">link para a documentacao</a></p>
+<h2 id="redhat">redhat</h2>
+<p><img alt="Screenshot" src="../../distros/redhat.png" /></p>
+<p>A popular distro RedHat é uma versão mais estável da distro Fedora. Ela é recomendada para uso em servidores, onde há uma maior necessidade de estabilidade e segurança. Trata-se de uma distro paga, pois a empresa (Red Hat) oferece todo o suporte necessário.
+<a href="https://developers.redhat.com/downloads/">link para o website</a>, <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/7.0_Release_Notes/index.html">link para a documentacao</a></p>
+<h2 id="scientific-linux">Scientific Linux</h2>
+<p><img alt="Screenshot" src="../../distros/sl.jpg" /></p>
+<p>Este sistema é derivado do software livre e de código aberto disponibilizado pela Red Hat, Inc., mas não é produzido, mantido ou apoiado pela Red Hat. Ele foi feito a partir do código-fonte de versões da Red Hat Enterprise Linux, nos termos e condições da EULA da Red Hat Enterprise Linux e da GNU General Public License. <a href="https://www.scientificlinux.org/">website</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../gestor-pacotes/" class="btn btn-neutral float-right" title="Gestor de Pacotes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../sistemas-operativos/so/" class="btn btn-neutral" title="Sistemas operativos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../sistemas-operativos/so/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../gestor-pacotes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

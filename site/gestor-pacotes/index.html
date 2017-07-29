@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Gestor de Pacotes - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Gestor de Pacotes";
+    var mkdocs_page_input_path = "gestor-pacotes/index.md";
+    var mkdocs_page_url = "/gestor-pacotes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Gestor de Pacotes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#o-que-e-um-pacote">o que é um pacote?</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#composicao-de-um-pacote">Composição de um pacote:</a></li>
+        
+            <li><a class="toctree-l4" href="#vantagens-do-uso-de-pacotes">Vantagens do uso de pacotes</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#repositorios">Repositorios</a></li>
+    
+
+    <li class="toctree-l3"><a href="#software-para-gerir-pacotes">software para gerir pacotes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#back-end-vs-front-end">Back-end vs Front-end</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#funcionamento-geral">funcionamento geral</a></li>
+    
+
+    <li class="toctree-l3"><a href="#familia-de-distribuicoes-red-hat">Família de Distribuições Red Hat</a></li>
+    
+
+    <li class="toctree-l3"><a href="#familia-de-distribuicoes-debian">Família de Distribuições Debian</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#aptitude">aptitude</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#gestores-de-pacotes-menos-comuns">Gestores de pacotes menos comuns</a></li>
+    
+
+    <li class="toctree-l3"><a href="#alien">Alien</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ambientes-graficos">Ambientes Graficos</a></li>
+    
+
+    <li class="toctree-l3"><a href="#exemplo-concreto-de-utilizacao-de-apt">Exemplo concreto de utilização de apt</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Gestor de Pacotes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="o-que-e-um-pacote">o que é um pacote?</h1>
+<p>Na informatica, um pacote é algo semelhante ao conceito físico que temos do mesmo: algo para guardar informação relacionada entre si de alguma forma. Isto é ambos contêm “dentro de si” informação relacionada, necessitam de ser “abertos” antes que essa informação possa ser utilizada e ambos podem ter uma etiqueta “exterior” que identifique o seu conteúdo.</p>
+<p>Portanto, de forma bastante geral e resumida, em termos informáticos, podemos considerar um pacote como sendo um conjunto de ficheiros relacionados contendo informação sobre como devem ser utilizados.</p>
+<p>Na maior parte das vezes um pacote contém um programa ou um conjunto de programas, no entanto um pacote pode conter simplesmente documentação ou um conjunto de temas para o ambiente de trabalho, fontes, etc.</p>
+<p>Um pacote contém informação sobre em que pastas do sistema de ficheiros o seu conteúdo deverá residir, dependências e conflitos que o seu conteúdo traz  associados, e ainda instruções de instalação do seu conteúdo.</p>
+<p>No caso concreto dos pacotes de aplicações, estes contêm o código fonte pré-compilado e empacotado como um ficheiro binário de instalação (executável). Estes pacotes podem conter ainda ícones, bibliotecas, ficheiros de configuração, binários, man pages, atalhos de ambiente de trabalho, headers, fontes, etc... </p>
+<p>Além disso, um pacote pode conter meta-dados, como por exemplo, informações sobre a versão, identificação do autor do software, quem mantém o pacote, informações do contacto, licenciamento, alterações, README e o site do projecto e do código fonte.</p>
+<h2 id="composicao-de-um-pacote">Composição de um pacote:</h2>
+<ul>
+<li>Ficheiros que correspondem ao programa propriamente dito (incluindo ficheiros de configuração)</li>
+<li>Meta-dados (incluindo dependências)</li>
+<li>Scripts de configuração e manutenção</li>
+</ul>
+<p>Quando um pacote é instalado, os dados são descompactados e copiados para as pastas necessárias do sistema de ficheiros (diferem de distribuição para distribuição), criando links simbólicos onde necessário, atalhos nos menus e no ambiente de trabalho e também disponibilizando opções de configuração ao utilizador.</p>
+<h2 id="vantagens-do-uso-de-pacotes">Vantagens do uso de pacotes</h2>
+<ul>
+<li>Possibilidade de mobilidade de informação sem perda de dados</li>
+<li>Facilidade de organização e de estrutura da informação</li>
+<li>"Auto-suficiência” – um pacote contém informação sobre como “se instalar” e “desinstalar” do sistema, tornando a tarefa mais simples</li>
+</ul>
+<h1 id="repositorios">Repositorios</h1>
+<p>Os repositórios são como que ficheiros onde estão guardadas colecções de pacotes acessíveis para os utilizadores poderem descarregar e instalar no sistema. Normalmente os repositórios estão localizados num servidor remoto, mas podem também estar acessiveis localmente num disco rígido ou leitor CD-DVD.</p>
+<p>Para ser possível aceder a um repositório remoto é necessária, normalmente, uma chave digital - por exemplo o sistema apt das distribuições baseadas em Debian utiliza o sistema gpg(GNU Privacy Guard). Os repositórios são mantidos por uma organização/pessoa confiável, em princípio estão livres de
+malware e vírus. Só então outras pessoas iniciam mirrors de outros cantos no mundo. Esta é uma das principais razões pelas quais os sistemas operativos que utilizam de forma generalizada os repositórios e gestores de pacotes, estarem menos sujeitos a este tipo de ataques.</p>
+<p>Para que os gestores de pacotes se consigam “orientar”, os repositórios precisam de ter uma organização muito estruturada.</p>
+<p>Os repositórios oficiais das distribuições de Linux têm uma estrutura muito própria, por exemplo, os repositórios da distribuição Ubuntu estão organizados da seguinte forma:</p>
+<ul>
+<li>Main - Software oficial</li>
+<li>Restricted - Software suportado, mas que não está disponível sob uma licençacompletamente livre</li>
+<li>Universe - Software não suportado oficialmente, mas mantido e suportado pela comunidade.</li>
+<li>Multiverse -  Software não livre.</li>
+</ul>
+<p>É importante notar que os repositórios armazenam pacotes num formato específico, dependendo do gestor de pacotes para os quais são construídos. Por exemplo, o urpmi do Mandriva não consegue ler o repositório yum do Fedora, embora ambos contenham pacotes no formato .rpm</p>
+<h1 id="software-para-gerir-pacotes">software para gerir pacotes</h1>
+<p>De forma resumida, um gestor de pacotes, é uma aplicação (ou um conjunto de aplicações)responsável por facilitar e automatizar as tarefas de instalar, remover, configurar e actualizar pacotes. Hoje em dia, grande parte dos gestores de pacotes utilizados faz bem mais do que isto, no entanto é importante entender como funcionam de raiz, pois, na realidade, qualquer um dos actuais funciona tendo por base os gestores de pacotes mais limitados que foram criados há mais tempo.</p>
+<h2 id="back-end-vs-front-end">Back-end vs Front-end</h2>
+<p>Durante os anos 90, foram criados os primeiros gestores de pacotes que tinham por objectivo simplificar o processo de instalação de aplicações a partir dos códigos-fonte, tal como o processo de remoção dos pacotes instalados.</p>
+<p>Estes gestores tratavam de forma prática e rápida, instalar ou remover um pacote. Dos gestores de pacotes que apareceram nessa altura e que continuam a ter grande importância hoje em dia destacam-se:</p>
+<ul>
+<li>rpm originalmente desenvolvido pela Red Hat e denominado Red Hat PackageManager, que mais tarde passou a ser um acrónimo recursivo para RPM Package Manager</li>
+<li>dpkg abreviatura de Debian Package, desenvolvido por Matt Welsh, Carl Streeter e Ian Murdock, tendo sido mais tarde aperfeiçoado pela comunidade</li>
+</ul>
+<p>Existem ainda outros tipos de pacotes menos utilizados, mas não menos importantes, dosquais podemos referir, a título de exemplo:</p>
+<ul>
+<li>ebuild - formato proprio da distribuicao gentoo</li>
+<li>pkg.tar.xz formato usado na distribuicao arch no seu gestor pacman</li>
+<li>tgz juncao dos ficheiros .tar e .gz, inicialmente usado na distribuicao slackware</li>
+</ul>
+<p>Os gestores de pacotes iniciais representaram um passo extremamente importante no desenvolvimento do Linux, no entanto têm algumas limitações, sendo que uma das principais é não terem em conta as dependências inerentes a cada pacote, ou seja têm em conta apenas pacotes individuais. Isto significa que, se utilizarmos apenas estas ferramentas para as tarefas deinstalação e remoção de pacotes no nosso sistema, existe uma probabilidade muito grande de ficarmos com pacotes repetidos e/ou a ter muita dificuldade em instalar certos pacotes, devido a termos de procurar manualmente pelas suas dependências específicas – este tipo de problema costuma apelidar-se de Dependency Hell/inferno das dependecias.</p>
+<p>Devido a este tipo de limitações, ao longo dos anos foram aparecendo novos gestores de pacotes que expandem as funcionalidades dos gestores originais. Na realidade, talvez seja mais correcto não chamar 'gestores novos' a estas aplicações, uma vez que elas são como que um front-end entre o utilizador e o gestor de pacotes original.</p>
+<table>
+<thead>
+<tr>
+<th>back-end</th>
+<th>front-end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dpkg</td>
+<td>apt aptitude smart</td>
+</tr>
+<tr>
+<td>rpm</td>
+<td>yum zypp smart</td>
+</tr>
+</tbody>
+</table>
+<h1 id="funcionamento-geral">funcionamento geral</h1>
+<p>A interacção do gestor de pacotes com um repositório é feita por pedidos. Portanto quando umutilizador quer instalar um determinado pacote recorrendo ao gestor de pacotes, acontece algoque se pode esquematizar da seguinte forma:</p>
+<ul>
+<li>Gestor de pacotes faz um pedido ao repositório por informação relativamente ao pacote</li>
+<li>O repositório envia os meta-dados correspondentes ao pacote escolhido (contendo informação referente ao tamanho do pacote, às suas dependências, aos seus conflitos,etc.)</li>
+<li>O gestor de pacotes recebe os meta-dados do servidor e guarda-os na sua base dedados interna (no caso do rpm, a sua base de dados é do tipo Berkeley DB)</li>
+<li>Utilizando a sua base de dados, o gestor de pacotes envia ao repositório pedidos de descarregamento para todos os pacotes necessários (de acordo com a informação recebida sobre as dependências);</li>
+<li>Por fim, quando tudo tiver sido descarregado, o gestor procede à instalação dos pacotes que descarregou</li>
+</ul>
+<p>Os gestores de pacotes actuais, são todos muito similares em termos de funcionalidades, oque significa que as diferenças principais entre si prendem-se por pormenores e também umpouco por gosto do utilizador em si ou de quem estrutura o conteúdo da distribuição</p>
+<h1 id="familia-de-distribuicoes-red-hat">Família de Distribuições Red Hat</h1>
+<p>Para a família de distribuições baseadas em Red Hat, os
+front-ends
+mais utilizados são o
+yum
+e o
+zypp
+.
+ Yellow Dog Updater Modified (yum)
+- Usado nas distribuições Fedora, CentOS, Red HatEnterprise Linux 5 e superiores, Scientific Linux, Yellow Dog Linux, Oracle Enterprise Linux, etc.Este gestor, desenvolvido por Seth Vidal juntamente com um grupo de voluntários, tembastante importância pois o seu repositório no formato XML, construído com o
+feedback 
+de muitosprogramadores, tornou-se o
+standard 
+dos repositórios baseados em RPM.De seguida listam-se alguns dos comandos responsáveis pelas tarefas mais utilizadas com oyum:</p>
+<p>A configuração do yum é obtida através da manipulação do ficheiro: /etc/yum.conf</p>
+<pre><code>yum install pacote # instalar pacote
+yum remove pacote # remover pacote
+yum update # actualizar sistema
+yum list pacote # procura pacote aceita expressoes regulares
+yum provides
+</code></pre>
+
+<p>ZYpp (ou libzypp) -
+é o gestor de pacotes padrão do SUSE e do OpenSuse e usa pacotes.rpm. Para este gestor de pacotes existe o Zypper (Uma interface de linha de comandos), quepermite instalar, remover, actualizar e procurar pacotes de programas.Instalar pacote</p>
+<pre><code># zypper install package_name
+Remover pacote
+# zypper remove package_name
+Actualizar sistema
+# zypper update
+</code></pre>
+
+<p>Quanto ao ficheiro que controla a configuração do zypper, este pode ser encontrado nadirectoria: /etc/zypp/zypper.conf</p>
+<h1 id="familia-de-distribuicoes-debian">Família de Distribuições Debian</h1>
+<p>Por outro lado, nas famílias de distribuições baseadas em Debian, os
+front-end mais utilizados são apt(Advanced Packaging Tools) e aptitude, no entanto antes destes serem criados, outros existiam, por exemplo, um dos primeiros front-end a ser criado para o dpkg foi o dselect, cujo primeiro lançamento remonta a 1995, no entanto hoje em dia pode considerar-se obsoleto e caiu em desuso.</p>
+<p>O apt surgiu pela primeira vez em 1999 na versão 2.1 da distribuição Debian; daí para cá temvindo a melhorar as suas funcionalidades e a expandir-se por outras distribuições.As funcionalidades executadas pelos front-end do gestor de pacotes RPM, também existem deforma equivalente no front-end apt, nomeadamente:</p>
+<pre><code>apt-get install # instalar pacote
+apt-get remove # remove pacote
+apt-get update # actualização da lista de pacotes a partir dos repositórios
+apt-get upgrade # actualiza sistema
+apt-cache search # procura por pacote aceita regular expressions
+apt-cache show # ver informacoes detalhadas sobre um pacote instalado
+</code></pre>
+
+<p>Como quase todos os programas de linux, o apt é também bastante configurável. A forma maisfácil de aceder e editar as suas configurações é através visualização ou edição dos seguintesficheiros:</p>
+<ul>
+<li>/etc/apt/sources.list - contém a lista de locais onde se encontram os repositórios</li>
+<li>/etc/apt/apt.conf - configuração base do apt</li>
+<li>/etc/apt/preferences - aqui pode-se definir o “pinning”, isto é, é possível forçar o apt a ir buscar certas versões específicas de pacotes ou ir buscar a certos repositórios específicos.</li>
+</ul>
+<p>podemos aceder aos pacotes descarregados pelo apt:</p>
+<ul>
+<li>/var/cache/apt/archives/ - aqui ficam guardados os pacotes descarregados pelo apt</li>
+<li>/var/cache/apt/archives/partial/ - aqui ficam guardados, enquanto estão a ser instalados,os pacotes descarregados pelo apt</li>
+</ul>
+<h2 id="aptitude">aptitude</h2>
+<p>Quanto ao aptitude , este foi criado como sendo não um front-end directo para o dpkg, massim como um interface (em modo de texto) para o apt. As suas funcionalidades são bastantesemelhantes às do apt, porém há quem defenda que o seu sistema de resolução dedependências é mais eficaz</p>
+<p>A configuração do aptitude pode ser personalizada editando o ficheiro/etc/apt/apt.conf</p>
+<pre><code>aptitude -u # update
+aptitude -U # upgrade
+aptitude remove #
+aptitude install
+aptitute search
+
+</code></pre>
+
+<h1 id="gestores-de-pacotes-menos-comuns">Gestores de pacotes menos comuns</h1>
+<p>Existem ainda outros sistemas menos convencionais de gestão de pacotes. Um exemplodesses gestores é o
+Pkgtool
+, o gestor de pacotes padrão da distribuição Gnu/Linux Slackware.Ele é usado na instalação da distribuição e é também utilizado para a remoção, instalação eactualização de pacotes. Este gestor foi desenvolvido por Patrick J. Volkerding.</p>
+<p>Outro sistema de gestão de pacotes pouco convencional é o
+Portage
+- um sistemadesenvolvido na linguagem de programação Python e utilizado pela distribuição Gentoo Linux.Este gestor de pacotes tem uma série de recursos avançados, incluindo resolução de  dependências, uma gestão de pacotes optimizada,
+fake installs
+(ao estilo de OpenBSD), pacotesvirtuais, etc.Normalmente o
+Portage
+é utilizado através de um interface de linha de comandos denominado
+emerge</p>
+<h1 id="_1"></h1>
+<p>A distinção entre pacotes dpkg e rpm não é muito definida como talvez pareça à primeira vista.</p>
+<p>Para a fragilidade desta separação contribuem os gestores de pacotes que conseguemtrabalhar como
+front-end 
+quer para
+dpkg
+quer para
+rpm
+. Um dos exemplos mais comuns comeste tipo de funcionalidade é o gestor de pacotes
+smart
+.</p>
+<p>Este gestor de pacotes foi construído com o objectivo de poder ser utilizado em diversasdistribuições de Linux e também em Macintosh. Para além disso, os seus criadores defendem queé bastante mais eficaz a resolver dependências do que os gestores nativos das distribuições ondefor utilizado, por exemplo o
+yum
+ou o
+apt
+.</p>
+<p>De notar que o smart , apesar de poder ser utilizado em diversas distribuições de Linux, só funciona com os pacotes nativos dessa distribuição.</p>
+<p>existe também o projecto apt-rpm que é a transposição do front-end apt para funcionar tendo por base o back-end rpm</p>
+<h2 id="alien">Alien</h2>
+<p>Por fim, existe ainda a possibilidade de converter entre os formatos inerentes aos gestores rpm e dpkg (e a outros gestores também) através de uma ferramenta denominada Alien. O Alien suporta conversões entre Linux Standart Base, RPM, deb, Stampede (.slp), Solaris(.pkg) e Slackware (.tgz). Também permite instalar automaticamente os pacotes gerados pelasconversões e converter os scripts de instalação incluídos no arquivo.</p>
+<p>Apercebemo-nos que realmente existe uma fronteira entre diferentes tipos de pacotes masque, por vezes, ela pode ser contornada com recurso às diversas ferramentas que enumerámos.</p>
+<h1 id="ambientes-graficos">Ambientes Graficos</h1>
+<p>Com a expansão do Linux nos últimos anos e a sua consequente chegada ao utilizador menos especializado, tornou-se necessária a criação de ambientes gráficos (GUI) para os gestores de pacotes.</p>
+<ul>
+<li>synaptic package manager - reproduz todas as funcionalidades do gestor 
+apt através de um ambiente gráfico. é característico das distribuições Debian</li>
+<li>yast - Baseado em pacotes rpm. é característico das distribuições OpenSUSE</li>
+<li>ubuntu software center - uma simplificação e proposta de substituição do Synaptic por parte da distribuição Ubuntu.</li>
+<li>yumex - Baseado em pacotes rpm. é caracteristico das distribuições centOS</li>
+</ul>
+<p>Qualquer uma destas aplicações torna a tarefa de gerir pacotes extremamente fácil, não tendo necessidade de grandes conhecimentos técnicos do funcionamento interno da gestão de pacotes em si.</p>
+<p>As aplicações gráficas que se referiram não trazem nenhuma funcionalidade nova propriamente dita, no entanto são úteis e uma mais valia para o utilizador comum, pois permitemter uma visualização concreta do sistema de gestão de pacotes para quem não sabe ou não quer utilizar a linha de comandos.</p>
+<h1 id="exemplo-concreto-de-utilizacao-de-apt">Exemplo concreto de utilização de apt</h1>
+<p>como proceder para adicionar um novo repositório na distribuição Ubuntu e para instalar um pacote a partir desse repositório através do gestor de pacotes apt.</p>
+<p>A título de exemplo, instalemos, pelo método tradicional, a partir do repositório Medibuntu o pacote w32codecs.</p>
+<p>Primeiro fazemos uma cópia de segurança do ficheiro que contêm a lista de repositórios:</p>
+<p>$ sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</p>
+<p>De seguida adicionamos o repositório XXXX, acrescentando no ficheiro/etc/apt/sources.list o texto “deb http://packages.medibuntu.org/ maverick free non-free”</p>
+<p>Agora podemos obter e adicionar a chave de segurança do repositório do medibuntu atravésdo comando:</p>
+<p>$ wget --quiet http://packages.medibuntu.org/medibuntu-key.gpg -O - | sudo apt-key add -</p>
+<p>Como alterámos a lista de repositórios, há que pedir ao apt para reler a lista:</p>
+<p>$ sudo apt-get update</p>
+<p>Temos tudo pronto para que seja possível instalar qualquer pacote presente no repositório que acabámos de instalar. Instalemos, por exemplo, o pacote w32codecs:</p>
+<p>$ sudo apt-get install w32codecs</p>
+<p>As novas versões do Ubuntu têm um sistema que permite adicionar um novo repositório e a sua chave digital automaticamente. Vamos então exemplificar como é que, com este sistema,podemos instalar o software de informação geográfica Quantum GIS, presente no repositórioubuntugis:</p>
+<p>Adicionemos o repositório e a sua chave simultaneamente:</p>
+<p>$ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable</p>
+<p>Actualizemos a lista de repositórios e instalemos o pacote correspondente ao programa:</p>
+<p>$ sudo apt-get update &amp;&amp; sudo apt-get install qgis</p>
+<p>Com ambas as opções conseguimos, sem grande dificuldade, instalar um pacote a partir de umrepositório desconhecido, à partida, para o sistema</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../licensas/" class="btn btn-neutral float-right" title="Software de Código Aberto">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../distros/distros/" class="btn btn-neutral" title="Distruições Linux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../distros/distros/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../licensas/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

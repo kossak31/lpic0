@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Hardware - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Hardware";
+    var mkdocs_page_input_path = "hardware/index.md";
+    var mkdocs_page_url = "/hardware/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Hardware</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#cpu">CPU</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#32bits-vs-64bits">32bits vs 64bits</a></li>
+        
+            <li><a class="toctree-l4" href="#ram-a-memoria-principal">RAM a memoria principal</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#placa-mae">Placa mãe</a></li>
+    
+
+    <li class="toctree-l3"><a href="#rom-bios">ROM-BIOS</a></li>
+    
+
+    <li class="toctree-l3"><a href="#firmware">FIRMWARE</a></li>
+    
+
+    <li class="toctree-l3"><a href="#arquitectura-de-busbarramento">ARQUITECTURA DE BUS/Barramento</a></li>
+    
+
+    <li class="toctree-l3"><a href="#slots-de-expansao">SLOTS DE EXPANSAO</a></li>
+    
+
+    <li class="toctree-l3"><a href="#pci">PCI</a></li>
+    
+
+    <li class="toctree-l3"><a href="#agp">AGP</a></li>
+    
+
+    <li class="toctree-l3"><a href="#pci-express">PCI Express</a></li>
+    
+
+    <li class="toctree-l3"><a href="#usb-universal-serial-bus">USB - Universal Serial Bus</a></li>
+    
+
+    <li class="toctree-l3"><a href="#norma-ieee-1394-firewire">Norma IEEE 1394 - FireWire</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ligacoes-externas">Ligacoes externas</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#fonte-de-alimentacao">Fonte de alimentação</a></li>
+        
+            <li><a class="toctree-l4" href="#ups">UPS</a></li>
+        
+            <li><a class="toctree-l4" href="#placas-graficas">Placas Gráficas</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#disco-rigidohard-disk">Disco Rígido/Hard Disk</a></li>
+    
+
+    <li class="toctree-l3"><a href="#mbr">MBR</a></li>
+    
+
+    <li class="toctree-l3"><a href="#conceitos">conceitos</a></li>
+    
+
+    <li class="toctree-l3"><a href="#rpm">RPM</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#historia-do-winchester">Historia do Winchester</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#cabos-sata-e-ideata">Cabos SATA e IDE/ATA</a></li>
+    
+
+    <li class="toctree-l3"><a href="#caixa-ou-torre">Caixa ou Torre</a></li>
+    
+
+    <li class="toctree-l3"><a href="#plug-and-play">Plug and PLay</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Hardware</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Embora o linux seja meramente software, ele depende do hardware para operar. As capacidades e limitacoes do hardware vao concerteza influenciar as capacidades e limitacoes do linux em execucao nesse hardware. Portanto, deve conhecer os variados componentes disponiveis no computador.</p>
+<h2 id="cpu">CPU</h2>
+<p><img alt="Screenshot" src="../TIC/cpu/cpu-amd-socket.jpg" /></p>
+<p>O processador é um dos componentes mais caros, mas ao mesmo tempo mais importante. Unidade central de processamento em portugues. corresponde ao cérebro do computador, onde é feita a maior parte dos cálculos. É responsável pelo processamento de todos os tipos de dados e pela apresentação de resultados do processamento.</p>
+<p>componentes do cpu</p>
+<ul>
+<li>Unidade lógica e aritmética (ULA): executa as operações aritméticas e lógicas</li>
+<li>Unidade de controle (UC): extrai instruções da memória e as decodifica</li>
+<li>Registradores e Memória cache: guarda as instruções, ou valores em registros, que serão usadas no processamento de cada comando.</li>
+</ul>
+<p>À velocidade com que as informações são transmitidas é dado o nome de “clock”. Essa taxa é medida em Hertz (Hz) e vem expressa no modelo do processador.</p>
+<h3 id="32bits-vs-64bits">32bits vs 64bits</h3>
+<p>32 bits Vantagens</p>
+<ul>
+<li>Facilidade em encontrar softwares para esta plataforma.</li>
+<li>É o mais indicado para maquinas com baixo desempenho.</li>
+<li>A versão 32bits em geral é mais barata.</li>
+</ul>
+<p>32 bits Desvantagens</p>
+<ul>
+<li>Só trabalha com no máximo 4gb de memoria RAM.</li>
+<li>É mais lento</li>
+</ul>
+<p>64 bits Vantagens</p>
+<ul>
+<li>Lida melhor com altas quantidades de memória RAM.</li>
+<li>Suporta até 128gb de memoria RAM.</li>
+<li>Pode processar o dobro de informações que um computador de 32 bits.</li>
+<li>o tamanho dos ficheiros é menor</li>
+</ul>
+<p>64 bits Desvantagens</p>
+<ul>
+<li>Necessita de uma maquina mais cara</li>
+<li>Software com versões 64 bits não funcionam em processadores com capacidade inferior.</li>
+</ul>
+<p>Intel e AMD são as principais empresas fabricantes mundiais de processadores. Os processadores AMD trazem geralmente um clock superior, para o alcançarem consomem mais energia e como tal geram mais calor.</p>
+<h3 id="ram-a-memoria-principal">RAM a memoria principal</h3>
+<p><img alt="Screenshot" src="../TIC/ram/ram_comparacao.jpg" /></p>
+<p>É o sistema de memoria de acesso aleatório que vai fornecer ao processador toda a informacao necessaria para este executar os programas e guardar os dados relativos a esse processamento. </p>
+<p>quanto maior for a memoria presente no sistema, mais determinante vai ser o desempenho do processador. É essencial principalmente para os editores de video, e para aplicações 3D, tarefas que ocupam muita memória. Quando o computador é reiniciado, os dados da memória RAM são apagados.</p>
+<p>Alguns tipos de memorias mais usadas:</p>
+<ul>
+<li>
+<p>dimm (dual in-line module memory) com 168 contactos, pent2 ao 4</p>
+</li>
+<li>
+<p>ddr (double data rate) envia o dobro de informacoes para o processador tem 186 contactos</p>
+</li>
+<li>
+<p>ddr2 a velocidade e o dobro das ddr</p>
+</li>
+</ul>
+<p>Quanto menor for o CL ou CAS (indicador de latência), o tempo de resposta do tráfego de informação será menor, ou seja, melhor. Devemos procurar por memorias com caracteristicas de alta frequência e baixa latência.</p>
+<h2 id="placa-mae">Placa mãe</h2>
+<p><img alt="Screenshot" src="../TIC/motherboard/placamae.jpg" /></p>
+<p>A placa mãe é o suporte para as peças, é onde tudo fica conectado e interligado. Nada mais que uma Print Circuit Board(PCB), uma tabua com circuitos impressos.</p>
+<ul>
+<li>socket para processador</li>
+<li>slot memoria ram</li>
+<li>slot pci express</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>caracteristicas ATX</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extended atx</td>
+<td>tamanho grande</td>
+</tr>
+<tr>
+<td>atx</td>
+<td>tamanho médio</td>
+</tr>
+<tr>
+<td>micro atx</td>
+<td></td>
+</tr>
+<tr>
+<td>resulta na perda de alguns dos slots PCI.</td>
+<td></td>
+</tr>
+<tr>
+<td>ATX de tamanho normal em um formato menor .</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>mini itx (utiliza pouca energia, e, portanto, gera menos calor, placa quadrada, 1 slot de ram)</li>
+</ul>
+<h2 id="rom-bios">ROM-BIOS</h2>
+<p>primeira camada de software do sistema responsavel pelo arranque do PC
+BIOS(basic input/output system) e um conjunto de instrucoes que constituem um programa armazenado em memoria do tipo ROM(read only memory). determina a compactibilidade ao software por parte do hardware da placa de sistema. Ao iniciar o PC a BIOS detecta os compomentes de hardware ligados, depois desse processo de identificacao a BIOS passa o controlo para o sistema operativo. Então o arranque do sistema acontece.</p>
+<p>O famoso overclock, que é alterar a velocidade do clock do processador ou defenir a data e hora são valores configurados na BIOS.
+A técnica de "flash rom" permite alterar/actualizar a BIOS existente do sistema a partir de ficheiros.</p>
+<h2 id="firmware">FIRMWARE</h2>
+<p>Conjunto de instrucoes essenciais para o funcionamento do dispositivo. É armazenado em um chip de memoria ROM ou memoria flash no proprio dispositivo.</p>
+<h2 id="arquitectura-de-busbarramento">ARQUITECTURA DE BUS/Barramento</h2>
+<p>a comunicacao de dados, instrucoes e sinais de controlo sao realizadas atraves de linhas de comunicaçao que se designam por bus. O PC recebe e envia sinais pelo BUS do seguinte modo:</p>
+<ul>
+<li>BUS de sistema, liga o CPU com a memoria RAM</li>
+<li>BUS de Entrada e Saida, liga o CPU a outros componentes</li>
+</ul>
+<h2 id="slots-de-expansao">SLOTS DE EXPANSAO</h2>
+<p>Existem diversas arquitecturas de BUS/barramento. Podem ligar a portas internas(SLOTS) e externas(USB), até mesmo ligar a outros tipos diferentes de BUS. Permitem a interligação entre os vários dispositivos para existir comunicação entre eles. </p>
+<h2 id="pci">PCI</h2>
+<p>A Intel surgiu em 1990 com a necessidade de projectar um bus que fizesse a ligacao directa entre o processador, a memoria e os perifericos. Para isso era necessario um bus de alta velocidade. Surge o PCI( Peripheral Component Interconnect).</p>
+<h2 id="agp">AGP</h2>
+<p>Tambem desenvolvido pela Intel e dedicado somente nas placas gráficas. Tinha o objectivo de fornecer uma maior largura de banda dentro do sistema de video, libertar o PCI do trabalho relacionado com dados graficos e ficar mais dedicado a outros programas. existem placas que sao fabricadas no modelo AGP mas nao fazem uso dos recursos padrao.</p>
+<table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>Velocidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGP1</td>
+<td>266MB/s</td>
+</tr>
+<tr>
+<td>AGP2</td>
+<td>533mb/s</td>
+</tr>
+<tr>
+<td>AGP4</td>
+<td>1066MB/s</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pci-express">PCI Express</h2>
+<p>possui canais de comunicao para os restantes componentes do sistema. é uma actualizacao directa para substituir os padrões AGP e PCI. A velocidade vai de 1x até 32x. Quase o dobro da taxa de transfrenrecia de um slot AGP. As vantagens sao o baixo consumo de energia e possibilidade interligar varias placas graficas.</p>
+<h2 id="usb-universal-serial-bus">USB - Universal Serial Bus</h2>
+<p>É um BUS externo ao PC, para ligar perifericos. Permite adicionar ou remover perifericos com o sistema ligado. Quando existe alteracao do estado do periferico, o controlador USB da motherboard informa o S.O. que por sua vez procura e instala para carrega o driver especifico.</p>
+<p>O USB têm a caracteristica de aceitar a ligacao simultanea ate 127 perifericos. Mas as portas da motherboard sao limitadas(4 a 6 portas), a ligacao têm de ser realizada atraves de Hubs USB com a função multiplicar a quantidade de portas USB.</p>
+<p>Vantagens da tecnlogia do USB:</p>
+<ul>
+<li>termina com o problema de configuracoes manuais de IRQ e DMA </li>
+<li>O tipo de conector USB termina com o problema de variedade com cabos diferentes</li>
+<li>É importante lembrar que todos os conectores USB são retrocompatíveis, ou seja, um dispositivo USB 2.0 funciona em uma entrada USB 3.0 e vice-versa, e o mesmo ocorre com o USB 1.1.</li>
+<li>Os dispositivos USB são "hot swappable", isto quer dizer que podem ser adicionador ou removidos sem a necessidade de reiniciar o computador.</li>
+<li>USB Type-C, conector reversivel pode ser encaixado de qualquer lado na entrada USB</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Versao USB</th>
+<th>velocidade máxima teórica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB 1.1</td>
+<td>1,5 Mbps até 12 Mbps,</td>
+</tr>
+<tr>
+<td>USB 2.0</td>
+<td>40Mbps até 480Mpbs</td>
+</tr>
+<tr>
+<td>USB 3.0</td>
+<td>300Mpbs até 4.8 Gbps</td>
+</tr>
+<tr>
+<td>USB 3.1</td>
+<td>1Gbps até 10Gbps</td>
+</tr>
+</tbody>
+</table>
+<h2 id="norma-ieee-1394-firewire">Norma IEEE 1394 - FireWire</h2>
+<p>nao confudir com o firmware!! Desenvolvido pela Apple. barramento externo semelhante ao USB Não fosse a velocidade. Com taxa de transferencia superior de 400MB por segundo. usado muito em maquinas fotograficas digitais e impressoras.</p>
+<h2 id="ligacoes-externas">Ligacoes externas</h2>
+<p>normalmente o acesso a estas portas é na parte detras da caixa e são do tipo femea. Exemplos de portas para ligacoes externas já incluidos numa motherboard:</p>
+<ul>
+<li>
+<p>PS/2: são muito antigas e eram do PC da IBM. permitem ligar o teclado(porta cor roxa) e o rato(porta cor verde)</p>
+</li>
+<li>
+<p>USB: 2 a 6 portas de USB</p>
+</li>
+<li>
+<p>Audio: entrada e saida de som, ligar colunas ou um microfone ao PC</p>
+</li>
+<li>
+<p>porta gráfica: Pode existir uma a duas portas diferentes do tipo VGA, HDMI ou DVI. permitem ligar o monitor para ver imagens</p>
+</li>
+</ul>
+<h3 id="fonte-de-alimentacao">Fonte de alimentação</h3>
+<p>A fonte de alimentacao de um computador leva corrente alternada (AC) de uma tomada da parede e converte para correcte continua (DC). Toda a fonte tem limites na quantidade de energia que pode fornecer. Porque cada dispositivo extra que ligar ao sistema o consumo de energia vai aumentar. Subrecargas de eletricidade sao de evitar pois o resultado pode ser o sistema pode bloquear e corroper ficheiros. Nunca optar por marcas brancas nem nada ‘barato’, mas sim algo que dê garantias e tenha proteções. Ter em conta as dimensoes do tamanho da fonte (e a sua compatibilidade com a caixa), e as suas conexões (se traz cabos dedicados de energia para a placa gráfica). </p>
+<p>O modo de economia de energia usado pelos PC actuais é o ACPI.</p>
+<p><img alt="Screenshot" src="../hardware/fonte.jpg" />
+* fonte modular com cabos acondicionados</p>
+<h3 id="ups">UPS</h3>
+<p>Existem dois tipos de UPS(uninterruptible power supply) com respectivo funcionamento:</p>
+<ul>
+<li>
+<p>bateria online - a bateria é constantemente carregada e o sistema recebe energia a partir dessa mesma bateria. </p>
+</li>
+<li>
+<p>bateria offline - o sistema recebe energia da tomada passando para a bateria. Apenas no caso de falha na energia o sistema vai buscar energia na bateria. É economico mas menos eficaz no caso de quebra de energia.</p>
+</li>
+</ul>
+<h3 id="placas-graficas">Placas Gráficas</h3>
+<p>Muitas placas mãe contam já com uma gráfica incorporada, mas que não permite executar 3D ou programas mais exigentes.</p>
+<p>O fabricante 3DFX foi das primeiras empresas a fabricar placas de graficas 3D chamadas voodoo. Acabou por ser comprada pela NVIDIA. ATI e nVIDIA são agora os dois principais fabricantes mundiais de placas graficas.</p>
+<p>gráficas da marca ATI sao de melhor relação preço/performance, mas geralmente apresentam consumos superiores e, por consequência, maiores temperaturas. gráficas da marca nvidia geralmente mais caras mas com eficiência energética nas temperatuas.</p>
+<h2 id="disco-rigidohard-disk">Disco Rígido/Hard Disk</h2>
+<p><img alt="Screenshot" src="../TIC/disco/ssd.jpg" /></p>
+<p>O Hard Disk, ou simplesmente Disco Rígido é um sistema de armazenamento de alta capacidade é la que armazenamos os ficheiros que usamos no dia-a-dia. A capacidade determina a quantidade de ficheiros e programas que vai ser possível alojar dentro dele. A caracteristica como a rapidez exerce uma grande influência na resposta final de um processo, já que determina o tempo de carregamento dos programas e na escrita ou leitura de ficheiros.</p>
+<p>A instalação do disco rígido é colocado numa baía propria para evitar destabilizacoes ou posicoes incorrentas. É ainda ligado à placa mãe através de um cabo IDE e por outro de energia da fonte de alimentação.</p>
+<h2 id="mbr">MBR</h2>
+<p>Master boot Record, é o primeiro sector de um disco particionado. localizado na pista zero do disco rigido, sector de boot de 512bytes </p>
+<ul>
+<li>tabela de partiçoes primaria</li>
+<li>inicializar sistemas operativos</li>
+</ul>
+<p>Partiçoes:
+sao diviçoes existentes no disco rigido que marcam onde começa e onde termina um sistema de ficheiros. as particoes permitem usar mais de um sistema operativo no mesmo computador.</p>
+<p>passos para preparar partiçoes no disco
+particionado com cfdisk, parted, diskdruid, fdisk
+selecionar o tipo de partiçao EXT3
+formatar mkfs.ext3</p>
+<p>apos criada e formatada, a particao é automatica identificada como um dispositivo na pasta /dev/ e devera ser montada.</p>
+<p>numeros dos tipos de particao</p>
+<ul>
+<li>83 - Linux Native</li>
+<li>82 - Linux SWAP</li>
+</ul>
+<h2 id="conceitos">conceitos</h2>
+<p>fazer boot
+bootstrap e o processo de inicializacao do PC, onde primeiro BIOS, POST e em seguida o sistema operativo</p>
+<p>boot manager
+pequeno programa instalado no sector de boot do disco, que permite instalar varios SO. sempre que o computador for ligado</p>
+<h2 id="rpm">RPM</h2>
+<p>numero de rotacoes por minuto de um disco. quanto maior for o numero de rotacoes mais rapido os dados armazenados poderao ser lidos</p>
+<h3 id="historia-do-winchester">Historia do Winchester</h3>
+<p>Os primeiros discos rígidos tinham duas faces com capacidade de 30 megabytes cada uma e tempo de acesso de 30 milissegundos. Por coincidência, os rifles Winchester também eram chamados dessa maneira, por possuírem calibre 30.30.</p>
+<h2 id="cabos-sata-e-ideata">Cabos SATA e IDE/ATA</h2>
+<p><img alt="Screenshot" src="../TIC/disco/SATAIDE.jpg" /></p>
+<p>IDE, sigla para Integrated Drive Eletronics, teve seus primeiros discos lançados em 1986 e foi o primeiro padrão que integrou a controladora com o disco rígido. No início, as primeiras placas tinham somente uma entrada para o disco e outra para disquete. </p>
+<p>Depois, passaram a ter pelo menos duas, sendo uma primária e outra secundária. O protocolo ATAPI (AT Attachment Pack Interface) foi criado para integrar placa de som, unidades de CD-ROM, microfone com o drive de IDE.</p>
+<p>SATA(Serial ATA), é uma tecnologia de transferência de dados entre dispositivos de armazenamento de um computador. O SATA oferece melhores velocidades, cabos menores consequentemente conectores menores, que ocupam menos espaço na caixa, simplificando a vida de todos.</p>
+<p>Esta tecnologia é atualmente o sucessor da tecnologia ATA (AT Attachment), que foi criada em 1984 pela IBM em seu computador chamado AT. Inicialmente o padrão ATA também era conhecido como IDE e com o surgimento do SATA, foi renomeada para PATA (Parallel ATA) para diferenciar as duas tecnologias.</p>
+<p>O grande diferencial dos dois padrões de transferência está justamente na primeira letra da sigla, enquanto o PATA transmite os dados usando cabos de quarenta ou oitenta fios paralelos (“P” de Parallel), o SATA transfere os dados em série (Serial) usando cabos formados por dois pares de fios (um par para transmissão e outro par para recepção) usando transmissão diferencial, e mais três fios terra, totalizando sete fios.</p>
+<p>Enquanto o PATA atinge 133 MB/s transmitindo vários bits por vez, o seu funcionamento gera muito ruído sonoro. </p>
+<p>O SATA além de grandes velocidades, ele é praticamente silencioso, o que explica sua escolha para padrão nos computadores atuais.</p>
+<table>
+<thead>
+<tr>
+<th>Versao</th>
+<th>Nome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SATA I</td>
+<td>SATA 1.5Gb/s</td>
+</tr>
+<tr>
+<td>SATA II</td>
+<td>SATA 3Gb/s</td>
+</tr>
+<tr>
+<td>SATA III</td>
+<td>SATA 6Gb/s</td>
+</tr>
+</tbody>
+</table>
+<h2 id="caixa-ou-torre">Caixa ou Torre</h2>
+<p>A caixa serve de protecao para as peças de hardware. Evitado contacto directo com o interior do computador que é sensivel. Normalmente é feita de aluminio e existe um painel frontal com botoes para ligar/cortar a eletrecidade e outro para reiniciar quando a maquina bloqueia. As luzes pequenas quando ligadas significam actividade de alguma coisa, luz acessa sinal energia, luz intermitente sinal de processamento.</p>
+<ul>
+<li>
+<p>Led (normalmente verde) no painel do computador que quando aceso, indica que o computador está ligado. </p>
+</li>
+<li>
+<p>led vermelho fica activo quando o disco rígido (ou discos) do computador esta sendo usado.</p>
+</li>
+</ul>
+<h2 id="plug-and-play">Plug and PLay</h2>
+<p>Podemos ligar um dispositivo ou inserir uma placa no computador que ele automaticamente a reconhece e a configura para funcionar. O PnP automatiza varias tarefas que normalmente eram executadas manualmente ou atraves de ferramentas especificas fornecidos pelos fabricantes do hardware.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../linguagens/linguagens/" class="btn btn-neutral float-right" title="Linguagens de Programação">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../TIC/" class="btn btn-neutral" title="Tecnologias da Informação e Comunicação"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../TIC/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../linguagens/linguagens/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

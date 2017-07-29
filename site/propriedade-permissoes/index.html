@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Propriedades e Permissões - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Propriedades e Permiss\u00f5es";
+    var mkdocs_page_input_path = "propriedade-permissoes/index.md";
+    var mkdocs_page_url = "/propriedade-permissoes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Propriedades e Permissões</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#sistema-de-privilegios">Sistema de privilegios</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#alterar-permissoes-no-linux-chmod">Alterar permissoes no linux - chmod</a></li>
+        
+            <li><a class="toctree-l4" href="#permissoes-numericas-octais">permissoes numericas octais</a></li>
+        
+            <li><a class="toctree-l4" href="#alterar-donos-e-grupos-dos-ficheiros-chown">alterar donos e grupos dos ficheiros - chown</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#permissoes-especiais-suid-e-sgid">permissoes especiais suid e sgid</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#suid">SUID</a></li>
+        
+            <li><a class="toctree-l4" href="#sgid">SGID</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#permissao-sticky-bit">permissao sticky bit</a></li>
+    
+
+    <li class="toctree-l3"><a href="#permissoes-especiais-em-formato-numerico">permissoes especiais em formato numerico</a></li>
+    
+
+    <li class="toctree-l3"><a href="#softlink-e-hardlink">softlink e hardlink</a></li>
+    
+
+    <li class="toctree-l3"><a href="#criar-atalhos-soft-links">Criar atalhos - soft links</a></li>
+    
+
+    <li class="toctree-l3"><a href="#inode">inode</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Propriedades e Permissões</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="sistema-de-privilegios">Sistema de privilegios</h1>
+<p>O Linux é um sistema multi-usuário. É necessário ter um utilizador para ter acesso. Existe um sistema de permissao que determina a quem pertence um determinado ficheiro ou pasta e que utilizador ou grupos de utilizadores podem aceder. </p>
+<p>as permissoes pode ser exibidas ao listar os ficheiros com a opção <code>-l</code> no comando ls.</p>
+<p>Qualquer ficheiro possui os seguintes niveis permissoes:</p>
+<table>
+<thead>
+<tr>
+<th>nivel</th>
+<th>descricao</th>
+<th>Textual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>owner</td>
+<td>dono do ficheiro</td>
+<td>u</td>
+</tr>
+<tr>
+<td>grup</td>
+<td>grupo de utilizadores</td>
+<td>g</td>
+</tr>
+<tr>
+<td>others</td>
+<td>utilizadores em geral</td>
+<td>o</td>
+</tr>
+<tr>
+<td>all</td>
+<td>refere u,g, o</td>
+<td>a</td>
+</tr>
+</tbody>
+</table>
+<p>para cada nivel de permissao, existem três tipos de privilegio</p>
+<table>
+<thead>
+<tr>
+<th>textual</th>
+<th>permissao em ficheiro</th>
+<th>permissao em pasta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>permissao para ver o conteudo do ficheiro</td>
+<td>permite listar o conteudo da pasta e sub-pastas</td>
+</tr>
+<tr>
+<td>w</td>
+<td>permissao para alterar o nome, apagar e modificar o conteudo do ficheiro</td>
+<td>permite criar ficheiros/pastas e remover</td>
+</tr>
+<tr>
+<td>x</td>
+<td>permissao para executar um ficheiro</td>
+<td>permite entrar na pasta, pesquisar e executar a partir dela</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Permissão Octal</th>
+<th>Privilégio</th>
+<th>Simbolo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>leitura</td>
+<td>(r)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>escrita</td>
+<td>(w)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>executar</td>
+<td>(x)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>não permitido</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>As permissões são divididas em grupos de três, e cada posição  uma permissão específica, nesta ordem: ler (r), escrever (w), executar (x)</p>
+<p><img alt="Screenshot" src="../propriedade-permissoes/permissoes.png" /></p>
+<p>Ja a primeira letra representa o tipo de ficheiro que pode ser:</p>
+<table>
+<thead>
+<tr>
+<th>simbolo</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>ficheiro comum, executavel</td>
+</tr>
+<tr>
+<td>d</td>
+<td>pasta</td>
+</tr>
+<tr>
+<td>l</td>
+<td>link simbolico</td>
+</tr>
+<tr>
+<td>c</td>
+<td>dispositivo especial de caracteres</td>
+</tr>
+<tr>
+<td>b</td>
+<td>dispositivo de bloco</td>
+</tr>
+<tr>
+<td>p</td>
+<td>canal fifo</td>
+</tr>
+<tr>
+<td>s</td>
+<td>socket</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alterar-permissoes-no-linux-chmod">Alterar permissoes no linux - chmod</h2>
+<p>as permissoes sao alteradas com comando chmod e podem ser:</p>
+<p>definir permissao de leitura para grupo e para outros utilizadores: <code>chmod g=r,o-r &lt;ficheiro&gt;</code></p>
+<p>permitir permissao de escrita para um grupo no ficheiro: <code>chmod g+w &lt;ficheiro&gt;</code></p>
+<p><b>permissoes de pastas, diferentes nas dos ficheiros</b></p>
+<h2 id="permissoes-numericas-octais">permissoes numericas octais</h2>
+<p>O modo octal é um conjunto de oito números onde cada número define um tipo de acesso diferente. É mais flexí­vel gerenciar permissões de acesso usando o modo octal ao invés do comum, pois você especifica diretamente a permissão do dono, grupo, outros ao invés de gerenciar as permissões de cada um separadamente. </p>
+<p>Exemplos de permissões definidas com método octal</p>
+<table>
+<thead>
+<tr>
+<th>r</th>
+<th>w</th>
+<th>x</th>
+<th>soma</th>
+<th>Permissao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>0</td>
+<td>---</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>--x</td>
+</tr>
+<tr>
+<td>-</td>
+<td>2</td>
+<td>-</td>
+<td>2</td>
+<td>-w-</td>
+</tr>
+<tr>
+<td>-</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>-wx</td>
+</tr>
+<tr>
+<td>4</td>
+<td>-</td>
+<td>-</td>
+<td>4</td>
+<td>r--</td>
+</tr>
+<tr>
+<td>4</td>
+<td>-</td>
+<td>1</td>
+<td>5</td>
+<td>r-x</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>-</td>
+<td>6</td>
+<td>rw-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+<td>7</td>
+<td>rwx</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alterar-donos-e-grupos-dos-ficheiros-chown">alterar donos e grupos dos ficheiros - chown</h2>
+<p>O comando chown significa "mudar de proprietário. Opcionalmente pode também ser usado para alterar o grupo. O dono.grupo pode ser especificado usando o nome de grupo ou o código numérico correspondente ao grupo (GID).</p>
+<p>Deve existir permissões de escrita no ficheiro/pasta para alterar seu dono/grupo.</p>
+<p>sintaxe
+<code>chown [opções] [dono.grupo] [ficheiro]</code></p>
+<table>
+<thead>
+<tr>
+<th>opção</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dono.grupo</td>
+<td>Nome do dono.grupo que será atribuí­do ao diretório/arquivo. O grupo é opcional.</td>
+</tr>
+<tr>
+<td>-v, --verbose</td>
+<td>Mostra os arquivos enquanto são alterados.</td>
+</tr>
+<tr>
+<td>-f, --supress</td>
+<td>Não mostra mensagens de erro durante a execução do programa.</td>
+</tr>
+<tr>
+<td>-c, --changes</td>
+<td>Mostra somente arquivos que forem alterados.</td>
+</tr>
+<tr>
+<td>-R, --recursive</td>
+<td>Altera dono e grupo de arquivos no diretório atual e sub-diretórios.</td>
+</tr>
+</tbody>
+</table>
+<p>alterar o dono <code>chown joao teste.txt</code></p>
+<p>alterar dono e grupo <code>chown joao.users teste.txt</code></p>
+<p>alterar recursivamente dono e grupo em todos os ficheiros <code>chown -R joao.users *</code></p>
+<h3 id="alterar-o-grupo-de-um-ficheiro-chgrp">alterar o grupo de um ficheiro - chgrp</h3>
+<p>O comando chgrp altera os atributos do grupo de um ficheiro</p>
+<p>sintaxe: <code>chgrp [opções] [nome do grupo] [ficheiro]</code></p>
+<table>
+<thead>
+<tr>
+<th>opções</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c, --changes</td>
+<td>Somente mostra os arquivos/grupos que forem alterados.</td>
+</tr>
+<tr>
+<td>-f, --silent</td>
+<td>Não mostra mensagens de erro para arquivos/diretórios que não puderam ser alterados.</td>
+</tr>
+<tr>
+<td>-v, --verbose</td>
+<td>Mostra todas as mensagens e arquivos sendo modificados.</td>
+</tr>
+<tr>
+<td>-R, --recursive</td>
+<td>Altera os grupos de arquivos/sub-diretórios do diretório atual.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="umask">umask</h3>
+<p>A umask (user mask) são 3 números que definem as permissões iniciais do dono, grupo e outros utilizadores que o ficheiro/pasta receberá quando é criado ou copiado. Digite umask sem parâmetros para retornar o valor de sua umask atual.</p>
+<p>O valor padrão da umask na maioria das distribuições é de: <code>0022</code></p>
+<p>A umask tem efeitos diferentes caso o ficheiro que estiver sendo criado for binário (um programa executável) ou texto</p>
+<table>
+<thead>
+<tr>
+<th>umask</th>
+<th>binario</th>
+<th>texto</th>
+<th>ficheiro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>r-x</td>
+<td>rw-</td>
+<td>rwx</td>
+</tr>
+<tr>
+<td>1</td>
+<td>r--</td>
+<td>rw-</td>
+<td>rw-</td>
+</tr>
+<tr>
+<td>2</td>
+<td>r-x</td>
+<td>r--</td>
+<td>r-x</td>
+</tr>
+<tr>
+<td>3</td>
+<td>r--</td>
+<td>r--</td>
+<td>r--</td>
+</tr>
+<tr>
+<td>4</td>
+<td>--x</td>
+<td>-w-</td>
+<td>-wx</td>
+</tr>
+<tr>
+<td>5</td>
+<td>---</td>
+<td>-w-</td>
+<td>-w-</td>
+</tr>
+<tr>
+<td>6</td>
+<td>--x</td>
+<td>---</td>
+<td>--x</td>
+</tr>
+<tr>
+<td>7</td>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+</tbody>
+</table>
+<p>Um ficheiro texto criado com o comando <code>umask 012;touch texto.txt</code> receberá as permissões -rw-rw-r--</p>
+<p>Um ficheiro binário copiado com o comando <code>umask 012;cp /bin/ls /tmp/ls</code> receberá as permissões -rwxr--r-x</p>
+<p>Por este motivo é preciso um pouco de atenção antes de escolher a umask, um valor mal escolhido poderia causar problemas de acesso a ficheiros ou programas não sendo executados.</p>
+<p>A umask é de grande utilidade para programas que criam ficheiros temporários, desta forma pode-se bloquear o acesso de outros utilizadores desde a criação do ficheiro, evitando recorrer ao <code>chmod</code>.</p>
+<h1 id="permissoes-especiais-suid-e-sgid">permissoes especiais suid e sgid</h1>
+<p>todos os processos estao vinculados ao utilizador que os iniciou. Desta maneira o programa herda as mesmas permissoes de leitura e escrita do utilizador que o executou. Algumas tarefas, no entado, exigem que o processo altere ou aceda ficheiros para os quais o utilizador nao tem a permissao necessaria.</p>
+<p>As permissoes SUID e SGID são úteis em situações onde um programa precise acessar determinado recurso, mas os utilizadores que o usam não o possam fazer diretamente. </p>
+<p>por exemplo alterar a propria palavra-chave exige que o ficheiro <code>/etc/shadow</code> seja modificiado. as permissoes limitam a escrita ao utilizador dono desse ficheiro, root.</p>
+<pre><code class="bash">$ ls -l /etc/shadow
+-rw------- 1 root root 1007 jun  7 18:43 /etc/shadow
+</code></pre>
+
+<p>as permissoes especiais SUID e SGID são representadas pela letra <code>s</code> no lugar do <code>x</code>. Mas caso as permissoes especiais <b>SUID e SGID existirem sem a permissao de execucao (x)</b>, surge uma letra MAISCULA, <code>S</code>.</p>
+<ul>
+<li>s = possui permissao de execução</li>
+<li>S = não possui permissao de execução</li>
+</ul>
+<h2 id="suid">SUID</h2>
+<p>Permissão SUID(set owner user id) é aplicada em ficheiros executaveis, são executados como dono do ficheiro e nao com as permissoes do utilizador que o executou.</p>
+<p>Activar a permissao SUID num ficheiro executavel:
+<code>chmod u+s [ficheiro]</code></p>
+<p>O numero 4 corresponde ao bit SUID,
+<code>chmod 4777 [ficheiro]</code></p>
+<p>Podemos localizar ficheiros com o bit SUID ativo com o comando:
+<code>find / -perm /4000</code></p>
+<h2 id="sgid">SGID</h2>
+<p>O bit SGID tem a mesma função do bit SUID(Set Group ID), que é aplicado na permissao nivel do grupo. O programa é executado com os privilégios do grupo a que pertence. </p>
+<p>Activar a permissao  SGID num ficheiro:
+<code>chmod g+s [ficheiro]</code></p>
+<p>O numero 2 corresponde ao bit SGID:
+<code>chmod 2777 [ficheiro]</code></p>
+<p>Podemos localizar ficheiros com o bit SGID ativo com o comando:
+<code>find / -perm /2000</code></p>
+<p>Caso SUID e SGID estiver ativado na pasta, os ficheiros só podem ser removidos se for um dos seguintes utilizadores:</p>
+<ul>
+<li>dono da pasta</li>
+<li>dono do ficheiro</li>
+<li>root</li>
+</ul>
+<h1 id="permissao-sticky-bit">permissao sticky bit</h1>
+<p>Pastas compartilhadas tem o incoveninente de um utilizador apagar todo o conteudo sem querer. Para evitar tal situacao existe a permissao <b>sticky bit</b>, que impede de utilizadores de apagar ficheiros que nao foram criados por eles proprios.</p>
+<p>um bom exemplo do uso de sticky bit é na pasta /tmp</p>
+<pre><code class="bash">ls -ld /tmp
+drwxrwxrwt 66 root root 1420 jun  8 19:36 /tmp
+</code></pre>
+
+<p>A permissao de execucao do grupo (x) é substituida por um t ou T.</p>
+<ul>
+<li>t = possui permissao de execução</li>
+<li>T = não possui permissao de execução</li>
+</ul>
+<p>para activar a permissao sticky bit usar comando chmod:</p>
+<pre><code class="bash">chmod o+t &lt;/nome-pasta&gt;
+</code></pre>
+
+<p>O numero 1 corresponde ao sticky bit:</p>
+<pre><code class="bash">chmod 1777 &lt;ficheiro&gt;
+</code></pre>
+
+<h1 id="permissoes-especiais-em-formato-numerico">permissoes especiais em formato numerico</h1>
+<p>as permissoes especiais tambem podem ser manipuladas em formato octal (numerico).A permissao especial e o primeiro dos quatro digitos da opcao no formato octal.</p>
+<table>
+<thead>
+<tr>
+<th>digito</th>
+<th>SUID (valor 4)</th>
+<th>SGID (valor 2)</th>
+<th>sticky ( valor 1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>---</td>
+<td>--</td>
+<td>---</td>
+</tr>
+<tr>
+<td>1</td>
+<td>---</td>
+<td>---</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td>2</td>
+<td>---</td>
+<td>SIM</td>
+<td>---</td>
+</tr>
+<tr>
+<td>3</td>
+<td>---</td>
+<td>SIM</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SIM</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SIM</td>
+<td>---</td>
+<td>SIM</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SIM</td>
+<td>SIM</td>
+<td>---</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SIM</td>
+<td>SIM</td>
+<td>SIM</td>
+</tr>
+</tbody>
+</table>
+<h1 id="softlink-e-hardlink">softlink e hardlink</h1>
+<p>Os ficheiros links sao especiais, funcionam como atalho para outros ficheiros, evitando por exemplo o uso de caminhos complexos. existem dois tipos de links com diferentes caracteristicas:</p>
+<ul>
+<li>
+<p>softlink - link simbolico: é muito parecido com um atalho da área de trabalho no sistema Windows. O softlink apenas redireciona para a localização do ficheiro destino. Apagar um softlink não tem efeito no ficheiro físico ao qual o link está apontar. É possivel criar softlinks para qualquer ficheiro no sistema de ficheiros atual ou mesmo em outros sistemas de ficheiros. Isso torna mais flexível do que um hardlink. funcoes comuns para links simbolicos sao indicar caminhos longos frequemente usados. criar nomes mais simples e ficheiros executaveis e nomes adicionais para bibliotecas de sistema.</p>
+</li>
+<li>
+<p>hardlink - link fisico: podemos criar varios hardlinks de ficheiros e organizar por pastas como acontece nas musicas ou fotografias sem reduzir o espaço em disco. um hardlink nao ocupa espaço algum.</p>
+</li>
+</ul>
+<p><b>o ficheiro hardlink so é apagado quando o ultimo ficheiro registado no inode é excluido.</b></p>
+<p><b>os ficheiros especiais . e .. sao hardlinks para pastas criados exclusiamente pelo proprio sistema.</b></p>
+<h1 id="criar-atalhos-soft-links">Criar atalhos - soft links</h1>
+<p>links simbolicos podem indicar para qualquer destino, até para sistema de ficheiros diferentes. para criar um link simbolico escreve o comando <code>ln</code> com a opcao <code>-s</code>.</p>
+<p>neste exemplo criamos um atalho no ambiente de trabalho do programa firefox.</p>
+<p><code>ln -s /usr/bin/firefox ~/Desktop</code></p>
+<p>o link simbolico fica referenciado pela letra <code>l</code> no inicio das permissoes. o tamanho do ficheiro de link e exatamente a quantidade de caracteres do caminho alvo. uma seta ao lado do icon sugere um caminho a seguir. um link simbolico para um caminho absoluto so e partido quando o destino for movido ou apagado.</p>
+<pre><code class="bash">lrwxrwxrwx 1 user 1000         16 jul  5 06:08  firefox -&gt; /usr/bin/firefox
+</code></pre>
+
+<p>para actualizar a informacao de alvo para um link simbolico. recriar o link com a opcao -f, alterar o destino para o browser chromium mas deixar o link com o nome firefox.</p>
+<p><code>ln -sf /usr/bin/chromium ~/Desktop/firefox</code></p>
+<p><code>lrwxrwxrwx 1 devilboy 1000         17 jul  5 06:24  firefox -&gt; /usr/bin/chromium</code></p>
+<h1 id="inode">inode</h1>
+<p>Podemos dizer que um inode deriva da expressão Index Node é uma estrutura dos dados guardados num disco rígido, USB, ou qualquer outro sistema de ficheiros.</p>
+<p>Essa estrutura é fundamental para o correto funcionamento de um sistema de ficheiros pois permite ao sistema encontrar rapidamente um determinado ficheiro. o Inode num disco é atualizado sempre que são alterados dados no dispositivo.</p>
+<p>mostrar inode dos ficheiros
+<code>ls -i</code> </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../programas-processos/entrada-saida/" class="btn btn-neutral float-right" title="Programas e Processos">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../compreender-user-grupos/" class="btn btn-neutral" title="Compreender Utilizadores e Grupos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../compreender-user-grupos/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../programas-processos/entrada-saida/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

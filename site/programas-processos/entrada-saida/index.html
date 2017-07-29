@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Programas e Processos - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Programas e Processos";
+    var mkdocs_page_input_path = "programas-processos/entrada-saida.md";
+    var mkdocs_page_url = "/programas-processos/entrada-saida/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Programas e Processos</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#entrada-e-sada-de-comandosinput-output-redirection">Entrada e saıda de comandos/Input Output Redirection</a></li>
+    
+
+    <li class="toctree-l3"><a href="#redirecionamento">Redirecionamento</a></li>
+    
+
+    <li class="toctree-l3"><a href="#canalizarpipes">canalizar/pipes</a></li>
+    
+
+    <li class="toctree-l3"><a href="#expressoes-regulares">Expressoes regulares</a></li>
+    
+
+    <li class="toctree-l3"><a href="#grep">grep</a></li>
+    
+
+    <li class="toctree-l3"><a href="#egrep-e-fgrep">egrep e fgrep</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../info/">Exame LPI 0</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../info/about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Temas &raquo;</li>
+        
+      
+    
+    <li>Programas e Processos</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="entrada-e-sada-de-comandosinput-output-redirection">Entrada e saıda de comandos/Input Output Redirection</h1>
+<p>Processos Unix geralmente abrem tres canais de comunicaçao, que os permitem receber e emitir dados. Esses canais podem ser redirecionados de um para outros fichieros ou processos</p>
+<p>Por padrao, o canal de entrada (chamado standard input ou stdin) teclado e os canais de saida padrao(standard  output ou stdout ) e saida de erro(standard  error ou stderr) sao o ecra do monitor. </p>
+<table>
+<thead>
+<tr>
+<th>valores</th>
+<th>canais</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>/dev/stdin</td>
+</tr>
+<tr>
+<td>1</td>
+<td>/dev/stdout</td>
+</tr>
+<tr>
+<td>2</td>
+<td>/dev/stderr</td>
+</tr>
+</tbody>
+</table>
+<h1 id="redirecionamento">Redirecionamento</h1>
+<p>O fluxo de dados para redirecionar e canalizar na linha de comando acontece da esquerda para a direita.</p>
+<p><code>ls -l &gt; listagem.txt</code></p>
+<p>Para redirecionar a saida padrao de um comando para um ficheiro, utiliza-se o caractere <code>&gt;</code>. Caso o ficheiro existir previamente, sera sobrescrito com novos dados. Para limpar conteudo de ficheiros podemos simplesmente usar este comando: <code>$ &gt; ficheiro</code> </p>
+<p>Para adicionar os valores sem apagar o conteudo existente, usa-se <code>&gt;&gt;</code>.</p>
+<p>redirecionar o conteudo de um arquivo para a entrada padr ̃ao de um comando, usa-se <code>&lt;</code> fluxo de dados segue da direita para a esquerda.</p>
+<p>E especialmente ́util para utilizar com comandos como o tr, que nao le arquivos diretamente.</p>
+<p><b>O conteudo redirecionado por padrao ́e o de stdout = 1.</b></p>
+<p>Para especificar stderr = 2 , usa-se <code>2&gt;</code> Para redirecionar ambos simultaneamente, usa-se <code>&amp;&gt;</code></p>
+<pre><code>Standard Output - se o ficheiro file nao existir e criado
+ls &gt; file_list.txt
+ls &gt;&gt; file_list.txt
+
+Standard Input
+sort processa ficheiro lista
+sort &lt; file_list.txt
+
+sort processa ficheiro lista e depois gera novo ficheiro
+sort &lt; file_list.txt &gt; sorted_file_list.txt
+
+
+
+redirect standart error
+ls -l &gt; file.txt 2&gt; errors.txt
+
+
+redirect standard output and standard error
+ls -l &gt; files.txt 2&gt;&amp;1
+
+atalho para o mesmo
+ls -l &gt;&amp; files.txt
+
+</code></pre>
+
+<h1 id="canalizarpipes">canalizar/pipes</h1>
+<p>para interligar dois comandos juntos para que a saida de um seja a entrada do proximo programa. dois ou mais comandos ligados desta forma, forma um tubo(pipe).</p>
+<p>desenho de um pipe</p>
+<p>Para realizar um pipe, colocar um caracter da barra vertical (|) entre dois comandos. Quando um programa recebe a contribuição de outro programa, executa alguma operação dessa entrada e escreve o resultado para a saída padrão(standart output), isto é referido como um filtro.</p>
+<p><code>cat /proc/cpuinfo | grep "model name" | uniq</code></p>
+<p>/proc/cpuinfo contem  informacoes sobre o processador do computador. Seu conteudo foi canalizado com o comando cat /proc/cpuinfo para o comando grep "model name", que selecionara apenas as linhas contendo o termo model name. Por tratar-se de um computador com varios processadores, ha varias linhas "model name" iguais. A ultima canalizacacao e do comando grep "model name" para o comando uniq, que reduz linhas repetidas em sequencia para apenas uma ocorrencia.</p>
+<h1 id="expressoes-regulares">Expressoes regulares</h1>
+<p>Expressoes regulares sao elementos de texto, palavras-chave e modificadores que formam um padrao, usado para encontrar e opcionalmente alterar um padrao correspondente. Muitos programas suportam o uso de expressoes regulares, e o comando <code>grep</code> é o mais comum para realizar buscas por eles, em textos. Vamos conhecer alguns caracteres e conjuntos que tem significado especial em expressoes regulares:</p>
+<table>
+<thead>
+<tr>
+<th>metacaracteres</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>inicio de linha</td>
+</tr>
+<tr>
+<td>$</td>
+<td>padrao localizado no fim de linha</td>
+</tr>
+<tr>
+<td>.</td>
+<td>corresponde a um caracter</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Corresponde a nenhuma ou mais caracteres</td>
+</tr>
+<tr>
+<td>[caracteres] ou [numeros]</td>
+<td>qualquer caracter presente entre</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>conjunto</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[a-z]</td>
+<td>letra minúscula</td>
+</tr>
+<tr>
+<td>[A-Z]</td>
+<td>letra maiscula</td>
+</tr>
+<tr>
+<td>[a-zA-Z]</td>
+<td>corresponde a qualquer letra</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>numeros</td>
+</tr>
+<tr>
+<td>[a-zA-Z0-9]</td>
+<td>letras minúscula, maiscula e numeros</td>
+</tr>
+</tbody>
+</table>
+<h1 id="grep">grep</h1>
+<p>Um dos uso mais comuns do comando grep e facilitar a inspeçao de ficheiros muito longos. Pode ser utilizado para exibir apenas as linhas que iniciem por um termo especıfico:</p>
+<p>grep "^options" /etc/modprobe.d/alsa-base.conf</p>
+<p>Como ocorre com a maior parte dos comandos, o caractere <code>^</code> permite utilizar a saıda de um comando como entrada de dados para o grep. A seguir, como utilizar colchetes para selecionar ocorrˆencias de qualquer um dos caracteres em seu interior:</p>
+<p>fdisk -l | grep "^Disk /dev/sd[ab]"</p>
+<table>
+<thead>
+<tr>
+<th>opcao</th>
+<th>descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-c</td>
+<td>contar as linhas</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>ignora a diferença entre maisculas e minusculas</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>utilizar uma expressao regular contida num ficheiro</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>procurar somente na linha indicada</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>mostra todas as linhas exceto a que corresponder</td>
+</tr>
+<tr>
+<td>[:alnum:]</td>
+<td>caracteres alfanumericos</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>caracteres alfabeticos</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>caracteres numericos</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td>caracteres alfabeticos maisculas</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>caracteres alfabeticos minusculos</td>
+</tr>
+</tbody>
+</table>
+<h1 id="egrep-e-fgrep">egrep e fgrep</h1>
+<p>O comando egrep equivale ao comando <code>grep -E</code>, ele incorpora outras funcionalidades alem das expressoes regulares padrao. Por exemplo, com o egrep pode-se usar o operador pipe, que atua como o operador OU:</p>
+<p><code>egrep "invençao|invençoes"</code></p>
+<p>Serao retornadas todas as ocorrencias do termo invencao ou invencoes.</p>
+<p>Ja o fgrep age da mesma forma que o <code>grep -F</code>, ele deixa de interpretar expressoes regulares. E especialmente util nos casos mais simples, em que o que se quer e apenas localizar a ocorrencia de algum termo simples. Mesmo se forem utilizados caracteres especiais, como $ ou <code>.</code>, estes serao interpretados  literalmente, e nao pelo que representam numa expressao regular.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../rede/" class="btn btn-neutral float-right" title="Redes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../propriedade-permissoes/" class="btn btn-neutral" title="Propriedades e Permissões"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../propriedade-permissoes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../rede/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

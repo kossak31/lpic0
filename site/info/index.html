@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Exame LPI 0 - LPIC 0 - Essencial do Linux</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Exame LPI 0";
+    var mkdocs_page_input_path = "info/index.md";
+    var mkdocs_page_url = "/info/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LPIC 0 - Essencial do Linux</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Temas</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../sistemas-operativos/so/">Sistemas operativos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../distros/distros/">Distruições Linux</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../gestor-pacotes/">Gestor de Pacotes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licensas/">Software de Código Aberto</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../TIC/">Tecnologias da Informação e Comunicação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../hardware/">Hardware</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../linguagens/linguagens/">Linguagens de Programação</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../obter-ajuda/info/">Obter Ajuda</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../bash/">Linha de Comando</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../criar-scripts/">Criar Scripts</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../file-system/fhs/">File System</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdir-rmdir/">Navegar e Manipular ficheiros</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../arquivar-comprimir-extrair/tar/">Arquivar, Comprimir e Extrair</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../compreender-user-grupos/">Compreender Utilizadores e Grupos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../propriedade-permissoes/">Propriedades e Permissões</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programas-processos/entrada-saida/">Programas e Processos</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../rede/">Redes</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Pratica</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../comandos/">Conceitos Basicos</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Info</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Exame LPI 0</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#objetivos-do-exame-da-certificacao-linux-essentials">Objetivos do exame da Certificação Linux Essentials</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#11-evolucao-do-linux-e-os-sistemas-operativos-mais-conhecidos">1.1) Evolução do Linux e os Sistemas operativos mais conhecidos</a></li>
+        
+            <li><a class="toctree-l4" href="#12-principais-aplicacoes-open-source">1.2) Principais aplicações Open Source</a></li>
+        
+            <li><a class="toctree-l4" href="#13-caracteristicas-do-software-open-source-e-seu-licenciamento">1.3) Caracteristicas do Software Open Source e seu Licenciamento</a></li>
+        
+            <li><a class="toctree-l4" href="#14-competencias-em-tic-e-de-trabalho-em-linux">1.4) Competências em TIC e de trabalho em Linux</a></li>
+        
+            <li><a class="toctree-l4" href="#21-o-basico-sobre-a-linha-de-comandos">2.1) O básico sobre a linha de comandos</a></li>
+        
+            <li><a class="toctree-l4" href="#22-usando-a-linha-de-comando-para-obter-ajuda">2.2) Usando a linha de comando para obter ajuda</a></li>
+        
+            <li><a class="toctree-l4" href="#23-navegar-por-pastas-e-listagem-dos-ficheiros">2.3) Navegar por pastas e listagem dos ficheiros</a></li>
+        
+            <li><a class="toctree-l4" href="#24-criando-movendo-e-excluindo-ficheiros">2.4) Criando, Movendo e excluindo ficheiros</a></li>
+        
+            <li><a class="toctree-l4" href="#31-arquivar-e-compactar-na-linha-de-comando">3.1) Arquivar e compactar na linha de comando</a></li>
+        
+            <li><a class="toctree-l4" href="#32-pesquisa-e-extrair-dados-de-ficheiros">3.2) Pesquisa e extrair dados de ficheiros</a></li>
+        
+            <li><a class="toctree-l4" href="#33-executar-comandos-em-um-script">3.3) Executar comandos em um script</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#shebang">! (shebang)</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#41-escolher-um-sistema-operativo">4.1) Escolher um Sistema Operativo</a></li>
+        
+            <li><a class="toctree-l4" href="#42-conhecer-o-hardware-de-um-computador">4.2) Conhecer o Hardware de um computador</a></li>
+        
+            <li><a class="toctree-l4" href="#43-armazenamento-de-dados">4.3) Armazenamento de dados</a></li>
+        
+            <li><a class="toctree-l4" href="#44-seu-computador-na-rede">4.4)  Seu computador na rede</a></li>
+        
+            <li><a class="toctree-l4" href="#51-seguranca-basica-e-identificar-os-tipos-de-utilizadores">5.1) Segurança básica e identificar os tipos de utilizadores</a></li>
+        
+            <li><a class="toctree-l4" href="#52-criar-eleminar-e-alterar-utilizadores-e-grupos-de-utilizadores">5.2) Criar eleminar e alterar utilizadores e grupos de utilizadores</a></li>
+        
+            <li><a class="toctree-l4" href="#53-permissoes-de-ficheiro-e-propriedade">5.3) Permissões de ficheiro e propriedade</a></li>
+        
+            <li><a class="toctree-l4" href="#54-pastas-e-ficheiros-especiais">5.4) Pastas e Ficheiros Especiais</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#sobre-exame">Sobre Exame</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="about/">Autor</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LPIC 0 - Essencial do Linux</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Info &raquo;</li>
+        
+      
+    
+    <li>Exame LPI 0</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="objetivos-do-exame-da-certificacao-linux-essentials">Objetivos do exame da Certificação Linux Essentials</h1>
+<p>Esta página é uma traducao do seguinte texto apresentado no <a href="http://www.lpi.org/our-certifications/exam-010-objectives">link em ingles, versão 1.5</a></p>
+<h2 id="11-evolucao-do-linux-e-os-sistemas-operativos-mais-conhecidos">1.1) Evolução do Linux e os Sistemas operativos mais conhecidos</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conhecimento do desenvolvimento Linux e principais distribuições.</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Filosofia Open Source</li>
+<li>Distribuições</li>
+<li>Sistemas Embarcados</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>Android</li>
+<li>Debian, Ubuntu (LTS)</li>
+<li>CentOS, openSUSE, Red Hat</li>
+<li>Linux Mint, Scientific Linux</li>
+</ul>
+<h2 id="12-principais-aplicacoes-open-source">1.2) Principais aplicações Open Source</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consciência das principais aplicações e seus usos.</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Programas para Desktop</li>
+<li>Programas para servidor</li>
+<li>Linguagens de Programação</li>
+<li>Gestores de pacotes e repositórios</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>OpenOffice.org, LibreOffice, Thunderbird, Firefox, GIMP</li>
+<li>Apache HTTPD, NGINX, MySQL, NFS, Samba</li>
+<li>C, Java, Perl, shell, Python, Samba</li>
+<li>dpkg, apt-get, rpm, yum</li>
+</ul>
+<h2 id="13-caracteristicas-do-software-open-source-e-seu-licenciamento">1.3) Caracteristicas do Software Open Source e seu Licenciamento</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comunidades abertas e licença de software Open Source para empresas.</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Licenciamento</li>
+<li>Fundação do Software Livre (FSF), Open Source Initiative (OSI)</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>GPL, BSD, Creative Commons</li>
+<li>Software Livre, Open Source Software, FOSS, modelos de negócios FLOSS</li>
+<li>Open Source</li>
+<li>Licença Apache, Mozilla License</li>
+<li>Propriedade Intelectual: direitos autorais, marcas e patentes </li>
+</ul>
+<h2 id="14-competencias-em-tic-e-de-trabalho-em-linux">1.4) Competências em TIC e de trabalho em Linux</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tecnologia de Comunicação e Informação Básica</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Desktop</li>
+<li>Trabalhando com linha de comando do Linux</li>
+<li>Usos Indústria de Linux, Cloud e Virtualização</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>Programas tipo Browser, opções de configuração, pesquisar na web com motores de busca</li>
+<li>Terminal e Consola</li>
+<li>Questões segurança</li>
+<li>As questões de privacidade e ferramentas</li>
+<li>O uso de programas de código aberto comuns em apresentações e projetos</li>
+</ul>
+<h2 id="21-o-basico-sobre-a-linha-de-comandos">2.1) O básico sobre a linha de comandos</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Noções básicas do uso da linha de comando do Linux.</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Shell básico</li>
+<li>Sintaxe de comandos</li>
+<li>Variáveis</li>
+<li>Globbing</li>
+<li>Quotas</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>Bash</li>
+<li>echo</li>
+<li>history</li>
+<li>PATH env variable</li>
+<li>export</li>
+<li>type</li>
+</ul>
+<h2 id="22-usando-a-linha-de-comando-para-obter-ajuda">2.2) Usando a linha de comando para obter ajuda</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executar comandos de ajuda e de navegação nos resultados de ajuda do sistema</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Man</li>
+<li>Info</li>
+<li>Man pages</li>
+<li>/usr/share/doc/</li>
+<li>locate</li>
+<li>apropos </li>
+<li>whatis</li>
+<li>whereis</li>
+</ul>
+<h2 id="23-navegar-por-pastas-e-listagem-dos-ficheiros">2.3) Navegar por pastas e listagem dos ficheiros</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Navegação, sistemas de ficheiros e suas pastas, listar ficheiros em vários locais.</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Ficheiros, pastas</li>
+<li>Ficheiros e pastas ocultos</li>
+<li>Home</li>
+<li>Paths relativos</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>As opções comuns para o comando ls</li>
+<li>Listagens Recursivos</li>
+<li>cd</li>
+<li>. e ..</li>
+<li>home e ~</li>
+</ul>
+<h2 id="24-criando-movendo-e-excluindo-ficheiros">2.4) Criando, Movendo e excluindo ficheiros</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Criar, mover e excluir ficheiros ou pastas</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Ficheiros e pastas</li>
+<li>Caracteristicas do Case sensitivity</li>
+<li>Simple globbing e quoting</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>mv, cp, rm, touch</li>
+<li>mkdir, rmdir</li>
+</ul>
+<h2 id="31-arquivar-e-compactar-na-linha-de-comando">3.1) Arquivar e compactar na linha de comando</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arquivar e comprimir ficheiros na pasta home do utilizador</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Arquivar</li>
+<li>Comprimir</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>tar</li>
+<li>Opções do tar</li>
+<li>gzip, bzip2</li>
+<li>zip, unzip</li>
+</ul>
+<h2 id="32-pesquisa-e-extrair-dados-de-ficheiros">3.2) Pesquisa e extrair dados de ficheiros</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Procura e extrair dados a partir de ficheiros na pasta de origem</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Linha de comandos com pipes</li>
+<li>Redirecionadores de entrada / saida, I/O re-direction</li>
+<li>Expressões Regulares: . [] {} * ? !</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>find</li>
+<li>grep</li>
+<li>less</li>
+<li>cat</li>
+<li>head</li>
+<li>tail</li>
+<li>sort</li>
+<li>cut</li>
+<li>wc</li>
+</ul>
+<h2 id="33-executar-comandos-em-um-script">3.3) Executar comandos em um script</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Executar comandos repetitivos em scripts simples</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Edição de texto básico</li>
+<li>Shell script básico</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>
+<h1 id="shebang">! (shebang)</h1>
+</li>
+<li>/bin/sh</li>
+<li>Variáveis</li>
+<li>Argumentos</li>
+<li>loops com “for”</li>
+<li>if, while, case statements</li>
+<li>echo</li>
+<li>Exit status</li>
+<li>Editores de texto comuns</li>
+</ul>
+<h2 id="41-escolher-um-sistema-operativo">4.1) Escolher um Sistema Operativo</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conhecer os principais sistemas operativos e distribuições Linux</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Diferenças entre Windows, Mac e o Linux</li>
+<li>Gestão do ciclo de vida das distribuições LINUX</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>GUI ( interface gráfica ) contra linha de comando, na configuração do desktop</li>
+<li>Os ciclos de manutenção, Beta e Estável</li>
+</ul>
+<h2 id="42-conhecer-o-hardware-de-um-computador">4.2) Conhecer o Hardware de um computador</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificar componentes dos computadores desktop e servidor</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Hardware em geral</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>Discos rígidos e partições, placas-mãe, processadores, fontes de alimentação, discos e periféricos.</li>
+<li>Os tipos de displays</li>
+<li>Drivers/Controladores e Firmwares</li>
+</ul>
+<h2 id="43-armazenamento-de-dados">4.3) Armazenamento de dados</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Onde as informações são armazenadas em um sistema Linux</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Kernel</li>
+<li>Processos</li>
+<li>syslog, klog, dmesg</li>
+<li>/lib, /usr/lib, /etc, /var /log</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>Programas, bibliotecas, pacotes e banco de dados de pacotes, configuração do sistema.</li>
+<li>Processos e quadros de processo, endereços de memória, mensagens do sistema e logging</li>
+<li>ps, top, free</li>
+</ul>
+<h2 id="44-seu-computador-na-rede">4.4)  Seu computador na rede</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consultando as configurações de rede vitais e determinação das exigências básicas para um computador em uma rede de área local (LAN).</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Internet, rede, roteadores</li>
+<li>Domain Name Service</li>
+<li>Configuração de rede</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>Route/Rota</li>
+<li>ficheiro /etc/resolv.conf</li>
+<li>ficheiro /etc/hosts</li>
+<li>IPv4</li>
+<li>IPv6</li>
+<li>ifconfig, ip</li>
+<li>netstat</li>
+<li>ping</li>
+<li>ssh</li>
+<li>dig</li>
+</ul>
+<h2 id="51-seguranca-basica-e-identificar-os-tipos-de-utilizadores">5.1) Segurança básica e identificar os tipos de utilizadores</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identificar vários tipos de utilizadores em sistema Linux</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>utilizador root e utilizador comum</li>
+<li>Os usuários do sistema</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>/etc/passwd, /etc/group</li>
+<li>id, who, w</li>
+<li>sudo</li>
+</ul>
+<h2 id="52-criar-eleminar-e-alterar-utilizadores-e-grupos-de-utilizadores">5.2) Criar eleminar e alterar utilizadores e grupos de utilizadores</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Criação de utilizadores e grupos em sistema Linux</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Comandos para manipular utilizador e grupo</li>
+<li>IDs de utilizador GID</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>/etc/passwd, /etc/shadow, /etc/group • id, last</li>
+<li>useradd</li>
+<li>groupadd</li>
+<li>passwd</li>
+<li>usermod</li>
+<li>userdel</li>
+<li>groupmod</li>
+<li>groupdel</li>
+</ul>
+<h2 id="53-permissoes-de-ficheiro-e-propriedade">5.3) Permissões de ficheiro e propriedade</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compreender e manipular as permissões de ficheiro e seus atributos</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Permissões de ficheiros e proprietários de pastas/ficheiros</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>ls -l e ls -a</li>
+<li>chmod</li>
+<li>chown</li>
+<li>chgrp</li>
+</ul>
+<h2 id="54-pastas-e-ficheiros-especiais">5.4) Pastas e Ficheiros Especiais</h2>
+<table>
+<thead>
+<tr>
+<th>Descrição</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pastas especiais e ficheiros em sistema Linux, incluindo permissões especiais</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Principais Áreas de Conhecimento:</p>
+<ul>
+<li>Ficheiros de sistema temporarios</li>
+<li>Definir e criar links simbólicos</li>
+</ul>
+<p>Termos e utilitários usados:</p>
+<ul>
+<li>/tmp, /var /tmp e Sticky Bit</li>
+<li>ls -d e  ln -s</li>
+<li>Hard links</li>
+<li>Setuid / Setgid</li>
+</ul>
+<h1 id="sobre-exame">Sobre Exame</h1>
+<p><b>Linux Essentials</b> é a mais recente certificação do <b>Linux Professional Institute (LPI)</b>, que se destina especialmente aos que querem iniciar, têm o objetivo de certificar os mais iniciados no sistema LINUX.</p>
+<p>O certificado Linux Essentials foi construido para definir o conhecimento básico necessário para usar um computador Linux de forma produtiva, o objetivo é ajudar e certificar os conhecimentos de iniciantes em LINUX ou interessados nas tecnologias open source.</p>
+<p>Os temas tratados no exame vão avaliar a compreensão do que é o software open-source, do que é o LINUX e como poderá iniciar corretamente a aventura neste mundo desconhecido.</p>
+<p>Todo o conteúdo deste manual é uma simples preparação para o exame, escrita em lingua portuguesa. Oferece aos candidatos da certificação LINUX Essentials os conhecimentos necessários e com exemplos práticos. Tambem não deixa de ser uma boa referencia para o uso e compreensão do sistema operativo Linux.</p>
+<p>aborda alguns conceitos mais importantes do Linux e ferramentas como:</p>
+<ul>
+<li>introdução detalhada sobre o software livre</li>
+<li>sistemas de código aberto e Linux</li>
+<li>shell</li>
+<li>lidar com ficheiros e scripts</li>
+<li>estrututa do sistema de ficheiros</li>
+<li>funcionamento e administração Linux</li>
+<li>gerir utilizadores e seus privilegios</li>
+<li>usar linux como cliente numa rede</li>
+</ul>
+<p>Uma vez concluido com sucesso o exame, os alunos do Linux Essential estão bem preparados para continuar com mais certificações LPIC, bem como outras certificação tais como:</p>
+<ul>
+<li><a href="https://www.linuxfoundation.org/">linux foundation</a></li>
+<li><a href="https://www.redhat.com/en/services/certification">Red Hat</a></li>
+<li><a href="https://training.suse.com/certification/">SuSE</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="about/" class="btn btn-neutral float-right" title="Autor">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../comandos/" class="btn btn-neutral" title="Conceitos Basicos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../comandos/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="about/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
